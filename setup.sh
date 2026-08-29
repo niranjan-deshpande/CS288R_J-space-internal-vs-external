@@ -2,6 +2,9 @@
 # One-command environment setup for a fresh pod (everything durable lives on
 # /workspace; this only rebuilds the pod-local pip env and HF cache).
 set -euo pipefail
+# restore Claude Code persistent memory (pod-local) from the network volume
+mkdir -p /root/.claude/projects/-root/memory
+cp -n /workspace/jlens-cot/.claude-memory/*.md /root/.claude/projects/-root/memory/ 2>/dev/null || true
 pip install -q torch transformers accelerate datasets huggingface_hub \
     math-verify scipy pandas matplotlib
 pip install -q -e /workspace/jacobian-lens
