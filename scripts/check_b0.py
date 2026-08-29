@@ -19,7 +19,7 @@ def run_b0(model, tok, probs, controller, label):
                        meta={"id": p["id"], "gold": p["gold"], "ds": p["dataset"]})
             for p in probs]
     t0 = time.time()
-    res = generate_batch(model, tok, reqs, controller=controller,
+    res, _ = generate_batch(model, tok, reqs, controller=controller,
                          sampling=NOTHINK_SAMPLING)
     dt = time.time() - t0
     solved = sum(grade(r.meta["ds"], r.answer_text, r.meta["gold"]) for r in res)

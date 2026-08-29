@@ -17,7 +17,7 @@ def run(model, tok, probs, budget, controller=None, batch_label=""):
                        max_answer_tokens=512, meta={"id": p["id"], "gold": p["gold"], "ds": p["dataset"]})
             for p in probs]
     torch.cuda.synchronize(); t0 = time.time()
-    res = generate_batch(model, tok, reqs, controller=controller, verbose=True)
+    res, _ = generate_batch(model, tok, reqs, controller=controller, verbose=True)
     torch.cuda.synchronize(); dt = time.time() - t0
     total = sum(r.think_tokens + r.answer_tokens for r in res)
     solved = sum(grade(r.meta["ds"], r.answer_text, r.meta["gold"]) for r in res)

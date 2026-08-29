@@ -25,7 +25,8 @@ def extract_boxed(text: str) -> str | None:
             depth -= 1
             if depth == 0:
                 return text[j + 1:k]
-    return None
+    # unbalanced (answer hit the token cap): take everything after the brace
+    return text[j + 1:].strip() or None
 
 
 def _norm_number(s: str) -> float | None:
@@ -76,7 +77,17 @@ def grade_math(answer_text: str, gold: str) -> bool:
     return norm(pred) == norm(gold)
 
 
+def grade_mmlu(answer_text: str, gold: str) -> bool:
+    pred = extract_boxed(answer_text)
+    if pred is None:
+        return False
+    pred = pred.strip().strip("()").upper()[:1]
+    return pred == gold.strip().upper()
+
+
 def grade(dataset: str, answer_text: str, gold: str) -> bool:
     if dataset == "gsm8k":
         return grade_gsm8k(answer_text, gold)
+    if dataset == "mmlu":
+        return grade_mmlu(answer_text, gold)
     return grade_math(answer_text, gold)

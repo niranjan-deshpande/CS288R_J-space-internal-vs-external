@@ -31,6 +31,8 @@ class AblationController:
         self.enabled = False
         self.use_exemption = use_exemption
         self.exempt = None  # [B, T, E] clean-top-E token ids per position
+        self.stat_sum = 0.0   # running mean of ||removal|| / ||h||
+        self.stat_n = 0
 
         dev = model.device
         gain = model.model.norm.weight.float()
@@ -93,6 +95,8 @@ class AblationController:
             b = G @ hf.unsqueeze(-1)                          # [B, t, k, 1]
             coef = torch.linalg.solve(A, b)
             removal = (G.transpose(-1, -2) @ coef).squeeze(-1)  # [B, t, d]
+            self.stat_sum += float((removal.norm(dim=-1) / hf.norm(dim=-1).clamp_min(1e-6)).mean())
+            self.stat_n += 1
             if self.mode == "jspace":
                 res = hf - removal
             else:

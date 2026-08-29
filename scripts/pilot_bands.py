@@ -26,8 +26,8 @@ def run(model, tok, probs, budget, controller, label, batch=32):
     t0 = time.time()
     res = []
     for s in range(0, len(reqs), batch):
-        res += generate_batch(model, tok, reqs[s:s + batch], controller=controller,
-                              sampling=THINK_SAMPLING)
+        r_, _ = generate_batch(model, tok, reqs[s:s + batch], controller=controller,
+                              sampling=THINK_SAMPLING); res += r_
     dt = time.time() - t0
     solved = sum(grade(r.meta["ds"], r.answer_text, r.meta["gold"]) for r in res)
     toks = sum(r.think_tokens for r in res)

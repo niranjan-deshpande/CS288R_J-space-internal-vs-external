@@ -1,6 +1,13 @@
-"""Batched generation engine: thinking-budget forcing, optional J-space
-ablation with clean-pass exemptions, per-sequence reproducible sampling,
-batch compaction as sequences finish."""
+"""Batched generation engine.
+
+Features: thinking-budget forcing (truncate <think> at B tokens, force
+"</think>" + the answer prefix), optional J-space ablation with clean-pass
+exemptions, per-sequence reproducible sampling (own RNG per sequence, so
+results don't depend on batch composition), batch compaction as sequences
+finish, and KV-budget eviction: when the caches outgrow `kv_budget_gb`, the
+longest-running sequences are evicted with their full state (token ids, RNG
+state, counters) and can be resumed exactly in a later, smaller-batch wave.
+"""
 from __future__ import annotations
 
 import random
@@ -11,12 +18,11 @@ from dataclasses import dataclass, field
 import torch
 from transformers import DynamicCache
 
-from .model import END_THINK_ID, IM_END_ID, PAD_ID, THINK_SAMPLING
-
-from .model import ANSWER_PREFIX  # noqa: E402  (re-export)
+from .model import ANSWER_PREFIX, END_THINK_ID, IM_END_ID, PAD_ID, THINK_SAMPLING
 
 FORCE_END_THINK = (198, 151668)   # "\n</think>"
 THINK, ANSWER, DONE = 0, 1, 2
+KV_BYTES_PER_TOKEN = 36 * 2 * 8 * 128 * 2   # layers * (K,V) * kv_heads * head_dim * bf16
 
 
 @dataclass
@@ -27,6 +33,9 @@ class GenRequest:
     thinking: bool = True
     max_answer_tokens: int = 64
     meta: dict = field(default_factory=dict)
+    # --- continuation state (set on eviction, consumed on resume) ---
+    prior_ids: list = field(default_factory=list)
+    state: dict | None = None       # phase/depth/counters/forced/rng state
 
 
 @dataclass
@@ -41,8 +50,6 @@ class GenResult:
 
 
 def _sample_rows(logits: torch.Tensor, params: dict, rngs: list) -> list[int]:
-    """Temperature + top-k + top-p filtering on GPU; final draw per row on CPU
-    with that row's own RNG, so results don't depend on batch composition."""
     t, k, p = params["temperature"], params["top_k"], params["top_p"]
     scaled = logits.float() / t
     topv, topi = scaled.topk(k, dim=-1)
@@ -69,7 +76,6 @@ def _sample_rows(logits: torch.Tensor, params: dict, rngs: list) -> list[int]:
 
 
 def _clean_topk(model, hidden: torch.Tensor, k: int) -> torch.Tensor:
-    """Top-k next-token ids at every position from pre-norm hidden states."""
     outs = []
     for s in range(0, hidden.shape[1], 64):
         h = hidden[:, s:s + 64]
@@ -89,31 +95,97 @@ def _forward(model, ids, attn, pos, cache, hidden=False):
         return model(**kw)
 
 
+class _Seq:
+    """Per-sequence generation state."""
+
+    def __init__(self, req: GenRequest, idx: int):
+        self.req = req
+        self.idx = idx                       # index into the requests list
+        self.gen_ids: list[int] = list(req.prior_ids)
+        st = req.state
+        if st is not None:
+            self.phase = st["phase"]
+            self.depth = st["depth"]
+            self.think_ct = st["think_ct"]
+            self.ans_ct = st["ans_ct"]
+            self.truncated = st["truncated"]
+            self.forced = deque(st["forced"])
+            self.rng = random.Random()
+            self.rng.setstate(st["rng"])
+        else:
+            self.phase = THINK if req.thinking else ANSWER
+            self.depth = 0 if req.thinking else 1
+            self.think_ct = 0
+            self.ans_ct = 0
+            self.truncated = False
+            self.forced = deque()
+            self.rng = random.Random(req.seed)
+        self.finished = False
+
+    def snapshot(self) -> GenRequest:
+        """Continuation request that resumes this sequence exactly."""
+        return GenRequest(
+            prompt=self.req.prompt, budget=self.req.budget, seed=self.req.seed,
+            thinking=self.req.thinking, max_answer_tokens=self.req.max_answer_tokens,
+            meta=self.req.meta, prior_ids=list(self.gen_ids),
+            state=dict(phase=self.phase, depth=self.depth, think_ct=self.think_ct,
+                       ans_ct=self.ans_ct, truncated=self.truncated,
+                       forced=list(self.forced), rng=self.rng.getstate()),
+        )
+
+
 @torch.no_grad()
 def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
                    sampling: dict = THINK_SAMPLING, exempt_k: int = 10,
-                   compact_every: int = 64, verbose: bool = False) -> list[GenResult]:
+                   compact_every: int = 64, kv_budget_gb: float = 12.0,
+                   verbose: bool = False):
+    """Returns (results, continuations): results[i] is None where sequence i
+    was evicted; its continuation request appears in `continuations`."""
     device = model.device
     n = len(requests)
-    enc = tok([r.prompt for r in requests], return_tensors="pt", padding=True,
-              add_special_tokens=False)
-    input_ids = enc.input_ids.to(device)
-    attn = enc.attention_mask.to(device)
+    prefix_ids = tuple(tok(ANSWER_PREFIX, add_special_tokens=False).input_ids)
+    brace_cache: dict[int, int] = {}
+
+    def brace_delta(t: int) -> int:
+        if t not in brace_cache:
+            s = tok.decode([t])
+            brace_cache[t] = s.count("{") - s.count("}")
+        return brace_cache[t]
+
+    # --- tokenize; manual left-padding (prompts may carry prior_ids) ---
+    all_ids = []
+    for r in requests:
+        ids = tok(r.prompt, add_special_tokens=False).input_ids + list(r.prior_ids)
+        all_ids.append(ids)
+    maxlen = max(len(x) for x in all_ids)
+    input_ids = torch.full((n, maxlen), PAD_ID, dtype=torch.long)
+    attn = torch.zeros((n, maxlen), dtype=torch.long)
+    for i, ids in enumerate(all_ids):
+        input_ids[i, maxlen - len(ids):] = torch.tensor(ids)
+        attn[i, maxlen - len(ids):] = 1
+    input_ids, attn = input_ids.to(device), attn.to(device)
     pos = (attn.cumsum(-1) - 1).clamp(min=0)
 
     use_abl = controller is not None
     need_clean = use_abl and controller.use_exemption
+    n_caches = 2 if need_clean else 1
     cache = DynamicCache()
     clean_cache = DynamicCache() if need_clean else None
+
     results: list[GenResult | None] = [None] * n
+    continuations: list[GenRequest] = []
+    seqs = [_Seq(r, i) for i, r in enumerate(requests)]
+
+    def finalize(s: _Seq):
+        results[s.idx] = _finalize(tok, s.req, s.gen_ids, s.think_ct, s.ans_ct,
+                                   s.truncated, s.finished)
 
     with (controller if use_abl else nullcontext()):
         # --- prefill ---
         if need_clean:
             out_c = _forward(model, input_ids, attn, pos, clean_cache, hidden=True)
-            exempt = _clean_topk(model, out_c.hidden_states[-1], exempt_k)
+            controller.set_exempt(_clean_topk(model, out_c.hidden_states[-1], exempt_k))
             del out_c
-            controller.set_exempt(exempt)
         if use_abl:
             controller.enabled = True
             out = _forward(model, input_ids, attn, pos, cache)
@@ -122,84 +194,52 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
             out = _forward(model, input_ids, attn, pos, cache)
         last_logits = out.logits[:, -1]
         del out
-
-        # --- per-sequence state (indexed by current batch row) ---
-        prefix_ids = tuple(tok(ANSWER_PREFIX, add_special_tokens=False).input_ids)
-        brace_cache: dict[int, int] = {}
-
-        def brace_delta(t: int) -> int:
-            if t not in brace_cache:
-                s = tok.decode([t])
-                brace_cache[t] = s.count("{") - s.count("}")
-            return brace_cache[t]
-
-        orig = list(range(n))                  # row -> original request index
-        phase = [THINK if r.thinking else ANSWER for r in requests]
-        # non-thinking prompts already contain the forced "...\boxed{" prefix
-        depth = [0 if r.thinking else 1 for r in requests]
-        think_ct = [0] * n
-        ans_ct = [0] * n
-        truncated = [False] * n
-        finished = [False] * n
-        forced: list[deque] = [deque() for _ in range(n)]
-        gen_ids: list[list[int]] = [[] for _ in range(n)]
-        rngs = [random.Random(r.seed) for r in requests]
-        budgets = [r.budget for r in requests]
-        max_ans = [r.max_answer_tokens for r in requests]
-        pos_next = pos[:, -1] + 1              # [B]
-
-        def finalize_row(i: int):
-            oi = orig[i]
-            results[oi] = _finalize(tok, requests[oi], gen_ids[i], think_ct[i],
-                                    ans_ct[i], truncated[i], finished[i])
+        pos_next = pos[:, -1] + 1
 
         step = 0
         while True:
-            sampled = _sample_rows(last_logits, sampling, rngs)
+            sampled = _sample_rows(last_logits, sampling, [s.rng for s in seqs])
             next_tokens = []
-            for i in range(len(orig)):
-                if phase[i] == DONE:
+            for i, s in enumerate(seqs):
+                if s.phase == DONE:
                     next_tokens.append(PAD_ID)
                     continue
-                # budget check happens before consuming the sample
-                if phase[i] == THINK and not forced[i] and think_ct[i] >= budgets[i]:
-                    forced[i].extend(FORCE_END_THINK)
-                    truncated[i] = True
-                was_forced = bool(forced[i])
-                t = forced[i].popleft() if forced[i] else sampled[i]
-                gen_ids[i].append(t)
-                if phase[i] == THINK:
+                if s.phase == THINK and not s.forced and s.think_ct >= s.req.budget:
+                    s.forced.extend(FORCE_END_THINK)
+                    s.truncated = True
+                was_forced = bool(s.forced)
+                t = s.forced.popleft() if s.forced else sampled[i]
+                s.gen_ids.append(t)
+                if s.phase == THINK:
                     if t == END_THINK_ID:
-                        phase[i] = ANSWER
-                        # force the answer prefix: reasoning lives only in <think>
-                        forced[i].extend((271,) + prefix_ids)  # "\n\n" + prefix
+                        s.phase = ANSWER
+                        s.forced.extend((271,) + prefix_ids)   # "\n\n" + prefix
                     elif not was_forced:
-                        think_ct[i] += 1
-                else:  # ANSWER
+                        s.think_ct += 1
+                else:
                     if t == IM_END_ID:
-                        phase[i] = DONE
-                        finished[i] = True
+                        s.phase = DONE
+                        s.finished = True
                     else:
-                        depth[i] += brace_delta(t)
+                        s.depth += brace_delta(t)
                         if not was_forced:
-                            ans_ct[i] += 1
-                            if depth[i] <= 0 or ans_ct[i] >= max_ans[i]:
-                                phase[i] = DONE  # boxed answer closed (or cap hit)
+                            s.ans_ct += 1
+                            if s.depth <= 0 or s.ans_ct >= s.req.max_answer_tokens:
+                                s.phase = DONE
                 next_tokens.append(t)
-            if all(p == DONE for p in phase):
+            if all(s.phase == DONE for s in seqs):
                 break
 
             ids_t = torch.tensor(next_tokens, device=device).unsqueeze(1)
-            attn = torch.cat([attn, torch.ones(len(orig), 1, dtype=attn.dtype,
+            attn = torch.cat([attn, torch.ones(len(seqs), 1, dtype=attn.dtype,
                                                device=device)], dim=1)
             pos_t = pos_next.unsqueeze(1)
             pos_next = pos_next + 1
 
             if need_clean:
                 out_c = _forward(model, ids_t, attn, pos_t, clean_cache)
-                exempt = out_c.logits[:, -1:].topk(exempt_k, dim=-1).indices
+                controller.set_exempt(out_c.logits[:, -1:].topk(exempt_k, dim=-1).indices)
                 del out_c
-                controller.set_exempt(exempt)
             if use_abl:
                 controller.enabled = True
                 out = _forward(model, ids_t, attn, pos_t, cache)
@@ -210,42 +250,44 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
             del out
 
             step += 1
-            # --- compaction: finalize and drop finished rows ---
             if step % compact_every == 0:
-                done_rows = [i for i in range(len(orig)) if phase[i] == DONE]
-                if len(done_rows) > 0.25 * len(orig):
-                    for i in done_rows:
-                        finalize_row(i)
-                    alive = [i for i in range(len(orig)) if phase[i] != DONE]
-                    if not alive:
-                        return results
-                    sel = torch.tensor(alive, device=device)
+                keep = [i for i, s in enumerate(seqs) if s.phase != DONE]
+                # KV-budget eviction: kick the longest thinkers to a later wave
+                kv_gb = len(keep) * attn.shape[1] * KV_BYTES_PER_TOKEN * n_caches / 1e9
+                if kv_gb > kv_budget_gb and len(keep) > 1:
+                    order = sorted(keep, key=lambda i: seqs[i].think_ct, reverse=True)
+                    n_evict = max(1, len(keep) // 3)
+                    for i in order[:n_evict]:
+                        continuations.append(seqs[i].snapshot())
+                        seqs[i].phase = DONE
+                        seqs[i].evicted = True
+                    keep = [i for i in keep if not getattr(seqs[i], "evicted", False)]
+                    if verbose:
+                        print(f"  step {step}: evicted {n_evict} at seq_len "
+                              f"{attn.shape[1]}", flush=True)
+                if len(keep) < 0.75 * len(seqs):
+                    for i, s in enumerate(seqs):
+                        if s.phase == DONE and not getattr(s, "evicted", False):
+                            finalize(s)
+                    if not keep:
+                        return results, continuations
+                    sel = torch.tensor(keep, device=device)
                     attn = attn[sel]
                     last_logits = last_logits[sel]
                     pos_next = pos_next[sel]
                     cache.batch_select_indices(sel)
                     if clean_cache is not None:
                         clean_cache.batch_select_indices(sel)
-                    orig = [orig[i] for i in alive]
-                    phase = [phase[i] for i in alive]
-                    depth = [depth[i] for i in alive]
-                    think_ct = [think_ct[i] for i in alive]
-                    ans_ct = [ans_ct[i] for i in alive]
-                    truncated = [truncated[i] for i in alive]
-                    finished = [finished[i] for i in alive]
-                    forced = [forced[i] for i in alive]
-                    gen_ids = [gen_ids[i] for i in alive]
-                    rngs = [rngs[i] for i in alive]
-                    budgets = [budgets[i] for i in alive]
-                    max_ans = [max_ans[i] for i in alive]
+                    seqs = [seqs[i] for i in keep]
             if verbose and step % 512 == 0:
-                n_alive = sum(1 for p in phase if p != DONE)
+                n_alive = sum(1 for s in seqs if s.phase != DONE)
                 print(f"  step {step}: {n_alive} alive, seq_len {attn.shape[1]}",
                       flush=True)
 
-        for i in range(len(orig)):
-            finalize_row(i)
-    return results
+        for s in seqs:
+            if not getattr(s, "evicted", False):
+                finalize(s)
+    return results, continuations
 
 
 def _finalize(tok, req, ids, think_ct, ans_ct, truncated, finished):

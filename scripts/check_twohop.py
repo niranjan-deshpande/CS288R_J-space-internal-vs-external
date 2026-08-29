@@ -72,7 +72,7 @@ def run(model, tok, qa, controller, label):
                        budget=0, seed=hash((q, "th")) % 2**31, thinking=False,
                        max_answer_tokens=24, meta={"golds": golds})
             for q, golds in qa]
-    res = generate_batch(model, tok, reqs, controller=controller,
+    res, _ = generate_batch(model, tok, reqs, controller=controller,
                          sampling=NOTHINK_SAMPLING)
     ok = sum(any(g in r.answer_text.lower() for g in r.meta["golds"]) for r in res)
     print(f"[{label}] {ok}/{len(res)}", flush=True)
