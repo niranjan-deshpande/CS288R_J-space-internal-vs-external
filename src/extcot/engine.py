@@ -47,6 +47,7 @@ class GenResult:
     think_truncated: bool
     finished: bool
     meta: dict
+    ids: list = field(default_factory=list)
 
 
 def _sample_rows(logits: torch.Tensor, params: dict, rngs: list) -> list[int]:
@@ -304,5 +305,5 @@ def _finalize(tok, req, ids, think_ct, ans_ct, truncated, finished):
     return GenResult(
         completion=completion, answer_text=answer_text,
         think_tokens=think_ct, answer_tokens=ans_ct,
-        think_truncated=truncated, finished=finished, meta=req.meta,
+        think_truncated=truncated, finished=finished, meta=req.meta, ids=list(ids),
     )

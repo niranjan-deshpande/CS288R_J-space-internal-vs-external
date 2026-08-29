@@ -15,6 +15,8 @@ from datasets import load_dataset
 
 MMLU_INSTR = ("Answer the multiple-choice question. Put only the letter of "
               "the correct option (A, B, C, or D) within \\boxed{}.")
+SST2_INSTR = ("Classify the sentiment of the following movie review sentence. "
+              "Put only the word positive or negative within \\boxed{}.")
 
 
 def _gsm8k_gold(ans: str) -> str:
@@ -56,6 +58,15 @@ def load_problems() -> list[dict]:
         })
 
     return problems
+
+
+def load_sst2(n: int = 300) -> list[dict]:
+    sst = load_dataset("stanfordnlp/sst2", split="validation")
+    idx = random.Random(0).sample(range(len(sst)), n)
+    return [{"id": f"sst2-{i}", "dataset": "sst2",
+             "question": sst[i]["sentence"].strip(),
+             "gold": "positive" if sst[i]["label"] == 1 else "negative"}
+            for i in sorted(idx)]
 
 
 def load_mmlu(n: int = 500) -> list[dict]:

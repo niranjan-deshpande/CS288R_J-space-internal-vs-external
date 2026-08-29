@@ -19,7 +19,7 @@ from extcot.model import (load_model, build_prompt, LENS_PATH,
 from extcot.engine import GenRequest, generate_batch
 from extcot.ablation import AblationController
 from extcot.grading import grade
-from extcot.data import load_problems, load_mmlu, MMLU_INSTR
+from extcot.data import load_problems, load_mmlu, load_sst2, MMLU_INSTR, SST2_INSTR
 from extcot.model import MATH_INSTR
 
 RESULTS = "/workspace/jlens-cot/results"
@@ -54,6 +54,8 @@ def main():
     problems = [p for p in load_problems() if p["dataset"] in datasets]
     if "mmlu" in datasets:
         problems += load_mmlu()
+    if "sst2" in datasets:
+        problems += load_sst2()
     if args.problems == "solvable":
         with open(f"{RESULTS}/design.json") as f:
             solvable = set(json.load(f)["solvable_ids"])
@@ -92,7 +94,7 @@ def main():
         for sidx in range(args.sample_offset, args.sample_offset + args.samples):
             if (p["id"], sidx) in done:
                 continue
-            instr = MMLU_INSTR if p["dataset"] == "mmlu" else MATH_INSTR
+            instr = {"mmlu": MMLU_INSTR, "sst2": SST2_INSTR}.get(p["dataset"], MATH_INSTR)
             todo.append(GenRequest(
                 prompt=build_prompt(tok, p["question"], thinking=thinking, instr=instr),
                 budget=args.budget, thinking=thinking,
@@ -116,6 +118,7 @@ def main():
                        think_tokens=r.think_tokens, answer_tokens=r.answer_tokens,
                        truncated=r.think_truncated, finished=r.finished,
                        answer_text=r.answer_text, completion=r.completion,
+                       gen_ids=r.ids,
                        tag=args.tag, mode=args.mode, band=args.band, k=args.k,
                        budget=args.budget, rand_seed=args.rand_seed)
             fout.write(json.dumps(rec) + "\n")

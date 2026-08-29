@@ -85,9 +85,16 @@ def grade_mmlu(answer_text: str, gold: str) -> bool:
     return pred == gold.strip().upper()
 
 
+def grade_sst2(answer_text: str, gold: str) -> bool:
+    pred = extract_boxed(answer_text)
+    return pred is not None and pred.strip().lower().startswith(gold[:3])
+
+
 def grade(dataset: str, answer_text: str, gold: str) -> bool:
     if dataset == "gsm8k":
         return grade_gsm8k(answer_text, gold)
     if dataset == "mmlu":
         return grade_mmlu(answer_text, gold)
+    if dataset == "sst2":
+        return grade_sst2(answer_text, gold)
     return grade_math(answer_text, gold)
