@@ -15,18 +15,25 @@ HEAVY = range(22, 35)
 MEDIUM = range(24, 33)
 
 
-def run(model, tok, probs, budget, controller, label, batch=24):
+def run(model, tok, probs, budget, controller, label, batch=12):
     reqs = [GenRequest(prompt=build_prompt(tok, p["question"], thinking=True),
                        budget=budget, seed=hash((p["id"], "pilot")) % 2**31,
                        meta={"id": p["id"], "gold": p["gold"], "ds": p["dataset"]})
             for p in probs]
     t0 = time.time()
     res = []
-    for s in range(0, len(reqs), batch):
-        r_, conts = generate_batch(model, tok, reqs[s:s + batch],
-                                   controller=controller, sampling=THINK_SAMPLING)
-        res += r_
-        assert not conts
+    todo = reqs
+    b = batch
+    while todo:
+        nxt = []
+        for s in range(0, len(todo), b):
+            r_, conts = generate_batch(model, tok, todo[s:s + b],
+                                       controller=controller,
+                                       sampling=THINK_SAMPLING, kv_budget_gb=9.0)
+            res += [r for r in r_ if r is not None]
+            nxt += conts
+        todo = nxt
+        b = max(2, b // 2)
     dt = time.time() - t0
     solved = sum(grade(r.meta["ds"], r.answer_text, r.meta["gold"]) for r in res)
     rem = (controller.stat_sum / controller.stat_n) if controller and controller.stat_n else 0

@@ -4,6 +4,7 @@
 # script can be re-run after interruption.
 set -uo pipefail
 cd /workspace/jlens-cot
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 RUN="python3 scripts/run_cell.py"
 LOG=results/grid.log
 exec >> $LOG 2>&1
@@ -26,7 +27,7 @@ run_level () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
   $RUN --tag $tag-B128   --mode $mode --band $band --k $k --budget 128   --samples 4 --problems solvable --datasets gsm8k,math --batch 32 $extra
   $RUN --tag $tag-B512   --mode $mode --band $band --k $k --budget 512   --samples 4 --problems solvable --datasets gsm8k,math --batch 24 $extra
   $RUN --tag $tag-B2048  --mode $mode --band $band --k $k --budget 2048  --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 16 $extra
-  $RUN --tag $tag-B16384 --mode $mode --band $band --k $k --budget 16384 --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 12 --kv-budget 10 $extra
+  $RUN --tag $tag-B16384 --mode $mode --band $band --k $k --budget 16384 --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 12 --kv-budget 9 $extra
 }
 
 date; echo "=== jspace levels ==="
@@ -40,7 +41,7 @@ run_level random-s1 $MED_BAND $MED_K random "--rand-seed 1"
 
 date; echo "=== out-of-band control (B=16384, medium strength) ==="
 $RUN --tag oob-B16384 --mode jspace --band $OOB_BAND --k $MED_K --budget 16384 \
-    --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 12 --kv-budget 10
+    --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 12 --kv-budget 9
 
 date; echo "=== selectivity: MMLU + SST-2, direct answering ==="
 $RUN --tag select-clean --mode none --budget 0 --samples 1 --problems all --datasets mmlu,sst2 --batch 64

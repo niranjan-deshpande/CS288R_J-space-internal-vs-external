@@ -43,7 +43,7 @@ def main():
     ap.add_argument("--datasets", default="gsm8k,math,aime")
     ap.add_argument("--problems", default="all", help="all | solvable | path.json")
     ap.add_argument("--batch", type=int, default=24)
-    ap.add_argument("--kv-budget", type=float, default=11.0)
+    ap.add_argument("--kv-budget", type=float, default=9.0)
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
