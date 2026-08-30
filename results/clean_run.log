@@ -464,3 +464,585 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   step 2048: 11 alive, seq_len 5253
   step 2112: evicted 9 at seq_len 5317
   [clean] 122/953 done, 831 queued (bucket 2, n=37) | 386732 tok | 90 tok/s | 72m
+  step 512: 31 alive, seq_len 3788
+  step 1024: 27 alive, seq_len 4300
+  step 1536: 21 alive, seq_len 4812
+  step 2048: 19 alive, seq_len 5324
+  step 2560: 15 alive, seq_len 5836
+  step 3072: 13 alive, seq_len 6348
+  step 3584: 12 alive, seq_len 6860
+  step 3904: evicted 9 at seq_len 7180
+  [clean] 150/953 done, 803 queued (bucket 2, n=37) | 518359 tok | 113 tok/s | 77m
+  step 512: 31 alive, seq_len 3855
+  step 1024: 24 alive, seq_len 4367
+  step 1536: 17 alive, seq_len 4879
+  step 2048: 12 alive, seq_len 5391
+  step 2560: 10 alive, seq_len 5903
+  step 2624: evicted 8 at seq_len 5967
+  [clean] 179/953 done, 774 queued (bucket 2, n=37) | 640856 tok | 134 tok/s | 79m
+  step 512: 36 alive, seq_len 3855
+  step 1024: 34 alive, seq_len 4367
+  step 1536: 30 alive, seq_len 4879
+  step 2048: 28 alive, seq_len 5391
+  step 2560: 26 alive, seq_len 5903
+  step 3072: 23 alive, seq_len 6415
+  step 3584: 19 alive, seq_len 6927
+  [clean] 200/953 done, 753 queued (bucket 2, n=37) | 753126 tok | 146 tok/s | 86m
+  step 512: 36 alive, seq_len 3831
+  step 1024: 33 alive, seq_len 4343
+  step 1536: 29 alive, seq_len 4855
+  step 2048: 28 alive, seq_len 5367
+  step 2560: 26 alive, seq_len 5879
+  step 3072: 24 alive, seq_len 6391
+  step 3584: 21 alive, seq_len 6903
+  [clean] 217/953 done, 736 queued (bucket 2, n=37) | 837872 tok | 152 tok/s | 92m
+  step 512: 36 alive, seq_len 3696
+  step 1024: 31 alive, seq_len 4208
+  step 1536: 27 alive, seq_len 4720
+  step 2048: 23 alive, seq_len 5232
+  step 2560: 20 alive, seq_len 5744
+  step 3072: 18 alive, seq_len 6256
+  step 3584: 17 alive, seq_len 6768
+  [clean] 239/953 done, 714 queued (bucket 2, n=37) | 944620 tok | 162 tok/s | 97m
+  step 512: 33 alive, seq_len 3766
+  step 1024: 29 alive, seq_len 4278
+  step 1536: 26 alive, seq_len 4790
+  step 2048: 25 alive, seq_len 5302
+  step 2560: 23 alive, seq_len 5814
+  step 3072: 20 alive, seq_len 6326
+  step 3584: 17 alive, seq_len 6838
+  [clean] 262/953 done, 691 queued (bucket 2, n=37) | 1059178 tok | 171 tok/s | 103m
+  step 512: 37 alive, seq_len 3883
+  step 1024: 35 alive, seq_len 4395
+  step 1536: 30 alive, seq_len 4907
+  step 2048: 29 alive, seq_len 5419
+  step 2560: 27 alive, seq_len 5931
+  step 3072: 21 alive, seq_len 6443
+  step 3584: 17 alive, seq_len 6955
+  [clean] 284/953 done, 669 queued (bucket 2, n=37) | 1179599 tok | 180 tok/s | 109m
+  step 512: 36 alive, seq_len 3846
+  step 1024: 35 alive, seq_len 4358
+  step 1536: 35 alive, seq_len 4870
+  step 2048: 31 alive, seq_len 5382
+  step 2560: 26 alive, seq_len 5894
+  step 3072: 23 alive, seq_len 6406
+  step 3584: 17 alive, seq_len 6918
+  [clean] 307/953 done, 646 queued (bucket 2, n=37) | 1310352 tok | 189 tok/s | 116m
+  step 512: 33 alive, seq_len 3788
+  step 1024: 30 alive, seq_len 4300
+  step 1536: 27 alive, seq_len 4812
+  step 2048: 21 alive, seq_len 5324
+  step 2560: 18 alive, seq_len 5836
+  step 3072: 15 alive, seq_len 6348
+  step 3584: 14 alive, seq_len 6860
+  [clean] 335/953 done, 618 queued (bucket 2, n=37) | 1452516 tok | 200 tok/s | 121m
+  step 512: 37 alive, seq_len 3810
+  step 1024: 37 alive, seq_len 4322
+  step 1536: 36 alive, seq_len 4834
+  step 2048: 36 alive, seq_len 5346
+  step 2560: 34 alive, seq_len 5858
+  step 3072: 34 alive, seq_len 6370
+  step 3584: 34 alive, seq_len 6882
+  [clean] 341/953 done, 612 queued (bucket 2, n=37) | 1488735 tok | 193 tok/s | 128m
+  step 512: 37 alive, seq_len 3800
+  step 1024: 33 alive, seq_len 4312
+  step 1536: 31 alive, seq_len 4824
+  step 2048: 28 alive, seq_len 5336
+  step 2560: 25 alive, seq_len 5848
+  step 3072: 23 alive, seq_len 6360
+  step 3584: 20 alive, seq_len 6872
+  [clean] 359/953 done, 594 queued (bucket 2, n=37) | 1581434 tok | 196 tok/s | 135m
+  step 512: 35 alive, seq_len 3753
+  step 1024: 32 alive, seq_len 4265
+  step 1536: 28 alive, seq_len 4777
+  step 2048: 24 alive, seq_len 5289
+  step 2560: 22 alive, seq_len 5801
+  step 3072: 21 alive, seq_len 6313
+  step 3584: 20 alive, seq_len 6825
+  [clean] 377/953 done, 576 queued (bucket 2, n=37) | 1666484 tok | 198 tok/s | 140m
+  step 512: 35 alive, seq_len 3716
+  step 1024: 31 alive, seq_len 4228
+  step 1536: 25 alive, seq_len 4740
+  step 2048: 23 alive, seq_len 5252
+  step 2560: 22 alive, seq_len 5764
+  step 3072: 22 alive, seq_len 6276
+  step 3584: 18 alive, seq_len 6788
+  [clean] 399/953 done, 554 queued (bucket 2, n=37) | 1776638 tok | 203 tok/s | 146m
+  step 512: 37 alive, seq_len 3784
+  step 1024: 36 alive, seq_len 4296
+  step 1536: 34 alive, seq_len 4808
+  step 2048: 30 alive, seq_len 5320
+  step 2560: 23 alive, seq_len 5832
+  step 3072: 16 alive, seq_len 6344
+  step 3584: 10 alive, seq_len 6856
+  step 3776: evicted 8 at seq_len 7048
+  [clean] 428/953 done, 525 queued (bucket 2, n=37) | 1941309 tok | 213 tok/s | 152m
+  step 512: 35 alive, seq_len 3841
+  step 1024: 33 alive, seq_len 4353
+  step 1536: 29 alive, seq_len 4865
+  step 2048: 27 alive, seq_len 5377
+  step 2560: 25 alive, seq_len 5889
+  step 3072: 24 alive, seq_len 6401
+  step 3584: 23 alive, seq_len 6913
+  [clean] 442/953 done, 511 queued (bucket 2, n=37) | 2005519 tok | 212 tok/s | 158m
+  step 512: 34 alive, seq_len 3742
+  step 1024: 32 alive, seq_len 4254
+  step 1536: 28 alive, seq_len 4766
+  step 2048: 28 alive, seq_len 5278
+  step 2560: 25 alive, seq_len 5790
+  step 3072: 24 alive, seq_len 6302
+  step 3584: 19 alive, seq_len 6814
+  [clean] 461/953 done, 492 queued (bucket 2, n=37) | 2101238 tok | 214 tok/s | 164m
+  step 512: 37 alive, seq_len 3761
+  step 1024: 37 alive, seq_len 4273
+  step 1536: 37 alive, seq_len 4785
+  step 2048: 37 alive, seq_len 5297
+  step 2560: 37 alive, seq_len 5809
+  step 3072: 37 alive, seq_len 6321
+  step 3584: 36 alive, seq_len 6833
+  [clean] 465/953 done, 488 queued (bucket 2, n=37) | 2128354 tok | 207 tok/s | 171m
+  step 512: 36 alive, seq_len 3734
+  step 1024: 36 alive, seq_len 4246
+  step 1536: 33 alive, seq_len 4758
+  step 2048: 29 alive, seq_len 5270
+  step 2560: 29 alive, seq_len 5782
+  step 3072: 27 alive, seq_len 6294
+  step 3584: 22 alive, seq_len 6806
+  [clean] 483/953 done, 470 queued (bucket 2, n=37) | 2228029 tok | 209 tok/s | 178m
+  step 512: 37 alive, seq_len 3721
+  step 1024: 37 alive, seq_len 4233
+  step 1536: 35 alive, seq_len 4745
+  step 2048: 35 alive, seq_len 5257
+  step 2560: 31 alive, seq_len 5769
+  step 3072: 29 alive, seq_len 6281
+  step 3584: 23 alive, seq_len 6793
+  [clean] 497/953 done, 456 queued (bucket 2, n=37) | 2309322 tok | 208 tok/s | 185m
+  step 512: 37 alive, seq_len 3806
+  step 1024: 37 alive, seq_len 4318
+  step 1536: 37 alive, seq_len 4830
+  step 2048: 37 alive, seq_len 5342
+  step 2560: 36 alive, seq_len 5854
+  step 3072: 32 alive, seq_len 6366
+  step 3584: 31 alive, seq_len 6878
+  [clean] 505/953 done, 448 queued (bucket 2, n=37) | 2358320 tok | 205 tok/s | 192m
+  step 512: 36 alive, seq_len 3788
+  step 1024: 36 alive, seq_len 4300
+  step 1536: 35 alive, seq_len 4812
+  step 2048: 32 alive, seq_len 5324
+  step 2560: 31 alive, seq_len 5836
+  step 3072: 30 alive, seq_len 6348
+  step 3584: 30 alive, seq_len 6860
+  [clean] 513/953 done, 440 queued (bucket 2, n=37) | 2398425 tok | 200 tok/s | 199m
+  step 512: 36 alive, seq_len 4002
+  step 1024: 36 alive, seq_len 4514
+  step 1536: 34 alive, seq_len 5026
+  step 2048: 33 alive, seq_len 5538
+  step 2560: 32 alive, seq_len 6050
+  step 3072: 30 alive, seq_len 6562
+  step 3584: 30 alive, seq_len 7074
+  [clean] 520/953 done, 433 queued (bucket 2, n=36) | 2435707 tok | 196 tok/s | 207m
+  step 512: 9 alive, seq_len 7605
+  step 1024: 5 alive, seq_len 8117
+  step 1536: 4 alive, seq_len 8629
+  step 2048: 4 alive, seq_len 9141
+  step 2560: 3 alive, seq_len 9653
+  step 3072: 1 alive, seq_len 10165
+  [clean] 539/953 done, 414 queued (bucket 3, n=19) | 2551462 tok | 203 tok/s | 210m
+  step 512: 14 alive, seq_len 7906
+  step 1024: 11 alive, seq_len 8418
+  step 1536: 9 alive, seq_len 8930
+  step 2048: 8 alive, seq_len 9442
+  step 2560: 8 alive, seq_len 9954
+  step 3072: 8 alive, seq_len 10466
+  step 3584: 7 alive, seq_len 10978
+  step 4096: 7 alive, seq_len 11490
+  step 4608: 7 alive, seq_len 12002
+  step 5120: 5 alive, seq_len 12514
+  step 5632: 5 alive, seq_len 13026
+  step 6144: 5 alive, seq_len 13538
+  step 6656: 5 alive, seq_len 14050
+  step 7168: 3 alive, seq_len 14562
+  step 7680: 3 alive, seq_len 15074
+  [clean] 557/953 done, 396 queued (bucket 3, n=19) | 2716751 tok | 207 tok/s | 219m
+  step 512: 10 alive, seq_len 7906
+  step 1024: 6 alive, seq_len 8418
+  step 1536: 5 alive, seq_len 8930
+  step 2048: 4 alive, seq_len 9442
+  step 2560: 4 alive, seq_len 9954
+  step 3072: 4 alive, seq_len 10466
+  step 3584: 3 alive, seq_len 10978
+  step 4096: 2 alive, seq_len 11490
+  step 4608: 1 alive, seq_len 12002
+  step 5120: 1 alive, seq_len 12514
+  step 5632: 1 alive, seq_len 13026
+  step 6144: 1 alive, seq_len 13538
+  step 6656: 1 alive, seq_len 14050
+  step 7168: 1 alive, seq_len 14562
+  step 7680: 1 alive, seq_len 15074
+  [clean] 575/953 done, 378 queued (bucket 3, n=19) | 2865750 tok | 212 tok/s | 226m
+  step 512: 19 alive, seq_len 7927
+  step 1024: 17 alive, seq_len 8439
+  step 1536: 14 alive, seq_len 8951
+  step 2048: 13 alive, seq_len 9463
+  step 2560: 11 alive, seq_len 9975
+  step 3072: 10 alive, seq_len 10487
+  step 3584: 10 alive, seq_len 10999
+  step 4096: 10 alive, seq_len 11511
+  step 4608: 9 alive, seq_len 12023
+  step 5120: 8 alive, seq_len 12535
+  step 5632: 8 alive, seq_len 13047
+  step 6144: 6 alive, seq_len 13559
+  step 6656: 6 alive, seq_len 14071
+  step 7168: 6 alive, seq_len 14583
+  step 7680: 4 alive, seq_len 15095
+  [clean] 590/953 done, 363 queued (bucket 3, n=19) | 3023218 tok | 213 tok/s | 236m
+  step 512: 18 alive, seq_len 7792
+  step 1024: 14 alive, seq_len 8304
+  step 1536: 12 alive, seq_len 8816
+  step 2048: 11 alive, seq_len 9328
+  step 2560: 6 alive, seq_len 9840
+  step 3072: 6 alive, seq_len 10352
+  step 3584: 3 alive, seq_len 10864
+  step 4096: 3 alive, seq_len 11376
+  step 4608: 3 alive, seq_len 11888
+  step 5120: 3 alive, seq_len 12400
+  step 5632: 3 alive, seq_len 12912
+  step 6144: 3 alive, seq_len 13424
+  step 6656: 3 alive, seq_len 13936
+  step 7168: 3 alive, seq_len 14448
+  step 7680: 3 alive, seq_len 14960
+  [clean] 606/953 done, 347 queued (bucket 3, n=19) | 3167853 tok | 215 tok/s | 245m
+  step 512: 15 alive, seq_len 7979
+  step 1024: 15 alive, seq_len 8491
+  step 1536: 14 alive, seq_len 9003
+  step 2048: 11 alive, seq_len 9515
+  step 2560: 10 alive, seq_len 10027
+  step 3072: 8 alive, seq_len 10539
+  step 3584: 7 alive, seq_len 11051
+  step 4096: 6 alive, seq_len 11563
+  step 4608: 6 alive, seq_len 12075
+  step 5120: 6 alive, seq_len 12587
+  step 5632: 6 alive, seq_len 13099
+  step 6144: 6 alive, seq_len 13611
+  step 6656: 6 alive, seq_len 14123
+  step 7168: 6 alive, seq_len 14635
+  step 7680: 6 alive, seq_len 15147
+  [clean] 622/953 done, 331 queued (bucket 3, n=19) | 3329180 tok | 217 tok/s | 256m
+  step 512: 15 alive, seq_len 7769
+  step 1024: 13 alive, seq_len 8281
+  step 1536: 11 alive, seq_len 8793
+  step 2048: 10 alive, seq_len 9305
+  step 2560: 10 alive, seq_len 9817
+  step 3072: 10 alive, seq_len 10329
+  step 3584: 9 alive, seq_len 10841
+  step 4096: 9 alive, seq_len 11353
+  step 4608: 9 alive, seq_len 11865
+  step 5120: 9 alive, seq_len 12377
+  step 5632: 8 alive, seq_len 12889
+  step 6144: 8 alive, seq_len 13401
+  step 6656: 6 alive, seq_len 13913
+  step 7168: 5 alive, seq_len 14425
+  step 7680: 5 alive, seq_len 14937
+  [clean] 636/953 done, 317 queued (bucket 3, n=19) | 3465066 tok | 217 tok/s | 266m
+  step 512: 19 alive, seq_len 7784
+  step 1024: 15 alive, seq_len 8296
+  step 1536: 13 alive, seq_len 8808
+  step 2048: 12 alive, seq_len 9320
+  step 2560: 10 alive, seq_len 9832
+  step 3072: 9 alive, seq_len 10344
+  step 3584: 9 alive, seq_len 10856
+  step 4096: 8 alive, seq_len 11368
+  step 4608: 8 alive, seq_len 11880
+  step 5120: 8 alive, seq_len 12392
+  step 5632: 8 alive, seq_len 12904
+  step 6144: 8 alive, seq_len 13416
+  step 6656: 8 alive, seq_len 13928
+  step 7168: 7 alive, seq_len 14440
+  step 7680: 5 alive, seq_len 14952
+  [clean] 650/953 done, 303 queued (bucket 3, n=19) | 3605552 tok | 217 tok/s | 277m
+  step 512: 17 alive, seq_len 7906
+  step 1024: 14 alive, seq_len 8418
+  step 1536: 12 alive, seq_len 8930
+  step 2048: 10 alive, seq_len 9442
+  step 2560: 9 alive, seq_len 9954
+  step 3072: 9 alive, seq_len 10466
+  step 3584: 8 alive, seq_len 10978
+  step 4096: 6 alive, seq_len 11490
+  step 4608: 5 alive, seq_len 12002
+  step 5120: 4 alive, seq_len 12514
+  step 5632: 4 alive, seq_len 13026
+  step 6144: 4 alive, seq_len 13538
+  step 6656: 4 alive, seq_len 14050
+  step 7168: 3 alive, seq_len 14562
+  step 7680: 3 alive, seq_len 15074
+  [clean] 667/953 done, 286 queued (bucket 3, n=19) | 3774253 tok | 220 tok/s | 286m
+  step 512: 17 alive, seq_len 7846
+  step 1024: 13 alive, seq_len 8358
+  step 1536: 12 alive, seq_len 8870
+  step 2048: 12 alive, seq_len 9382
+  step 2560: 11 alive, seq_len 9894
+  step 3072: 9 alive, seq_len 10406
+  step 3584: 9 alive, seq_len 10918
+  step 4096: 9 alive, seq_len 11430
+  step 4608: 9 alive, seq_len 11942
+  step 5120: 9 alive, seq_len 12454
+  step 5632: 9 alive, seq_len 12966
+  step 6144: 9 alive, seq_len 13478
+  step 6656: 9 alive, seq_len 13990
+  step 7168: 9 alive, seq_len 14502
+  step 7680: 9 alive, seq_len 15014
+  [clean] 677/953 done, 276 queued (bucket 3, n=19) | 3858247 tok | 216 tok/s | 297m
+  step 512: 18 alive, seq_len 7849
+  step 1024: 16 alive, seq_len 8361
+  step 1536: 16 alive, seq_len 8873
+  step 2048: 15 alive, seq_len 9385
+  step 2560: 13 alive, seq_len 9897
+  step 3072: 13 alive, seq_len 10409
+  step 3584: 13 alive, seq_len 10921
+  step 4096: 12 alive, seq_len 11433
+  step 4608: 9 alive, seq_len 11945
+  step 5120: 9 alive, seq_len 12457
+  step 5632: 8 alive, seq_len 12969
+  step 6144: 8 alive, seq_len 13481
+  step 6656: 8 alive, seq_len 13993
+  step 7168: 8 alive, seq_len 14505
+  step 7680: 8 alive, seq_len 15017
+  [clean] 688/953 done, 265 queued (bucket 3, n=19) | 3967024 tok | 214 tok/s | 309m
+  step 512: 18 alive, seq_len 7812
+  step 1024: 14 alive, seq_len 8324
+  step 1536: 12 alive, seq_len 8836
+  step 2048: 9 alive, seq_len 9348
+  step 2560: 9 alive, seq_len 9860
+  step 3072: 8 alive, seq_len 10372
+  step 3584: 8 alive, seq_len 10884
+  step 4096: 8 alive, seq_len 11396
+  step 4608: 8 alive, seq_len 11908
+  step 5120: 8 alive, seq_len 12420
+  step 5632: 7 alive, seq_len 12932
+  step 6144: 7 alive, seq_len 13444
+  step 6656: 5 alive, seq_len 13956
+  step 7168: 4 alive, seq_len 14468
+  step 7680: 4 alive, seq_len 14980
+  [clean] 704/953 done, 249 queued (bucket 3, n=19) | 4127709 tok | 216 tok/s | 318m
+  step 512: 18 alive, seq_len 7937
+  step 1024: 16 alive, seq_len 8449
+  step 1536: 14 alive, seq_len 8961
+  step 2048: 13 alive, seq_len 9473
+  step 2560: 12 alive, seq_len 9985
+  step 3072: 10 alive, seq_len 10497
+  step 3584: 9 alive, seq_len 11009
+  step 4096: 7 alive, seq_len 11521
+  step 4608: 7 alive, seq_len 12033
+  step 5120: 6 alive, seq_len 12545
+  step 5632: 5 alive, seq_len 13057
+  step 6144: 4 alive, seq_len 13569
+  step 6656: 4 alive, seq_len 14081
+  step 7168: 3 alive, seq_len 14593
+  step 7680: 3 alive, seq_len 15105
+  [clean] 720/953 done, 233 queued (bucket 3, n=19) | 4289003 tok | 218 tok/s | 328m
+  step 512: 15 alive, seq_len 7937
+  step 1024: 15 alive, seq_len 8449
+  step 1536: 15 alive, seq_len 8961
+  step 2048: 15 alive, seq_len 9473
+  step 2560: 14 alive, seq_len 9985
+  step 3072: 14 alive, seq_len 10497
+  step 3584: 14 alive, seq_len 11009
+  step 4096: 12 alive, seq_len 11521
+  step 4608: 10 alive, seq_len 12033
+  step 5120: 10 alive, seq_len 12545
+  step 5632: 9 alive, seq_len 13057
+  step 6144: 7 alive, seq_len 13569
+  step 6656: 7 alive, seq_len 14081
+  step 7168: 6 alive, seq_len 14593
+  step 7680: 6 alive, seq_len 15105
+  [clean] 733/953 done, 220 queued (bucket 3, n=19) | 4425475 tok | 217 tok/s | 340m
+  step 512: 19 alive, seq_len 7812
+  step 1024: 19 alive, seq_len 8324
+  step 1536: 19 alive, seq_len 8836
+  step 2048: 19 alive, seq_len 9348
+  step 2560: 19 alive, seq_len 9860
+  step 3072: 19 alive, seq_len 10372
+  step 3584: 19 alive, seq_len 10884
+  step 4096: 19 alive, seq_len 11396
+  step 4608: 18 alive, seq_len 11908
+  step 5120: 18 alive, seq_len 12420
+  step 5632: 17 alive, seq_len 12932
+  step 6144: 17 alive, seq_len 13444
+  step 6656: 17 alive, seq_len 13956
+  step 7168: 17 alive, seq_len 14468
+  step 7680: 17 alive, seq_len 14980
+  [clean] 735/953 done, 218 queued (bucket 3, n=19) | 4449272 tok | 208 tok/s | 356m
+  step 512: 17 alive, seq_len 7857
+  step 1024: 15 alive, seq_len 8369
+  step 1536: 14 alive, seq_len 8881
+  step 2048: 13 alive, seq_len 9393
+  step 2560: 12 alive, seq_len 9905
+  step 3072: 12 alive, seq_len 10417
+  step 3584: 11 alive, seq_len 10929
+  step 4096: 10 alive, seq_len 11441
+  step 4608: 7 alive, seq_len 11953
+  step 5120: 7 alive, seq_len 12465
+  step 5632: 7 alive, seq_len 12977
+  step 6144: 5 alive, seq_len 13489
+  step 6656: 5 alive, seq_len 14001
+  step 7168: 4 alive, seq_len 14513
+  step 7680: 4 alive, seq_len 15025
+  [clean] 751/953 done, 202 queued (bucket 3, n=19) | 4617615 tok | 210 tok/s | 367m
+  step 512: 18 alive, seq_len 7803
+  step 1024: 16 alive, seq_len 8315
+  step 1536: 12 alive, seq_len 8827
+  step 2048: 11 alive, seq_len 9339
+  step 2560: 11 alive, seq_len 9851
+  step 3072: 10 alive, seq_len 10363
+  step 3584: 10 alive, seq_len 10875
+  step 4096: 8 alive, seq_len 11387
+  step 4608: 6 alive, seq_len 11899
+  step 5120: 5 alive, seq_len 12411
+  step 5632: 5 alive, seq_len 12923
+  step 6144: 4 alive, seq_len 13435
+  step 6656: 4 alive, seq_len 13947
+  step 7168: 3 alive, seq_len 14459
+  step 7680: 3 alive, seq_len 14971
+  [clean] 767/953 done, 186 queued (bucket 3, n=19) | 4777219 tok | 211 tok/s | 377m
+  step 512: 19 alive, seq_len 7817
+  step 1024: 16 alive, seq_len 8329
+  step 1536: 14 alive, seq_len 8841
+  step 2048: 14 alive, seq_len 9353
+  step 2560: 14 alive, seq_len 9865
+  step 3072: 12 alive, seq_len 10377
+  step 3584: 11 alive, seq_len 10889
+  step 4096: 11 alive, seq_len 11401
+  step 4608: 11 alive, seq_len 11913
+  step 5120: 11 alive, seq_len 12425
+  step 5632: 9 alive, seq_len 12937
+  step 6144: 9 alive, seq_len 13449
+  step 6656: 9 alive, seq_len 13961
+  step 7168: 9 alive, seq_len 14473
+  step 7680: 9 alive, seq_len 14985
+  [clean] 777/953 done, 176 queued (bucket 3, n=19) | 4873816 tok | 209 tok/s | 389m
+  step 512: 17 alive, seq_len 7902
+  step 1024: 15 alive, seq_len 8414
+  step 1536: 15 alive, seq_len 8926
+  step 2048: 13 alive, seq_len 9438
+  step 2560: 13 alive, seq_len 9950
+  step 3072: 13 alive, seq_len 10462
+  step 3584: 11 alive, seq_len 10974
+  step 4096: 11 alive, seq_len 11486
+  step 4608: 11 alive, seq_len 11998
+  step 5120: 10 alive, seq_len 12510
+  step 5632: 9 alive, seq_len 13022
+  step 6144: 9 alive, seq_len 13534
+  step 6656: 8 alive, seq_len 14046
+  step 7168: 6 alive, seq_len 14558
+  step 7680: 6 alive, seq_len 15070
+  [clean] 790/953 done, 163 queued (bucket 3, n=19) | 5009587 tok | 208 tok/s | 401m
+  step 512: 19 alive, seq_len 7902
+  step 1024: 18 alive, seq_len 8414
+  step 1536: 18 alive, seq_len 8926
+  step 2048: 17 alive, seq_len 9438
+  step 2560: 16 alive, seq_len 9950
+  step 3072: 16 alive, seq_len 10462
+  step 3584: 15 alive, seq_len 10974
+  step 4096: 13 alive, seq_len 11486
+  step 4608: 13 alive, seq_len 11998
+  step 5120: 12 alive, seq_len 12510
+  step 5632: 11 alive, seq_len 13022
+  step 6144: 11 alive, seq_len 13534
+  step 6656: 11 alive, seq_len 14046
+  step 7168: 11 alive, seq_len 14558
+  step 7680: 11 alive, seq_len 15070
+  [clean] 798/953 done, 155 queued (bucket 3, n=19) | 5092886 tok | 205 tok/s | 415m
+  step 512: 19 alive, seq_len 7884
+  step 1024: 19 alive, seq_len 8396
+  step 1536: 19 alive, seq_len 8908
+  step 2048: 15 alive, seq_len 9420
+  step 2560: 15 alive, seq_len 9932
+  step 3072: 12 alive, seq_len 10444
+  step 3584: 12 alive, seq_len 10956
+  step 4096: 12 alive, seq_len 11468
+  step 4608: 12 alive, seq_len 11980
+  step 5120: 10 alive, seq_len 12492
+  step 5632: 7 alive, seq_len 13004
+  step 6144: 7 alive, seq_len 13516
+  step 6656: 7 alive, seq_len 14028
+  step 7168: 7 alive, seq_len 14540
+  step 7680: 7 alive, seq_len 15052
+  [clean] 811/953 done, 142 queued (bucket 3, n=19) | 5236047 tok | 204 tok/s | 427m
+  step 512: 18 alive, seq_len 7844
+  step 1024: 17 alive, seq_len 8356
+  step 1536: 17 alive, seq_len 8868
+  step 2048: 16 alive, seq_len 9380
+  step 2560: 16 alive, seq_len 9892
+  step 3072: 16 alive, seq_len 10404
+  step 3584: 16 alive, seq_len 10916
+  step 4096: 16 alive, seq_len 11428
+  step 4608: 16 alive, seq_len 11940
+  step 5120: 16 alive, seq_len 12452
+  step 5632: 16 alive, seq_len 12964
+  step 6144: 16 alive, seq_len 13476
+  step 6656: 16 alive, seq_len 13988
+  step 7168: 16 alive, seq_len 14500
+  step 7680: 16 alive, seq_len 15012
+  [clean] 814/953 done, 139 queued (bucket 3, n=19) | 5260903 tok | 198 tok/s | 443m
+  step 512: 15 alive, seq_len 8098
+  step 1024: 14 alive, seq_len 8610
+  step 1536: 14 alive, seq_len 9122
+  step 2048: 14 alive, seq_len 9634
+  step 2560: 12 alive, seq_len 10146
+  step 3072: 11 alive, seq_len 10658
+  step 3584: 11 alive, seq_len 11170
+  step 4096: 11 alive, seq_len 11682
+  step 4608: 11 alive, seq_len 12194
+  step 5120: 11 alive, seq_len 12706
+  step 5632: 10 alive, seq_len 13218
+  step 6144: 10 alive, seq_len 13730
+  step 6656: 10 alive, seq_len 14242
+  step 7168: 10 alive, seq_len 14754
+  step 7680: 10 alive, seq_len 15266
+  [clean] 819/953 done, 134 queued (bucket 3, n=15) | 5310509 tok | 194 tok/s | 455m
+  step 512: 9 alive, seq_len 15996
+  step 1024: 9 alive, seq_len 16508
+  [clean] 828/953 done, 125 queued (bucket 4, n=9) | 5458026 tok | 199 tok/s | 457m
+  step 512: 9 alive, seq_len 16171
+  step 1024: 7 alive, seq_len 16683
+  [clean] 837/953 done, 116 queued (bucket 4, n=9) | 5604961 tok | 203 tok/s | 459m
+  step 512: 7 alive, seq_len 16088
+  step 1024: 6 alive, seq_len 16600
+  [clean] 846/953 done, 107 queued (bucket 4, n=9) | 5750374 tok | 208 tok/s | 461m
+  step 512: 9 alive, seq_len 16041
+  step 1024: 9 alive, seq_len 16553
+  [clean] 855/953 done, 98 queued (bucket 4, n=9) | 5897891 tok | 212 tok/s | 463m
+  step 512: 8 alive, seq_len 16041
+  step 1024: 7 alive, seq_len 16553
+  [clean] 864/953 done, 89 queued (bucket 4, n=9) | 6044395 tok | 217 tok/s | 465m
+  step 512: 9 alive, seq_len 16129
+  step 1024: 7 alive, seq_len 16641
+  [clean] 873/953 done, 80 queued (bucket 4, n=9) | 6191140 tok | 221 tok/s | 467m
+  step 512: 9 alive, seq_len 16004
+  step 1024: 9 alive, seq_len 16516
+  [clean] 882/953 done, 71 queued (bucket 4, n=9) | 6338628 tok | 225 tok/s | 469m
+  step 512: 9 alive, seq_len 15994
+  step 1024: 9 alive, seq_len 16506
+  [clean] 891/953 done, 62 queued (bucket 4, n=9) | 6486112 tok | 229 tok/s | 471m
+  step 512: 9 alive, seq_len 15994
+  step 1024: 9 alive, seq_len 16506
+  [clean] 900/953 done, 53 queued (bucket 4, n=9) | 6633608 tok | 234 tok/s | 473m
+  step 512: 8 alive, seq_len 15991
+  step 1024: 8 alive, seq_len 16503
+  [clean] 909/953 done, 44 queued (bucket 4, n=9) | 6780234 tok | 238 tok/s | 475m
+  step 512: 8 alive, seq_len 16044
+  step 1024: 8 alive, seq_len 16556
+  [clean] 918/953 done, 35 queued (bucket 4, n=9) | 6926944 tok | 242 tok/s | 477m
+  step 512: 9 alive, seq_len 16076
+  step 1024: 9 alive, seq_len 16588
+  [clean] 927/953 done, 26 queued (bucket 4, n=9) | 7074432 tok | 246 tok/s | 479m
+  step 512: 9 alive, seq_len 15968
+  step 1024: 9 alive, seq_len 16480
+  [clean] 936/953 done, 17 queued (bucket 4, n=9) | 7221924 tok | 250 tok/s | 481m
+  step 512: 8 alive, seq_len 16290
+  step 1024: 8 alive, seq_len 16802
+  [clean] 945/953 done, 8 queued (bucket 4, n=9) | 7368424 tok | 254 tok/s | 483m
+  step 512: 8 alive, seq_len 16290
+  step 1024: 8 alive, seq_len 16802
+  [clean] 953/953 done, 0 queued (bucket 4, n=8) | 7499521 tok | 258 tok/s | 485m
+[clean] DONE 953 records in 485m
