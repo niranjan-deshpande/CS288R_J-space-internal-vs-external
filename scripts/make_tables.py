@@ -221,6 +221,10 @@ def main():
            "",
            "Think-token usage on the solvable set. If usage saturates near the "
            "cap, measured B* is bounded by verbosity, not ability (SPEC caveat).",
+           "Ablated conditions use sample_idx {0,1} only: cells run with "
+           "early-stop staged sampling, so samples 2/3 exist preferentially "
+           "for majority-undecided (harder) problems and would bias "
+           "per-sample statistics.",
            "",
            "| condition | n rows | mean think | median think | p90 think | "
            "frac truncated | frac > 0.9*cap |",
@@ -237,7 +241,8 @@ def main():
                        ("out-of-band", "oob-B16384")]:
         rows = load_runs(rd, tag)
         if rows:
-            conds.append((label, [r for r in rows if r["pid"] in in_sample]))
+            conds.append((label, [r for r in rows if r["pid"] in in_sample
+                                  and r["sample_idx"] < 2]))
     for label, rows in conds:
         if not rows:
             continue

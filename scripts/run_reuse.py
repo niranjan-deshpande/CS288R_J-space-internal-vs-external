@@ -18,6 +18,23 @@ with lower variance; bootstrap-over-problems CIs remain valid.
   python3 scripts/run_reuse.py --source-tag jspace-med-B16384 \
       --tag jspace-med-B512 --budget 512 --mode jspace --band 22:34 --k 10 \
       --datasets gsm8k,math --batch 64
+
+--staged-source (opt-in): use when the source cell ran run_cell.py --staged
+(early-stop on determined majority), so samples 2/3 are missing for problems
+whose 16K majority was already determined. The coverage gate then requires
+samples {0,1} only (always present under staging). Missing source samples are
+NOT silently dropped: after deriving everything available, this script writes
+results/backfill-{tag}-s{2,3}.json listing problems whose majority AT THIS
+BUDGET is still undecided and which lack that sample, and prints the exact
+run_cell.py commands to generate them FRESH at this budget (distributionally
+identical to a derived sample: the spec defines budget B as truncation, and
+the engine is budget-oblivious until the forcing check, so a fresh budget-B
+sample and a truncated 16K sample are the same distribution; only the
+common-random-numbers pairing across budgets is lost for those samples —
+variance, not bias). Workflow (idempotent, resumable):
+  run_reuse --staged-source -> run_cell backfill s2 (if listed)
+  -> run_reuse --staged-source (recomputes; regens nothing) -> run_cell
+  backfill s3 (if listed). Empty lists = cell complete.
 """
 import argparse
 import json
@@ -56,6 +73,9 @@ def main():
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--kv-budget", type=float, default=55.0)
     ap.add_argument("--source-path", default=None)
+    ap.add_argument("--staged-source", action="store_true",
+                    help="source cell ran with run_cell --staged; gate on "
+                         "samples {0,1} and emit backfill lists for the rest")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
@@ -67,12 +87,14 @@ def main():
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
     done = set()
+    target = {}   # (pid, sidx) -> solved, over everything in the TARGET cell
     if os.path.exists(out_path):
         with open(out_path) as f:
             for line in f:
                 try:
                     r = json.loads(line)
                     done.add((r["pid"], r["sample_idx"]))
+                    target[(r["pid"], r["sample_idx"])] = bool(r["solved"])
                 except json.JSONDecodeError:
                     pass
 
@@ -108,7 +130,16 @@ def main():
     from extcot.data import load_problems as _lp
     exp_pids = [p["id"] for p in _lp()
                 if p["dataset"] in datasets and (allowed is None or p["id"] in allowed)]
-    sidxs = sorted(keep_sidx) if keep_sidx else sorted({s for _, s in src_keys})
+    if args.staged_source:
+        # staged sources always carry samples {0,1}; 2/3 exist only where the
+        # source majority was undecided — those go to the backfill path below
+        want = keep_sidx if keep_sidx is not None else {0, 1, 2, 3}
+        sidxs = sorted(want & {0, 1})
+        staged_missing = {(pid, s) for pid in exp_pids
+                          for s in sorted(want & {2, 3})} - src_keys
+    else:
+        sidxs = sorted(keep_sidx) if keep_sidx else sorted({s for _, s in src_keys})
+        staged_missing = set()
     missing = {(pid, s) for pid in exp_pids for s in sidxs} - src_keys
     if missing:
         raise SystemExit(f"FATAL [{args.tag}]: source {args.source_tag} missing "
@@ -119,7 +150,48 @@ def main():
     fout = open(out_path, "a")
 
     def emit(rec):
+        target[(rec["pid"], rec["sample_idx"])] = bool(rec["solved"])
         fout.write(json.dumps(rec) + "\n")
+
+    def write_backfill():
+        """Staged-source only: list (pid, sample) pairs this budget still
+        needs (majority undecided) but the staged source never generated;
+        they must be generated fresh at this budget via run_cell.py."""
+        if not args.staged_source:
+            return
+        def det(pid):
+            got = [target[(pid, i)] for i in range(4) if (pid, i) in target]
+            return sum(got) >= 2 or (len(got) - sum(got)) >= 3
+        need = {2: [], 3: []}
+        for pid, s in sorted(staged_missing):
+            if (pid, s) in target or det(pid):
+                continue
+            if s == 3 and any((pid, i) not in target for i in (0, 1, 2)):
+                continue   # re-run this script after backfilling sample 2
+            need[s].append(pid)
+        for s, pids in need.items():
+            path = os.path.join(os.path.dirname(out_path) or ".",
+                                f"backfill-{args.tag}-s{s}.json")
+            with open(path, "w") as f:
+                json.dump(pids, f)
+            if pids:
+                cmd = (f"python3 scripts/run_cell.py --tag {args.tag} "
+                       f"--mode {args.mode} "
+                       + (f"--band {args.band} --k {args.k} "
+                          if args.mode != "none" else "")
+                       + (f"--rand-seed {args.rand_seed} "
+                          if args.mode == "random" else "")
+                       + f"--budget {B} --samples 1 --sample-offset {s} "
+                       f"--problems {path} --datasets {args.datasets} "
+                       f"--batch {args.batch} --kv-budget {args.kv_budget} "
+                       f"--out {out_path}")
+                print(f"[{args.tag}] BACKFILL: {len(pids)} problems undecided "
+                      f"at B={B} lack sample {s}; run:\n  {cmd}\n  then re-run "
+                      f"this run_reuse command to refresh the backfill lists.",
+                      flush=True)
+        if not need[2] and not need[3]:
+            print(f"[{args.tag}] staged-source: no backfill needed; "
+                  f"cell majority outcomes complete.", flush=True)
 
     # 1) verbatim copies: budget never binds (natural think < B)
     n_copy = 0
@@ -139,6 +211,7 @@ def main():
           f"{len(todo_src)} to truncate+regen at B={B}", flush=True)
 
     if not todo_src:
+        write_backfill()
         fout.close()
         return
 
@@ -195,6 +268,7 @@ def main():
             print(f"  [{args.tag}] {n_done}/{len(reqs)} regen | "
                   f"{(time.time()-t0)/60:.1f}m", flush=True)
         todo = pending
+    write_backfill()
     fout.close()
     print(f"[{args.tag}] DONE {n_copy} verbatim + {n_done} regen in "
           f"{(time.time()-t0)/60:.1f}m", flush=True)

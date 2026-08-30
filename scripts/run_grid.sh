@@ -27,21 +27,43 @@ HEAVY_BAND="22:34";  HEAVY_K=100
 OOB_BAND="4:16"      # out-of-band control (13 layers, width-matched to medium)
 
 run16 () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
+  # --staged: early-stop samples once the majority-of-4 outcome is determined
   $RUN --tag $1-B16384 --mode $4 --band $2 --k $3 --budget 16384 --samples 4 \
-    --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65 ${5:-}
+    --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65 \
+    --staged ${5:-}
+}
+derive_one () {  # $1 tag-prefix $2 band $3 k $4 mode $5 budget $6 datasets $7 batch $8 extra
+  # staged-source derive + backfill loop: run_reuse derives what the staged
+  # 16K source has; problems still undecided at this budget that lack a
+  # sample get it generated fresh (backfill-*.json), then re-derive
+  local tag=$1-B$5
+  local pass
+  for pass in 1 2 3; do
+    $REUSE --source-tag $1-B16384 --tag $tag --budget $5 --mode $4 --band $2 \
+      --k $3 --datasets $6 --batch $7 --kv-budget 55 --staged-source ${8:-}
+    local more=0 s f
+    for s in 2 3; do
+      f=results/runs/backfill-$tag-s$s.json
+      if [ -s "$f" ] && [ "$(cat "$f")" != "[]" ]; then
+        more=1
+        $RUN --tag $tag --mode $4 --band $2 --k $3 --budget $5 --samples 1 \
+          --sample-offset $s --problems $f --datasets $6 --batch 64 \
+          --kv-budget 55 ${8:-}
+      fi
+    done
+    if [ "$more" -eq 0 ]; then break; fi
+  done
 }
 derive () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
   # B=2048 derives prefill ~2.3K tokens/row under dual caches: keep batch modest
-  $REUSE --source-tag $1-B16384 --tag $1-B2048 --budget 2048 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math,aime --batch 48 --kv-budget 55 ${5:-}
-  $REUSE --source-tag $1-B16384 --tag $1-B512 --budget 512 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 55 ${5:-}
-  $REUSE --source-tag $1-B16384 --tag $1-B128 --budget 128 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 55 ${5:-}
+  derive_one $1 $2 $3 $4 2048 gsm8k,math,aime 48 "${5:-}"
+  derive_one $1 $2 $3 $4 512  gsm8k,math 96 "${5:-}"
+  derive_one $1 $2 $3 $4 128  gsm8k,math 96 "${5:-}"
 }
 b0 () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
   $RUN --tag $1-B0 --mode $4 --band $2 --k $3 --budget 0 --samples 4 \
-    --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65 ${5:-}
+    --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65 \
+    --staged ${5:-}
 }
 
 date; echo "=== smoke: selectivity (MMLU + SST-2, direct answering) ==="
@@ -70,9 +92,9 @@ derive jspace-heavy $HEAVY_BAND $HEAVY_K jspace
 
 date; echo "=== base budget sweep (FRESH: reuse from clean would couple the ==="
 echo "=== reference line to the design freeze via Pile B; Pile A is spec-barred) ==="
-$RUN --tag base-B2048 --mode none --budget 2048 --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65
-$RUN --tag base-B512  --mode none --budget 512  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65
-$RUN --tag base-B128  --mode none --budget 128  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65
+$RUN --tag base-B2048 --mode none --budget 2048 --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65 --staged
+$RUN --tag base-B512  --mode none --budget 512  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65 --staged
+$RUN --tag base-B128  --mode none --budget 128  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65 --staged
 
 date; echo "=== light level ==="
 run16  jspace-light $LIGHT_BAND $LIGHT_K jspace
@@ -84,6 +106,6 @@ derive random-s1 $MED_BAND $MED_K random "--rand-seed 1"
 
 date; echo "=== out-of-band control (B=16384 only) ==="
 $RUN --tag oob-B16384 --mode jspace --band $OOB_BAND --k $MED_K --budget 16384 \
-    --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65
+    --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65 --staged
 
 date; echo "=== grid done ==="
