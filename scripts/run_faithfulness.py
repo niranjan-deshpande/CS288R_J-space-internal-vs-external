@@ -81,11 +81,16 @@ def main():
 
     out_path = f"{RESULTS}/runs/faith-{args.source}-f{args.frac}.jsonl"
     results = []
-    for s in range(0, len(reqs), args.batch):
-        res, conts = generate_batch(model, tok, reqs[s:s + args.batch],
-                                    controller=controller, sampling=THINK_SAMPLING)
-        assert not conts
-        results += res
+    todo = reqs
+    while todo:
+        pending = []
+        for s in range(0, len(todo), args.batch):
+            res, conts = generate_batch(model, tok, todo[s:s + args.batch],
+                                        controller=controller,
+                                        sampling=THINK_SAMPLING, kv_budget_gb=40.0)
+            results += [r for r in res if r is not None]
+            pending += conts
+        todo = pending
     with open(out_path, "w") as f:
         for r in results:
             solved = grade(r.meta["ds"], r.answer_text, r.meta["gold"])

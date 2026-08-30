@@ -96,6 +96,65 @@ def _forward(model, ids, attn, pos, cache, hidden=False):
         return model(**kw)
 
 
+class BandFork:
+    """Shares layers [0, band_lo) between the clean (exemption) pass and the
+    ablated pass. Per step: the clean pass runs the full model (ablation
+    hooks disabled), capturing the input to layers[band_lo] and the final
+    pre-head hidden; the ablated branch then re-runs only layers[band_lo:]
+    + norm + lm_head from the captured hidden, with its own KV cache for
+    those layers. Exact by construction: ablation hooks only modify outputs
+    of layers >= band_lo, so both passes see identical inputs below the
+    fork. Saves ~60% of the duplicated forward and ~30% of KV memory."""
+
+    def __init__(self, model, band_lo: int):
+        self.model = model
+        self.band_lo = band_lo
+        self.cap = {}
+        self.active = False
+        self._h1 = model.model.layers[band_lo].register_forward_pre_hook(
+            self._pre, with_kwargs=True)
+        self._h2 = model.model.norm.register_forward_hook(self._post)
+
+    def _pre(self, module, args, kwargs):
+        if self.active:
+            self.cap["h"] = args[0]
+            self.cap["kw"] = kwargs
+
+    def _post(self, module, inputs, output):
+        if self.active:
+            self.cap["final"] = output
+
+    def remove(self):
+        self._h1.remove()
+        self._h2.remove()
+
+    def step(self, controller, ids, attn, pos, clean_cache, upper_cache,
+             exempt_k: int, prefill: bool):
+        """Runs one fork step. Returns the ablated last-position logits."""
+        model = self.model
+        self.active = True
+        out_c = _forward(model, ids, attn, pos, clean_cache)
+        self.active = False
+        if prefill:
+            exempt = _clean_topk(model, self.cap["final"], exempt_k)
+        else:
+            exempt = out_c.logits[:, -1:].topk(exempt_k, dim=-1).indices
+        del out_c
+        controller.set_exempt(exempt)
+        h = self.cap["h"]
+        kw = dict(self.cap["kw"])
+        kw["past_key_values"] = upper_cache
+        controller.enabled = True
+        for layer in model.model.layers[self.band_lo:]:
+            h = layer(h, **kw)
+            if isinstance(h, tuple):
+                h = h[0]
+        controller.enabled = False
+        logits = model.lm_head(model.model.norm(h[:, -1:, :]))[:, -1]
+        self.cap.clear()
+        return logits
+
+
 class _Seq:
     """Per-sequence generation state."""
 
@@ -139,7 +198,8 @@ class _Seq:
 def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
                    sampling: dict = THINK_SAMPLING, exempt_k: int = 10,
                    compact_every: int = 64, kv_budget_gb: float = 12.0,
-                   max_steps: int | None = None, verbose: bool = False):
+                   max_steps: int | None = None, fork_band: bool = True,
+                   verbose: bool = False):
     """Returns (results, continuations): results[i] is None where sequence i
     was evicted; its continuation request appears in `continuations`.
     `max_steps` bounds the decode steps of this call: anything still alive
@@ -172,9 +232,16 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
 
     use_abl = controller is not None
     need_clean = use_abl and controller.use_exemption
-    n_caches = 2 if need_clean else 1
-    cache = DynamicCache()
+    fork = need_clean and fork_band
+    n_layers = len(model.model.layers)
+    band_lo = min(controller.band) if fork else 0
+    # KV tokens stored per generated token, as a multiple of one full cache:
+    # forked runs share layers [0, band_lo) between the two passes
+    kv_factor = (1 + (n_layers - band_lo) / n_layers) if fork \
+        else (2 if need_clean else 1)
+    cache = DynamicCache()   # in fork mode: the ablated branch's upper layers
     clean_cache = DynamicCache() if need_clean else None
+    bandfork = BandFork(model, band_lo) if fork else None
 
     results: list[GenResult | None] = [None] * n
     continuations: list[GenRequest] = []
@@ -185,19 +252,25 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
                                    s.truncated, s.finished)
 
     with (controller if use_abl else nullcontext()):
+      try:
         # --- prefill ---
-        if need_clean:
-            out_c = _forward(model, input_ids, attn, pos, clean_cache, hidden=True)
-            controller.set_exempt(_clean_topk(model, out_c.hidden_states[-1], exempt_k))
-            del out_c
-        if use_abl:
-            controller.enabled = True
-            out = _forward(model, input_ids, attn, pos, cache)
-            controller.enabled = False
+        if fork:
+            last_logits = bandfork.step(controller, input_ids, attn, pos,
+                                        clean_cache, cache, exempt_k,
+                                        prefill=True)
         else:
-            out = _forward(model, input_ids, attn, pos, cache)
-        last_logits = out.logits[:, -1]
-        del out
+            if need_clean:
+                out_c = _forward(model, input_ids, attn, pos, clean_cache, hidden=True)
+                controller.set_exempt(_clean_topk(model, out_c.hidden_states[-1], exempt_k))
+                del out_c
+            if use_abl:
+                controller.enabled = True
+                out = _forward(model, input_ids, attn, pos, cache)
+                controller.enabled = False
+            else:
+                out = _forward(model, input_ids, attn, pos, cache)
+            last_logits = out.logits[:, -1]
+            del out
         pos_next = pos[:, -1] + 1
 
         step = 0
@@ -240,18 +313,23 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
             pos_t = pos_next.unsqueeze(1)
             pos_next = pos_next + 1
 
-            if need_clean:
-                out_c = _forward(model, ids_t, attn, pos_t, clean_cache)
-                controller.set_exempt(out_c.logits[:, -1:].topk(exempt_k, dim=-1).indices)
-                del out_c
-            if use_abl:
-                controller.enabled = True
-                out = _forward(model, ids_t, attn, pos_t, cache)
-                controller.enabled = False
+            if fork:
+                last_logits = bandfork.step(controller, ids_t, attn, pos_t,
+                                            clean_cache, cache, exempt_k,
+                                            prefill=False)
             else:
-                out = _forward(model, ids_t, attn, pos_t, cache)
-            last_logits = out.logits[:, -1]
-            del out
+                if need_clean:
+                    out_c = _forward(model, ids_t, attn, pos_t, clean_cache)
+                    controller.set_exempt(out_c.logits[:, -1:].topk(exempt_k, dim=-1).indices)
+                    del out_c
+                if use_abl:
+                    controller.enabled = True
+                    out = _forward(model, ids_t, attn, pos_t, cache)
+                    controller.enabled = False
+                else:
+                    out = _forward(model, ids_t, attn, pos_t, cache)
+                last_logits = out.logits[:, -1]
+                del out
 
             step += 1
             if max_steps is not None and step >= max_steps:
@@ -272,7 +350,7 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
                 # so a tail at <=n/4 alive wastes >75% of the GPU; deferring
                 # it costs only a cheap re-prefill. Guarded to n >= 32 so
                 # small final waves burn down normally and terminate.
-                kv_gb = len(keep) * attn.shape[1] * KV_BYTES_PER_TOKEN * n_caches / 1e9
+                kv_gb = len(keep) * attn.shape[1] * KV_BYTES_PER_TOKEN * kv_factor / 1e9
                 straggle = (n >= 32 and len(keep) <= n // 4
                             and attn.shape[1] >= 1536)
                 if (kv_gb > kv_budget_gb and len(keep) > 1) or (straggle and keep):
@@ -308,6 +386,9 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
         for s in seqs:
             if not getattr(s, "evicted", False):
                 finalize(s)
+      finally:
+        if bandfork is not None:
+            bandfork.remove()
     return results, continuations
 
 

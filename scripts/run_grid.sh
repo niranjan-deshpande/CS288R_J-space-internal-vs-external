@@ -9,13 +9,16 @@
 #   - Cells run in report-value order: medium + random-s0 first, light last,
 #     so the core figures survive an early stop.
 # Every cell is checkpointed+resumable; re-run this script after interruption.
-set -uo pipefail
+set -euo pipefail
 cd /workspace/jlens-cot
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 RUN="python3 scripts/run_cell.py"
 REUSE="python3 scripts/run_reuse.py"
 LOG=results/grid.log
 exec >> $LOG 2>&1
+trap 'echo "GRID FAILED at line $LINENO (cell above this message)"; date' ERR
+
+[ -f results/design.json ] || { echo "FATAL: results/design.json missing — run build_bins.py first"; exit 1; }
 
 # ---- ablation levels (locked 2026-08-30, results/calibration.md) ----
 LIGHT_BAND="26:30";  LIGHT_K=10
@@ -28,12 +31,13 @@ run16 () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
     --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65 ${5:-}
 }
 derive () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
+  # B=2048 derives prefill ~2.3K tokens/row under dual caches: keep batch modest
   $REUSE --source-tag $1-B16384 --tag $1-B2048 --budget 2048 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math,aime --batch 96 --kv-budget 65 ${5:-}
+    --k $3 --datasets gsm8k,math,aime --batch 48 --kv-budget 55 ${5:-}
   $REUSE --source-tag $1-B16384 --tag $1-B512 --budget 512 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 65 ${5:-}
+    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 55 ${5:-}
   $REUSE --source-tag $1-B16384 --tag $1-B128 --budget 128 --mode $4 --band $2 \
-    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 65 ${5:-}
+    --k $3 --datasets gsm8k,math --batch 96 --kv-budget 55 ${5:-}
 }
 b0 () {  # $1 tag-prefix  $2 band  $3 k  $4 mode  $5 extra
   $RUN --tag $1-B0 --mode $4 --band $2 --k $3 --budget 0 --samples 4 \
@@ -64,10 +68,11 @@ date; echo "=== heavy level ==="
 run16  jspace-heavy $HEAVY_BAND $HEAVY_K jspace
 derive jspace-heavy $HEAVY_BAND $HEAVY_K jspace
 
-date; echo "=== base budget sweep (derived from clean Pile B, samples 4-7) ==="
-$REUSE --source-tag clean --tag base-B2048 --budget 2048 --mode none --samples 4,5,6,7 --datasets gsm8k,math,aime --batch 128 --kv-budget 65
-$REUSE --source-tag clean --tag base-B512  --budget 512  --mode none --samples 4,5,6,7 --datasets gsm8k,math --batch 128 --kv-budget 65
-$REUSE --source-tag clean --tag base-B128  --budget 128  --mode none --samples 4,5,6,7 --datasets gsm8k,math --batch 128 --kv-budget 65
+date; echo "=== base budget sweep (FRESH: reuse from clean would couple the ==="
+echo "=== reference line to the design freeze via Pile B; Pile A is spec-barred) ==="
+$RUN --tag base-B2048 --mode none --budget 2048 --samples 4 --problems solvable --datasets gsm8k,math,aime --batch 128 --kv-budget 65
+$RUN --tag base-B512  --mode none --budget 512  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65
+$RUN --tag base-B128  --mode none --budget 128  --samples 4 --problems solvable --datasets gsm8k,math --batch 128 --kv-budget 65
 
 date; echo "=== light level ==="
 run16  jspace-light $LIGHT_BAND $LIGHT_K jspace

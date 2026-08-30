@@ -133,7 +133,10 @@ def main():
     # with the bucket, so a long sequence's total re-prefill work stays
     # ~its own length (amortized doubling); batch sizes shrink with the
     # bucket to respect the KV budget.
-    n_caches = 1 if args.mode == "none" else 2
+    if args.mode == "none":
+        n_caches = 1.0
+    else:  # fork-at-band shares layers below the band between the two passes
+        n_caches = 1 + (36 - int(args.band.split(":")[0])) / 36
     n_total = len(todo)
 
     def bucket_of(r):
@@ -142,7 +145,7 @@ def main():
 
     def batch_for(b):
         # rows such that a full window at this length fits the KV budget
-        max_len = (2 ** (b + 1)) * 1024 + 384   # prior max + window + slack
+        max_len = (2 ** (b + 1)) * 1024 + 512   # prior max + window + slack
         cap = int(args.kv_budget * 1e9 / (KV_BYTES_PER_TOKEN * n_caches * max_len))
         return max(6, min(args.batch, cap))
 

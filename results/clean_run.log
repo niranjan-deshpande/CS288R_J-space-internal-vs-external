@@ -143,3 +143,11 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   step 1920: evicted 22 at seq_len 2124
   [clean] wave0 874/3986 done | 1056313 tok | 213 tok/s | 83m
   step 512: 96 alive, seq_len 595
+  step 1024: 87 alive, seq_len 1107
+  step 1536: 57 alive, seq_len 1619
+  step 2048: 36 alive, seq_len 2131
+  step 2560: evicted 24 at seq_len 2643
+  [clean] wave0 946/4058 done | 1166626 tok | 201 tok/s | 97m
+  step 512: 96 alive, seq_len 712
+  step 1024: 90 alive, seq_len 1224
+  step 1536: 57 alive, seq_len 1736

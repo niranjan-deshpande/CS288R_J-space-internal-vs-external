@@ -111,10 +111,13 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
             continue
         a_, b_ = fit_logistic(logB, y)
         bstar = bstar_from_fit(a_, b_, target)
-        # retention at B_MAX (empirical)
+        # retention at B_MAX (empirical) — numerator and denominator over the
+        # SAME pids, so an incomplete cell can't bias the ratio
         top = outcomes.get(B_MAX, {})
-        at_max = [top[pid] for pid in pids if pid in top]
-        ret_max = (np.mean(at_max) / base) if (at_max and base > 0) else None
+        both = [pid for pid in pids if pid in top]
+        base_both = np.mean([problems[pid]["base_solved"] for pid in both]) if both else 0
+        ret_max = (np.mean([top[pid] for pid in both]) / base_both
+                   if both and base_both > 0 else None)
 
         boots = []
         for _ in range(n_boot):

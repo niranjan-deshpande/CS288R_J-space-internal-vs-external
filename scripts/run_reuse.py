@@ -87,6 +87,7 @@ def main():
 
     src_path = args.source_path or f"{RESULTS}/runs/{args.source_tag}.jsonl"
     src = []
+    src_keys = set()
     with open(src_path) as f:
         for line in f:
             r = json.loads(line)
@@ -96,9 +97,23 @@ def main():
                 continue
             if keep_sidx is not None and r["sample_idx"] not in keep_sidx:
                 continue
+            assert B < r["budget"], f"target budget {B} >= source {r['budget']}"
+            src_keys.add((r["pid"], r["sample_idx"]))
             if (r["pid"], r["sample_idx"]) in done:
                 continue
             src.append(r)
+
+    # coverage gate: a hole in the source silently vanishes from the derived
+    # cell (and the loss is length-correlated), so fail loudly instead
+    from extcot.data import load_problems as _lp
+    exp_pids = [p["id"] for p in _lp()
+                if p["dataset"] in datasets and (allowed is None or p["id"] in allowed)]
+    sidxs = sorted(keep_sidx) if keep_sidx else sorted({s for _, s in src_keys})
+    missing = {(pid, s) for pid in exp_pids for s in sidxs} - src_keys
+    if missing:
+        raise SystemExit(f"FATAL [{args.tag}]: source {args.source_tag} missing "
+                         f"{len(missing)} (pid, sample) pairs, e.g. "
+                         f"{sorted(missing)[:5]}")
 
     problems = {p["id"]: p for p in load_problems()}
     fout = open(out_path, "a")
