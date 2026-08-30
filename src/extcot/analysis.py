@@ -36,11 +36,21 @@ def load_design() -> dict:
         return json.load(f)
 
 
-def majority(records: list[dict]) -> dict[str, bool]:
-    """pid -> majority-solved over its samples."""
+def majority(records: list[dict], n_expect: int = 4) -> dict[str, bool]:
+    """pid -> majority-solved over its samples (>= 2 of 4 per spec).
+
+    Warns on pids whose sample count differs from n_expect: with fewer than
+    4 samples the fixed >=2 threshold biases toward 'unsolved' (partial /
+    interrupted cells); with more than 4 (double-written rows) it biases
+    toward 'solved'. Never use this for the 1-sample selectivity cells.
+    """
     by_pid = defaultdict(list)
     for r in records:
         by_pid[r["pid"]].append(r["solved"])
+    bad = {pid: len(v) for pid, v in by_pid.items() if len(v) != n_expect}
+    if bad:
+        print(f"WARN majority(): {len(bad)} pids with != {n_expect} samples "
+              f"(e.g. {sorted(bad.items())[:3]}); the >=2 rule is biased there")
     return {pid: sum(v) >= 2 for pid, v in by_pid.items()}
 
 
@@ -108,6 +118,9 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
 
         logB, y = collect(pids)
         if len(y) == 0 or base == 0:
+            print(f"WARN cell_bstar: bin {b} (n={len(pids)}) dropped "
+                  f"(n_obs={len(y)}, base_rate={base:.3f}); report it as "
+                  f"unusable rather than omitting silently")
             continue
         a_, b_ = fit_logistic(logB, y)
         bstar = bstar_from_fit(a_, b_, target)
@@ -134,10 +147,13 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
             boots.append(B_MAX * 4 if v is None else v)   # censored -> large
         lo = float(np.percentile(boots, 16)) if boots else None
         hi = float(np.percentile(boots, 84)) if boots else None
+        frac_cens = (float(np.mean([x >= B_MAX * 4 for x in boots]))
+                     if boots else None)
         results[b] = dict(
             bstar=bstar, censored=bstar is None, lo=lo, hi=hi,
             base_rate=float(base), n=len(pids),
             retention_at_bmax=None if ret_max is None else float(ret_max),
+            boot_frac_censored=frac_cens,
             median_difficulty=float(np.median([problems[pid]["difficulty"]
                                                for pid in pids])),
         )

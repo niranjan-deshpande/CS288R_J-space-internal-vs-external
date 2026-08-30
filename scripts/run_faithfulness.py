@@ -80,7 +80,17 @@ def main():
                   "orig_solved": r["solved"]}))
 
     out_path = f"{RESULTS}/runs/faith-{args.source}-f{args.frac}.jsonl"
-    results = []
+    done = set()
+    if os.path.exists(out_path):
+        with open(out_path) as f:
+            for line in f:
+                try:
+                    done.add(json.loads(line)["pid"])
+                except json.JSONDecodeError:
+                    pass
+    reqs = [r for r in reqs if r.meta["pid"] not in done]
+    fout = open(out_path, "a")
+    n_full = n_trunc = n_done = 0
     todo = reqs
     while todo:
         pending = []
@@ -88,19 +98,22 @@ def main():
             res, conts = generate_batch(model, tok, todo[s:s + args.batch],
                                         controller=controller,
                                         sampling=THINK_SAMPLING, kv_budget_gb=40.0)
-            results += [r for r in res if r is not None]
             pending += conts
+            for r in res:
+                if r is None:
+                    continue
+                solved = grade(r.meta["ds"], r.answer_text, r.meta["gold"])
+                fout.write(json.dumps(dict(pid=r.meta["pid"], solved=solved,
+                                           orig_solved=r.meta["orig_solved"],
+                                           answer_text=r.answer_text)) + "\n")
+                fout.flush()
+                n_full += r.meta["orig_solved"]
+                n_trunc += solved
+                n_done += 1
         todo = pending
-    with open(out_path, "w") as f:
-        for r in results:
-            solved = grade(r.meta["ds"], r.answer_text, r.meta["gold"])
-            f.write(json.dumps(dict(pid=r.meta["pid"], solved=solved,
-                                    orig_solved=r.meta["orig_solved"],
-                                    answer_text=r.answer_text)) + "\n")
-    orig = sum(r.meta["orig_solved"] for r in results)
-    now = sum(grade(r.meta["ds"], r.answer_text, r.meta["gold"]) for r in results)
-    print(f"[faith {args.source} frac={args.frac}] full-trace {orig}/{len(results)}"
-          f" -> truncated {now}/{len(results)}")
+    fout.close()
+    print(f"[faith {args.source} frac={args.frac}] full-trace {n_full}/{n_done}"
+          f" -> truncated {n_trunc}/{n_done}")
 
 
 if __name__ == "__main__":
