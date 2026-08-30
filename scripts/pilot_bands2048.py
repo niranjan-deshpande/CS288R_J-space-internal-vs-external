@@ -12,7 +12,7 @@ from extcot.data import load_problems
 BANDS = {"light": range(26, 31), "medium": range(24, 33), "heavy": range(22, 35)}
 
 
-def run(model, tok, probs, budget, controller, label, batch=12):
+def run(model, tok, probs, budget, controller, label, batch=64):
     reqs = [GenRequest(prompt=build_prompt(tok, p["question"], thinking=True),
                        budget=budget, seed=hash((p["id"], "pilot")) % 2**31,
                        meta={"id": p["id"], "gold": p["gold"], "ds": p["dataset"]})
@@ -26,7 +26,7 @@ def run(model, tok, probs, budget, controller, label, batch=12):
         for s in range(0, len(todo), b):
             r_, conts = generate_batch(model, tok, todo[s:s + b],
                                        controller=controller,
-                                       sampling=THINK_SAMPLING, kv_budget_gb=9.0)
+                                       sampling=THINK_SAMPLING, kv_budget_gb=55.0)
             res += [r for r in r_ if r is not None]
             nxt += conts
         todo = nxt

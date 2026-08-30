@@ -54,7 +54,8 @@ def main():
         run(model, tok, qa, None, f"{label} clean")
         for band, k, name in [(range(22, 32), 10, "jspace-k10"),
                               (range(22, 35), 25, "jspace-hk25"),
-                              (range(22, 35), 50, "jspace-hk50")]:
+                              (range(22, 35), 50, "jspace-hk50"),
+                              (range(22, 35), 100, "jspace-hk100")]:
             ctrl = AblationController(model, lens, band, k=k, mode="jspace")
             run(model, tok, qa, ctrl, f"{label} {name}")
 

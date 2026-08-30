@@ -1,0 +1,14 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▍         | 15/398 [00:00<00:02, 139.40it/s]Loading weights:  12%|█▏        | 47/398 [00:00<00:01, 236.99it/s]Loading weights:  18%|█▊        | 71/398 [00:00<00:01, 234.49it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 260.78it/s]Loading weights:  32%|███▏      | 129/398 [00:00<00:01, 263.80it/s]Loading weights:  40%|███▉      | 158/398 [00:00<00:00, 265.24it/s]Loading weights:  47%|████▋     | 187/398 [00:00<00:00, 273.03it/s]Loading weights:  54%|█████▍    | 215/398 [00:00<00:00, 266.21it/s]Loading weights:  62%|██████▏   | 245/398 [00:00<00:00, 274.96it/s]Loading weights:  69%|██████▊   | 273/398 [00:01<00:00, 271.13it/s]Loading weights:  76%|███████▌  | 301/398 [00:01<00:00, 269.25it/s]Loading weights:  83%|████████▎ | 332/398 [00:01<00:00, 281.19it/s]Loading weights:  91%|█████████ | 361/398 [00:01<00:00, 268.80it/s]Loading weights:  98%|█████████▊| 389/398 [00:01<00:00, 271.83it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 267.02it/s]
+[heavy-k25 B=2048] 49/60 | rem_frac 0.056 | 765s
+[heavy-k50 B=2048] 50/60 | rem_frac 0.071 | 780s
+[heavy-k100 B=2048] 39/60 | rem_frac 0.092 | 828s
+[heavy-k10-NOEX B=2048] 6/60 | rem_frac 0.059 | 402s
+[random-heavy-k50 B=2048] 49/60 | rem_frac 0.168 | 760s
+[medium-k50 B=2048] 51/60 | rem_frac 0.071 | 658s
+[heavy-k25 B=256] 14/60 | rem_frac 0.059 | 58s
+[heavy-k50 B=256] 15/60 | rem_frac 0.076 | 66s
+[heavy-k100 B=256] 13/60 | rem_frac 0.101 | 72s
+[heavy-k10-NOEX B=256] 3/60 | rem_frac 0.059 | 31s
+[random-heavy-k50 B=256] 15/60 | rem_frac 0.172 | 56s
+[medium-k50 B=256] 18/60 | rem_frac 0.076 | 60s

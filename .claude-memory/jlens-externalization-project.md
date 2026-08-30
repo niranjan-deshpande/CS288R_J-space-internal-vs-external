@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   pinned: true
   originSessionId: 1fad82f2-692c-465b-8150-9f33013a371d
-  modified: 2026-08-29T23:38:35.213Z
+  modified: 2026-08-29T23:50:54.632Z
 ---
 
 # Project: Token Cost of Forced Externalization (CS 2881 HW0)
@@ -16,7 +16,8 @@ The user (ndeshpande@college.harvard.edu, Harvard) is implementing an experiment
 
 - **Keep everything important on `/workspace`** (the RunPod network volume, mounted at `/workspace` — NOT `/workplace`, which is an empty local dir). The GPU pod's local 40GB disk is ephemeral; the user will not keep the GPU on indefinitely. Scripts, results, transcripts, and the repo must live on /workspace. Only rebuildable caches (HF model weights) may live locally.
 - **Check in periodically** — especially with time budgets, ETAs, and judgment calls being made. The user may steer; absent steering, continue autonomously until all experiments are done.
-- Work autonomously through the whole experiment; the user approved this explicitly.
+- Work autonomously through the whole experiment; the user approved this explicitly (re-confirmed 2026-08-29: "assume you have my permission to go ahead and use your best judgement").
+- **Send push notifications (PushNotification tool) at important junctures** — e.g. calibration locked, long runs finished, a decision genuinely needs the user — and immediately if anything goes massively wrong. Routine progress stays in the terminal, not notifications.
 
 ## Approved spec changes (user signed off 2026-08-29)
 
