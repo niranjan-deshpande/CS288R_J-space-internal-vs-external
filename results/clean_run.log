@@ -396,3 +396,71 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   step 512: 96 alive, seq_len 734
   [clean] 1/953 done, 952 queued (bucket 0, n=96) | 875 tok | 2 tok/s | 8m
   step 512: 89 alive, seq_len 930
+  [clean] 1/953 done, 952 queued (bucket 0, n=89) | 875 tok | 2 tok/s | 9m
+  step 512: 69 alive, seq_len 1695
+  step 1024: 66 alive, seq_len 2207
+  step 1536: 64 alive, seq_len 2719
+  [clean] 14/953 done, 939 queued (bucket 1, n=70) | 32972 tok | 44 tok/s | 12m
+  step 512: 70 alive, seq_len 1740
+  step 1024: 70 alive, seq_len 2252
+  step 1536: 62 alive, seq_len 2764
+  [clean] 31/953 done, 922 queued (bucket 1, n=70) | 77312 tok | 83 tok/s | 16m
+  step 512: 70 alive, seq_len 1807
+  step 1024: 69 alive, seq_len 2319
+  step 1536: 68 alive, seq_len 2831
+  [clean] 34/953 done, 919 queued (bucket 1, n=70) | 84295 tok | 75 tok/s | 19m
+  step 512: 70 alive, seq_len 1788
+  step 1024: 70 alive, seq_len 2300
+  step 1536: 69 alive, seq_len 2812
+  [clean] 41/953 done, 912 queued (bucket 1, n=70) | 103523 tok | 78 tok/s | 22m
+  step 512: 69 alive, seq_len 1718
+  step 1024: 69 alive, seq_len 2230
+  step 1536: 69 alive, seq_len 2742
+  [clean] 43/953 done, 910 queued (bucket 1, n=70) | 107816 tok | 67 tok/s | 27m
+  step 512: 70 alive, seq_len 1835
+  step 1024: 70 alive, seq_len 2347
+  step 1536: 70 alive, seq_len 2859
+  [clean] 43/953 done, 910 queued (bucket 1, n=70) | 107816 tok | 54 tok/s | 33m
+  step 512: 70 alive, seq_len 1762
+  step 1024: 68 alive, seq_len 2274
+  step 1536: 63 alive, seq_len 2786
+  [clean] 55/953 done, 898 queued (bucket 1, n=70) | 136866 tok | 61 tok/s | 38m
+  step 512: 70 alive, seq_len 1762
+  step 1024: 70 alive, seq_len 2274
+  step 1536: 70 alive, seq_len 2786
+  [clean] 55/953 done, 898 queued (bucket 1, n=70) | 136866 tok | 53 tok/s | 43m
+  step 512: 70 alive, seq_len 1668
+  step 1024: 67 alive, seq_len 2180
+  step 1536: 65 alive, seq_len 2692
+  [clean] 62/953 done, 891 queued (bucket 1, n=70) | 153029 tok | 54 tok/s | 47m
+  step 512: 70 alive, seq_len 1793
+  step 1024: 70 alive, seq_len 2305
+  step 1536: 69 alive, seq_len 2817
+  [clean] 66/953 done, 887 queued (bucket 1, n=70) | 163910 tok | 55 tok/s | 50m
+  step 512: 70 alive, seq_len 1713
+  step 1024: 70 alive, seq_len 2225
+  step 1536: 70 alive, seq_len 2737
+  [clean] 66/953 done, 887 queued (bucket 1, n=70) | 163910 tok | 50 tok/s | 55m
+  step 512: 70 alive, seq_len 1686
+  step 1024: 70 alive, seq_len 2198
+  step 1536: 70 alive, seq_len 2710
+  [clean] 66/953 done, 887 queued (bucket 1, n=70) | 163910 tok | 44 tok/s | 62m
+  step 512: 70 alive, seq_len 1758
+  step 1024: 70 alive, seq_len 2270
+  step 1536: 70 alive, seq_len 2782
+  [clean] 66/953 done, 887 queued (bucket 1, n=70) | 163910 tok | 42 tok/s | 65m
+  step 512: 42 alive, seq_len 1954
+  step 1024: 42 alive, seq_len 2466
+  step 1536: 42 alive, seq_len 2978
+  [clean] 66/953 done, 887 queued (bucket 1, n=42) | 163910 tok | 40 tok/s | 68m
+  step 512: 29 alive, seq_len 3743
+  step 1024: 19 alive, seq_len 4255
+  step 1536: 13 alive, seq_len 4767
+  step 1856: evicted 9 at seq_len 5087
+  [clean] 94/953 done, 859 queued (bucket 2, n=37) | 274274 tok | 66 tok/s | 70m
+  step 512: 28 alive, seq_len 3717
+  step 1024: 19 alive, seq_len 4229
+  step 1536: 15 alive, seq_len 4741
+  step 2048: 11 alive, seq_len 5253
+  step 2112: evicted 9 at seq_len 5317
+  [clean] 122/953 done, 831 queued (bucket 2, n=37) | 386732 tok | 90 tok/s | 72m

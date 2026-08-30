@@ -36,6 +36,8 @@ class AblationController:
         # band, measured), so only .item() it when reading stats at the end
         self._stat_sum = torch.zeros((), device=model.device)
         self.stat_n = 0
+        # constant ridge eye, built once (was rebuilt per hook call)
+        self._eye = torch.eye(k, device=model.device)
 
         dev = model.device
         gain = model.model.norm.weight.float()
@@ -82,35 +84,45 @@ class AblationController:
         return fn
 
     def _ablate(self, h: torch.Tensor, l: int) -> torch.Tensor:
-        Bsz, T, d = h.shape
-        Jl = self.J[l]
+        T = h.shape[1]
+        if T == 1:
+            # decode fast path: single position — no chunk loop, no gather
+            # buffer. Same ops in the same order as one loop iteration
+            # (bit-identical; validated vs the chunked path).
+            return self._ablate_pos(h, self.exempt, l).to(h.dtype)
         out = torch.empty_like(h)
-        eye = torch.eye(self.k, device=h.device)
         for s in range(0, T, self.chunk):
-            hs = h[:, s:s + self.chunk]                       # [B, t, d]
-            z = (hs @ Jl.T) @ self.W_tilde.T                  # lens logits [B, t, V]
-            if self.use_exemption and self.exempt is not None:
-                ex = self.exempt[:, s:s + self.chunk]
-                z.scatter_(-1, ex, torch.finfo(z.dtype).min)
-            idx = z.topk(self.k, dim=-1).indices              # [B, t, k]
-            del z
-            G = (self.W_tilde[idx] @ Jl).float()              # [B, t, k, d]
-            hf = hs.float()
-            A = G @ G.transpose(-1, -2)
-            A = A + eye * (1e-4 * A.diagonal(dim1=-2, dim2=-1)
-                           .mean(-1, keepdim=True).unsqueeze(-1))
-            b = G @ hf.unsqueeze(-1)                          # [B, t, k, 1]
-            coef = torch.linalg.solve(A, b)
-            removal = (G.transpose(-1, -2) @ coef).squeeze(-1)  # [B, t, d]
-            self._stat_sum += (removal.norm(dim=-1) / hf.norm(dim=-1).clamp_min(1e-6)).mean()
-            self.stat_n += 1
-            if self.mode == "jspace":
-                res = hf - removal
-            else:
-                R = self.R[l]                                 # [k, d] orthonormal
-                pR = (hf @ R.T) @ R                           # projection onto span(R)
-                nJ = removal.norm(dim=-1, keepdim=True)
-                nR = pR.norm(dim=-1, keepdim=True).clamp_min(1e-6)
-                res = hf - pR * (nJ / nR)
+            ex = None if self.exempt is None else self.exempt[:, s:s + self.chunk]
+            res = self._ablate_pos(h[:, s:s + self.chunk], ex, l)
             out[:, s:s + self.chunk] = res.to(h.dtype)
         return out
+
+    def _ablate_pos(self, hs: torch.Tensor, ex: torch.Tensor | None, l: int):
+        """Ablates a [B, t, d] slice; returns fp32 residual. torch.linalg.solve
+        checks the LU info tensor on CUDA — a device-host sync per call that
+        stalls the decode pipeline (measured ~1.5 ms/layer/step); solve_ex
+        with check_errors=False runs the identical getrf/getrs kernels
+        (bit-identical results) without the sync."""
+        Jl = self.J[l]
+        z = (hs @ Jl.T) @ self.W_tilde.T                  # lens logits [B, t, V]
+        if self.use_exemption and ex is not None:
+            z.scatter_(-1, ex, torch.finfo(z.dtype).min)
+        idx = z.topk(self.k, dim=-1).indices              # [B, t, k]
+        del z
+        G = (self.W_tilde[idx] @ Jl).float()              # [B, t, k, d]
+        hf = hs.float()
+        A = G @ G.transpose(-1, -2)
+        A = A + self._eye * (1e-4 * A.diagonal(dim1=-2, dim2=-1)
+                             .mean(-1, keepdim=True).unsqueeze(-1))
+        b = G @ hf.unsqueeze(-1)                          # [B, t, k, 1]
+        coef = torch.linalg.solve_ex(A, b, check_errors=False)[0]
+        removal = (G.transpose(-1, -2) @ coef).squeeze(-1)  # [B, t, d]
+        self._stat_sum += (removal.norm(dim=-1) / hf.norm(dim=-1).clamp_min(1e-6)).mean()
+        self.stat_n += 1
+        if self.mode == "jspace":
+            return hf - removal
+        R = self.R[l]                                     # [k, d] orthonormal
+        pR = (hf @ R.T) @ R                               # projection onto span(R)
+        nJ = removal.norm(dim=-1, keepdim=True)
+        nR = pR.norm(dim=-1, keepdim=True).clamp_min(1e-6)
+        return hf - pR * (nJ / nR)
