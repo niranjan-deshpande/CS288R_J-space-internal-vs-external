@@ -139,9 +139,12 @@ class _Seq:
 def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
                    sampling: dict = THINK_SAMPLING, exempt_k: int = 10,
                    compact_every: int = 64, kv_budget_gb: float = 12.0,
-                   verbose: bool = False):
+                   max_steps: int | None = None, verbose: bool = False):
     """Returns (results, continuations): results[i] is None where sequence i
-    was evicted; its continuation request appears in `continuations`."""
+    was evicted; its continuation request appears in `continuations`.
+    `max_steps` bounds the decode steps of this call: anything still alive
+    is returned as a continuation (used by the bucketed scheduler to
+    re-batch sequences with peers of similar length)."""
     device = model.device
     n = len(requests)
     prefix_ids = tuple(tok(ANSWER_PREFIX, add_special_tokens=False).input_ids)
@@ -251,6 +254,13 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
             del out
 
             step += 1
+            if max_steps is not None and step >= max_steps:
+                for s in seqs:
+                    if s.phase != DONE:
+                        continuations.append(s.snapshot())
+                        s.phase = DONE
+                        s.evicted = True
+                break
             if step % compact_every == 0:
                 keep = [i for i, s in enumerate(seqs) if s.phase != DONE]
                 # KV-budget eviction: kick the longest thinkers to a later wave.

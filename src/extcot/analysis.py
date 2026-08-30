@@ -88,7 +88,7 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
     budgets = sorted(outcomes)
     bins = defaultdict(list)   # bin -> pids
     for pid, p in problems.items():
-        if p["included"]:
+        if p.get("in_sample", p["included"]):
             bins[bin_of(p["difficulty"], edges)].append(pid)
 
     results = {}

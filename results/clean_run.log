@@ -70,3 +70,76 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   step 2048: 11 alive, seq_len 2152
   step 2560: 7 alive, seq_len 2664
   step 3072: 7 alive, seq_len 3176
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[clean] 423 problems x 8 samples; 272 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<08:39,  1.31s/it]Loading weights:   1%|          | 4/398 [00:01<02:00,  3.26it/s]Loading weights:   3%|▎         | 12/398 [00:01<00:32, 11.80it/s]Loading weights:   4%|▍         | 16/398 [00:01<00:30, 12.33it/s]Loading weights:   6%|▋         | 25/398 [00:02<00:25, 14.56it/s]Loading weights:   7%|▋         | 28/398 [00:02<00:24, 15.29it/s]Loading weights:   9%|▉         | 36/398 [00:02<00:17, 20.43it/s]Loading weights:  10%|▉         | 39/398 [00:02<00:17, 20.31it/s]Loading weights:  11%|█▏        | 45/398 [00:03<00:13, 26.19it/s]Loading weights:  12%|█▏        | 49/398 [00:03<00:12, 27.87it/s]Loading weights:  15%|█▍        | 58/398 [00:03<00:12, 27.00it/s]Loading weights:  16%|█▌        | 62/398 [00:03<00:12, 26.32it/s]Loading weights:  17%|█▋        | 67/398 [00:03<00:10, 30.20it/s]Loading weights:  18%|█▊        | 71/398 [00:03<00:11, 28.37it/s]Loading weights:  20%|██        | 81/398 [00:04<00:08, 37.76it/s]Loading weights:  22%|██▏       | 86/398 [00:04<00:09, 32.06it/s]Loading weights:  23%|██▎       | 91/398 [00:04<00:08, 34.37it/s]Loading weights:  24%|██▍       | 95/398 [00:04<00:09, 32.21it/s]Loading weights:  25%|██▍       | 99/398 [00:04<00:10, 28.93it/s]Loading weights:  26%|██▌       | 103/398 [00:05<00:13, 22.32it/s]Loading weights:  28%|██▊       | 110/398 [00:05<00:09, 29.63it/s]Loading weights:  29%|██▊       | 114/398 [00:05<00:12, 23.23it/s]Loading weights:  30%|███       | 120/398 [00:05<00:12, 21.46it/s]Loading weights:  31%|███▏      | 125/398 [00:06<00:12, 22.14it/s]Loading weights:  33%|███▎      | 133/398 [00:06<00:08, 30.74it/s]Loading weights:  35%|███▍      | 138/398 [00:06<00:09, 28.40it/s]Loading weights:  37%|███▋      | 146/398 [00:06<00:07, 35.96it/s]Loading weights:  38%|███▊      | 151/398 [00:06<00:06, 37.15it/s]Loading weights:  39%|███▉      | 157/398 [00:06<00:07, 32.56it/s]Loading weights:  40%|████      | 161/398 [00:07<00:07, 30.05it/s]Loading weights:  42%|████▏     | 168/398 [00:07<00:07, 31.46it/s]Loading weights:  43%|████▎     | 173/398 [00:07<00:06, 34.75it/s]Loading weights:  45%|████▍     | 179/398 [00:07<00:08, 26.63it/s]Loading weights:  46%|████▌     | 183/398 [00:07<00:08, 26.39it/s]Loading weights:  48%|████▊     | 190/398 [00:07<00:06, 30.40it/s]Loading weights:  49%|████▊     | 194/398 [00:08<00:06, 30.20it/s]Loading weights:  51%|█████     | 201/398 [00:08<00:05, 35.34it/s]Loading weights:  52%|█████▏    | 205/398 [00:08<00:05, 33.12it/s]Loading weights:  53%|█████▎    | 211/398 [00:08<00:05, 31.70it/s]Loading weights:  54%|█████▍    | 215/398 [00:08<00:06, 30.09it/s]Loading weights:  56%|█████▌    | 222/398 [00:08<00:04, 37.91it/s]Loading weights:  57%|█████▋    | 227/398 [00:09<00:06, 26.27it/s]Loading weights:  58%|█████▊    | 231/398 [00:09<00:06, 25.04it/s]Loading weights:  59%|█████▉    | 235/398 [00:09<00:07, 20.79it/s]Loading weights:  62%|██████▏   | 245/398 [00:09<00:05, 28.59it/s]Loading weights:  63%|██████▎   | 249/398 [00:10<00:05, 29.53it/s]Loading weights:  64%|██████▎   | 253/398 [00:10<00:04, 30.47it/s]Loading weights:  65%|██████▍   | 257/398 [00:10<00:04, 30.23it/s]Loading weights:  66%|██████▌   | 261/398 [00:10<00:04, 30.62it/s]Loading weights:  67%|██████▋   | 267/398 [00:10<00:04, 31.67it/s]Loading weights:  68%|██████▊   | 271/398 [00:10<00:04, 30.88it/s]Loading weights:  70%|██████▉   | 278/398 [00:11<00:04, 24.81it/s]Loading weights:  71%|███████   | 281/398 [00:11<00:05, 22.50it/s]Loading weights:  72%|███████▏  | 287/398 [00:11<00:03, 28.91it/s]Loading weights:  73%|███████▎  | 291/398 [00:11<00:03, 28.07it/s]Loading weights:  75%|███████▍  | 297/398 [00:11<00:03, 31.73it/s]Loading weights:  76%|███████▌  | 301/398 [00:12<00:04, 21.86it/s]Loading weights:  78%|███████▊  | 309/398 [00:12<00:02, 31.31it/s]Loading weights:  79%|███████▉  | 314/398 [00:12<00:02, 30.39it/s]Loading weights:  80%|████████  | 319/398 [00:12<00:02, 33.84it/s]Loading weights:  81%|████████▏ | 324/398 [00:12<00:03, 23.43it/s]Loading weights:  83%|████████▎ | 330/398 [00:12<00:02, 26.18it/s]Loading weights:  84%|████████▍ | 334/398 [00:13<00:03, 18.21it/s]Loading weights:  85%|████████▌ | 339/398 [00:13<00:02, 21.45it/s]Loading weights:  87%|████████▋ | 345/398 [00:13<00:02, 25.97it/s]Loading weights:  88%|████████▊ | 349/398 [00:13<00:01, 27.72it/s]Loading weights:  89%|████████▊ | 353/398 [00:13<00:01, 26.53it/s]Loading weights:  90%|████████▉ | 357/398 [00:14<00:02, 19.92it/s]Loading weights:  92%|█████████▏| 366/398 [00:14<00:01, 23.64it/s]Loading weights:  93%|█████████▎| 369/398 [00:14<00:01, 22.36it/s]Loading weights:  94%|█████████▍| 376/398 [00:14<00:00, 24.71it/s]Loading weights:  95%|█████████▌| 379/398 [00:15<00:00, 23.91it/s]Loading weights:  97%|█████████▋| 387/398 [00:15<00:00, 29.44it/s]Loading weights:  98%|█████████▊| 391/398 [00:15<00:00, 26.35it/s]Loading weights: 100%|██████████| 398/398 [00:15<00:00, 25.59it/s]
+  step 512: 96 alive, seq_len 671
+  step 1024: 63 alive, seq_len 1183
+  step 1536: 33 alive, seq_len 1695
+  step 2048: 25 alive, seq_len 2207
+  step 2368: evicted 24 at seq_len 2527
+  [clean] wave0 72/3184 done | 81044 tok | 234 tok/s | 6m
+  step 512: 96 alive, seq_len 606
+  step 1024: 57 alive, seq_len 1118
+  step 1536: 29 alive, seq_len 1630
+  step 1600: evicted 22 at seq_len 1694
+  [clean] wave0 146/3258 done | 157426 tok | 282 tok/s | 9m
+  step 512: 94 alive, seq_len 645
+  step 1024: 71 alive, seq_len 1157
+  step 1536: 35 alive, seq_len 1669
+  step 1856: evicted 23 at seq_len 1989
+  [clean] wave0 219/3331 done | 241613 tok | 290 tok/s | 14m
+  step 512: 90 alive, seq_len 612
+  step 1024: 61 alive, seq_len 1124
+  step 1536: 42 alive, seq_len 1636
+  step 2048: 30 alive, seq_len 2148
+  step 2432: evicted 24 at seq_len 2532
+  [clean] wave0 291/3403 done | 324300 tok | 272 tok/s | 20m
+  step 512: 95 alive, seq_len 615
+  step 1024: 57 alive, seq_len 1127
+  step 1536: 26 alive, seq_len 1639
+  step 1600: evicted 23 at seq_len 1703
+  [clean] wave0 364/3476 done | 397305 tok | 283 tok/s | 23m
+  step 512: 94 alive, seq_len 645
+  step 1024: 65 alive, seq_len 1157
+  step 1536: 37 alive, seq_len 1669
+  step 2048: 31 alive, seq_len 2181
+  step 2560: 25 alive, seq_len 2693
+  step 2624: evicted 24 at seq_len 2757
+  [clean] wave0 436/3548 done | 482594 tok | 268 tok/s | 30m
+  step 512: 96 alive, seq_len 635
+  step 1024: 75 alive, seq_len 1147
+  step 1536: 39 alive, seq_len 1659
+  step 2048: 26 alive, seq_len 2171
+  step 2240: evicted 21 at seq_len 2363
+  [clean] wave0 511/3623 done | 576773 tok | 270 tok/s | 36m
+  step 512: 96 alive, seq_len 614
+  step 1024: 84 alive, seq_len 1126
+  step 1536: 57 alive, seq_len 1638
+  step 2048: 37 alive, seq_len 2150
+  step 2560: 26 alive, seq_len 2662
+  step 2624: evicted 24 at seq_len 2726
+  [clean] wave0 583/3695 done | 687788 tok | 262 tok/s | 44m
+  step 512: 96 alive, seq_len 617
+  step 1024: 57 alive, seq_len 1129
+  step 1536: 35 alive, seq_len 1641
+  step 2048: 30 alive, seq_len 2153
+  step 2560: evicted 23 at seq_len 2665
+  [clean] wave0 656/3768 done | 772819 tok | 257 tok/s | 50m
+  step 512: 96 alive, seq_len 687
+  step 1024: 73 alive, seq_len 1199
+  step 1536: 46 alive, seq_len 1711
+  step 2048: 32 alive, seq_len 2223
+  step 2432: evicted 24 at seq_len 2607
+  [clean] wave0 728/3840 done | 868708 tok | 232 tok/s | 62m
+  step 512: 96 alive, seq_len 614
+  step 1024: 73 alive, seq_len 1126
+  step 1536: 34 alive, seq_len 1638
+  step 1984: evicted 24 at seq_len 2086
+  [clean] wave0 800/3912 done | 953519 tok | 222 tok/s | 72m
+  step 512: 96 alive, seq_len 716
+  step 1024: 87 alive, seq_len 1228
+  step 1536: 44 alive, seq_len 1740
+  step 1920: evicted 22 at seq_len 2124
+  [clean] wave0 874/3986 done | 1056313 tok | 213 tok/s | 83m
+  step 512: 96 alive, seq_len 595

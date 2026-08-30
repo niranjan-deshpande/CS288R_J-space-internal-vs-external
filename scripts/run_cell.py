@@ -16,7 +16,7 @@ from jlens.lens import JacobianLens
 
 from extcot.model import (load_model, build_prompt, LENS_PATH,
                           THINK_SAMPLING, NOTHINK_SAMPLING)
-from extcot.engine import GenRequest, generate_batch
+from extcot.engine import GenRequest, generate_batch, KV_BYTES_PER_TOKEN
 from extcot.ablation import AblationController
 from extcot.grading import grade
 from extcot.data import load_problems, load_mmlu, load_sst2, MMLU_INSTR, SST2_INSTR
@@ -126,26 +126,54 @@ def main():
             tok_total += r.think_tokens + r.answer_tokens
         fout.flush()
 
-    wave = 0
-    batch = args.batch
-    while todo:
-        pending = []
-        for s in range(0, len(todo), batch):
-            chunk = todo[s:s + batch]
-            res, conts = generate_batch(model, tok, chunk, controller=controller,
-                                        sampling=sampling,
-                                        kv_budget_gb=args.kv_budget, verbose=True)
-            write(res)
-            pending += conts
-            el = time.time() - t0
-            print(f"  [{args.tag}] wave{wave} {n_written}/{len(todo) + n_written} "
-                  f"done | {tok_total} tok | {tok_total/max(el,1):.0f} tok/s | "
-                  f"{el/60:.0f}m", flush=True)
-        todo = pending
-        wave += 1
-        batch = max(32, batch // 2)   # keep resume waves dense
-        if wave > 12:
-            print("  too many waves, aborting remaining", flush=True)
+    # Length-bucketed continuous scheduling. Fresh requests run in large
+    # batches with a bounded step window; whatever is still alive comes back
+    # as a continuation and is re-batched with peers of similar prior length
+    # (bucket b holds priors in [1024*2^(b-1), 1024*2^b)). Windows double
+    # with the bucket, so a long sequence's total re-prefill work stays
+    # ~its own length (amortized doubling); batch sizes shrink with the
+    # bucket to respect the KV budget.
+    n_caches = 1 if args.mode == "none" else 2
+    n_total = len(todo)
+
+    def bucket_of(r):
+        n = len(r.prior_ids)
+        return 0 if n < 1024 else min(4, n.bit_length() - 10)
+
+    def batch_for(b):
+        # rows such that a full window at this length fits the KV budget
+        max_len = (2 ** (b + 1)) * 1024 + 384   # prior max + window + slack
+        cap = int(args.kv_budget * 1e9 / (KV_BYTES_PER_TOKEN * n_caches * max_len))
+        return max(6, min(args.batch, cap))
+
+    # sort fresh requests by expected think length so each call's sequences
+    # finish together (homogeneous batches feed the straggler tail less)
+    rank = {p["id"]: {"sst2": 0, "mmlu": 0, "gsm8k": 1, "aime": 9}
+            .get(p["dataset"], 2 + p.get("level", 3) / 10) for p in problems}
+    todo.sort(key=lambda r: rank[r.meta["pid"]])
+
+    buckets = {b: [] for b in range(5)}
+    buckets[0] = todo
+    calls = 0
+    while any(buckets.values()):
+        b = min(k for k, v in buckets.items() if v)
+        n = batch_for(b)
+        chunk, buckets[b] = buckets[b][:n], buckets[b][n:]
+        window = 1024 * (2 ** b)
+        res, conts = generate_batch(model, tok, chunk, controller=controller,
+                                    sampling=sampling, max_steps=window,
+                                    kv_budget_gb=args.kv_budget, verbose=True)
+        write(res)
+        for c in conts:
+            buckets[bucket_of(c)].append(c)
+        el = time.time() - t0
+        left = sum(len(v) for v in buckets.values())
+        print(f"  [{args.tag}] {n_written}/{n_total} done, {left} queued "
+              f"(bucket {b}, n={len(chunk)}) | {tok_total} tok | "
+              f"{tok_total/max(el,1):.0f} tok/s | {el/60:.0f}m", flush=True)
+        calls += 1
+        if calls > 2000:
+            print("  scheduler runaway, aborting remaining", flush=True)
             break
 
     if controller is not None and controller.stat_n:

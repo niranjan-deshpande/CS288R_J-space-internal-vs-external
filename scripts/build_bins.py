@@ -12,6 +12,7 @@ Definitions (spec + approved changes):
   floor 25 included problems per bin, adjacent bins merged below floor.
 """
 import json
+import random
 import statistics
 from collections import defaultdict
 
@@ -82,6 +83,26 @@ def main():
         counts = bin_counts(edges)
     print("final bins:", list(zip(edges[:-1], counts)))
     design["bin_edges"] = [e if e != float("inf") else 1e9 for e in edges]
+
+    # Per-bin subsample cap (approved): bounds every downstream cell's cost.
+    # Uniform fixed-seed sample within each bin; bins at/below the cap are
+    # untouched, so the 25-problem floor is always respected. Cells run only
+    # design["solvable_ids"]; analysis restricts to "in_sample" so retention
+    # denominators (Pile-B base rates) use exactly the same problems.
+    CAP = 45
+    srng = random.Random(0)
+    capped = set()
+    for b in range(len(edges) - 1):
+        lo, hi = edges[b], edges[b + 1]
+        members = sorted(pid for pid, p in design["problems"].items()
+                         if p["included"] and lo <= p["difficulty"] < hi)
+        capped.update(members if len(members) <= CAP else srng.sample(members, CAP))
+    for pid, p in design["problems"].items():
+        p["in_sample"] = pid in capped
+    design["solvable_ids"] = sorted(capped)
+    design["subsample_cap"] = CAP
+    print(f"subsample cap {CAP}/bin: {len(capped)} of "
+          f"{sum(p['included'] for p in design['problems'].values())} included")
 
     # per-bin summary
     for b in range(len(edges) - 1):
