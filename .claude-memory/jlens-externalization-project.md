@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   pinned: true
   originSessionId: 1fad82f2-692c-465b-8150-9f33013a371d
-  modified: 2026-08-29T23:50:54.632Z
+  modified: 2026-08-30T05:21:48.120Z
 ---
 
 # Project: Token Cost of Forced Externalization (CS 2881 HW0)
@@ -39,6 +39,22 @@ run `bash /workspace/jlens-cot/setup.sh`, then **read
 validated findings, next steps, and hard-won gotchas (OOM/memory settings,
 seed hygiene, forced answer prefix). SPEC.md in the repo holds the user's
 spec verbatim with all approved amendments.
+
+## Usage-budget awareness (user, 2026-08-30, clarified)
+
+The user has ample credits on a 5-hour resetting limit, but running out of
+credits mid-monitoring is the failure mode to avoid: **while the user is
+asleep/away, default to monitoring-only** (cheap ~50-min checks, no
+subagents) so the watch never stops. Targeted efficiency/quality subagents
+are welcome when the user is around — **at most one at a time**, never a
+large fan-out (user, 2026-08-30).
+
+## Deadline and cost constraints (user, 2026-08-30)
+
+HW0 is due **Monday 2026-08-31 5pm (ET)**; the user wants experiments done
+well before then to leave time for the writeup, and is cost-sensitive about
+GPU spend. Prioritize throughput optimizations and validity-preserving
+design cuts; flag cost/time tradeoffs (e.g. a second pod) as user decisions.
 
 ## Key resources
 
