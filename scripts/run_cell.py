@@ -143,8 +143,8 @@ def main():
                   f"{el/60:.0f}m", flush=True)
         todo = pending
         wave += 1
-        batch = max(2, batch // 2)
-        if wave > 8:
+        batch = max(32, batch // 2)   # keep resume waves dense
+        if wave > 12:
             print("  too many waves, aborting remaining", flush=True)
             break
 

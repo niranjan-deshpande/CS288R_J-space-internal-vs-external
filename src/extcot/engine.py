@@ -254,16 +254,17 @@ def generate_batch(model, tok, requests: list[GenRequest], *, controller=None,
             if step % compact_every == 0:
                 keep = [i for i, s in enumerate(seqs) if s.phase != DONE]
                 # KV-budget eviction: kick the longest thinkers to a later wave.
-                # Straggler eviction: when a large batch has burned down to a
-                # long-running tail, evict the tail so the caller can pool the
-                # stragglers from many chunks into one dense later wave
-                # (results are identical either way: per-sequence RNG state is
-                # carried in the continuation). Only in large first-wave
-                # batches (n >= 64), so shrunken resume waves can't re-evict
-                # forever.
+                # Straggler eviction: when a batch has burned down to a
+                # long-running tail, evict the whole tail so the caller can
+                # pool stragglers from many chunks into a dense later wave
+                # (per-sequence RNG travels in the continuation, so results
+                # don't change). Decode throughput is ~linear in alive count,
+                # so a tail at <=n/4 alive wastes >75% of the GPU; deferring
+                # it costs only a cheap re-prefill. Guarded to n >= 32 so
+                # small final waves burn down normally and terminate.
                 kv_gb = len(keep) * attn.shape[1] * KV_BYTES_PER_TOKEN * n_caches / 1e9
-                straggle = (n >= 64 and len(keep) <= max(2, n // 12)
-                            and attn.shape[1] >= 4096)
+                straggle = (n >= 32 and len(keep) <= n // 4
+                            and attn.shape[1] >= 1536)
                 if (kv_gb > kv_budget_gb and len(keep) > 1) or (straggle and keep):
                     order = sorted(keep, key=lambda i: seqs[i].think_ct, reverse=True)
                     n_evict = len(keep) if straggle else max(1, len(keep) // 3)
