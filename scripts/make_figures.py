@@ -5,18 +5,16 @@ Figure 1: B* (budget to reach 90% of bin base rate) vs bin median difficulty,
   one line per ablation level, random-control overlay, base budget-sweep line,
   y = x reference (base model's own usage), censored bins as upward arrows at
   the plot top, bootstrap 68% CI bands, inclusion-rate strip underneath.
-Figure 2: asymptotic retention (B = 16384) vs difficulty per level + controls,
-  same strip.
+Figure 2: asymptotic retention (B = 16384) vs difficulty per level + controls.
+Combined: both panels side by side at 2-column paper width (compact, for the
+  ~2-page report), inclusion strips beneath each.
 
-Works on real results or the synthetic fixture:
   python3 scripts/make_figures.py                                   # real
-  python3 scripts/make_figures.py --results-dir <fixture> \
-      --out-dir <fixture>/figures --n-boot 200                      # fixture
+  python3 scripts/make_figures.py --results-dir <fixture> --n-boot 200
 
-Estimates come from src/extcot/analysis.py (cell_bstar) unmodified; this
-script only loads runs, builds per-problem majority outcomes, and plots.
-Missing cells are warned about and skipped, so partial grids still render.
-Also writes <out-dir>/bstar_summary.json with every plotted number.
+Estimates come from src/extcot/analysis.py (cell_bstar) unmodified; missing
+cells are warned about and skipped, so partial grids still render. Also
+writes <out-dir>/bstar_summary.json with every plotted number.
 """
 from __future__ import annotations
 
@@ -40,22 +38,33 @@ from extcot import analysis
 B_MAX = 16384
 BUDGETS = [0, 128, 512, 2048, 16384]
 
-# Colorblind-safe palette (dataviz reference instance): ordered ablation
-# strength = one blue ramp light->dark (ordinal); random control = orange
-# (slot 2); out-of-band control = aqua (slot 3); base/reference = neutral
-# inks. Marker shape + line style carry identity as the secondary channel.
+# Warm print style: cream ground, ink black for the base/reference series,
+# a terracotta ramp for ablation strength (ordinal), warm gray-brown dashed
+# for the random control. Marker shape + line style are the secondary channel.
+BG, INK, MUTED, GRID = "#FAF6EE", "#1A1917", "#8A8072", "#E7E1D2"
 STYLE = {
-    "light":  dict(color="#86b6ef", marker="o", ls="-",  label="light (26:30, k=10)"),
-    "medium": dict(color="#2a78d6", marker="s", ls="-",  label="medium (22:34, k=10)"),
-    "heavy":  dict(color="#104281", marker="^", ls="-",  label="heavy (22:34, k=100)"),
-    "random": dict(color="#eb6834", marker="x", ls="--", label="random ctrl (2 seeds)"),
-    "base":   dict(color="#52514e", marker="D", ls="-.", label="base (truncated CoT)"),
-    "oob":    dict(color="#1baf7a", marker="*", ls=":",  label="out-of-band ctrl"),
+    "light":  dict(color="#E0A87C", marker="o", ls="-",  mfc="none",
+                   label="light (26:30, k=10)"),
+    "medium": dict(color="#C95F35", marker="s", ls="-",  mfc="none",
+                   label="medium (22:34, k=10)"),
+    "heavy":  dict(color="#71391D", marker="^", ls="-",  mfc="none",
+                   label="heavy (22:34, k=100)"),
+    "random": dict(color="#8A7A66", marker="o", ls="--", mfc="none",
+                   label="random ctrl (norm-matched)"),
+    "base":   dict(color=INK,      marker="o", ls="-",  mfc=INK,
+                   label="base (truncated CoT)"),
+    "oob":    dict(color="#5E7C8A", marker="D", ls=":",  mfc="none",
+                   label="out-of-band ctrl"),
 }
-INK, MUTED, GRID = "#0b0b0b", "#898781", "#e1e0d9"
-
 LEVEL_TAGS = [("light", "jspace-light"), ("medium", "jspace-med"),
               ("heavy", "jspace-heavy")]
+
+plt.rcParams.update({
+    "figure.facecolor": BG, "axes.facecolor": BG, "savefig.facecolor": BG,
+    "text.color": INK, "axes.edgecolor": INK, "axes.labelcolor": INK,
+    "xtick.color": INK, "ytick.color": INK,
+    "font.family": "DejaVu Sans", "axes.titleweight": "bold",
+})
 
 
 def load_runs(results_dir: str, tag: str) -> list[dict] | None:
@@ -74,17 +83,18 @@ def load_runs(results_dir: str, tag: str) -> list[dict] | None:
 
 
 def majority_checked(rows: list[dict], tag: str) -> dict[str, bool]:
-    """analysis.majority (>=2 solved), plus a loud warning on partial cells:
-    with <4 samples the fixed >=2 rule biases toward 'unsolved'."""
-    n_by_pid = defaultdict(int)
+    """analysis.majority (>=2 solved). Cells run with --staged legitimately
+    hold 2-3 samples for majority-determined problems; only warn when a
+    problem is genuinely undecidable from what's on disk."""
+    by_pid = defaultdict(list)
     for r in rows:
-        n_by_pid[r["pid"]] += 1
-    partial = {p: n for p, n in n_by_pid.items() if n < 4}
-    if partial:
-        print(f"  WARN [{tag}]: {len(partial)} pids have <4 samples "
-              f"(majority '>=2' biases these toward unsolved), e.g. "
-              f"{list(partial.items())[:3]}")
-    return analysis.majority(rows)
+        by_pid[r["pid"]].append(bool(r["solved"]))
+    undecided = {p: v for p, v in by_pid.items()
+                 if len(v) < 4 and sum(v) < 2 and (len(v) - sum(v)) < 3}
+    if undecided:
+        print(f"  WARN [{tag}]: {len(undecided)} pids undecidable from disk "
+              f"(counted unsolved), e.g. {list(undecided)[:3]}")
+    return {p: sum(v) >= 2 for p, v in by_pid.items()}
 
 
 def collect_outcomes(results_dir: str, prefix: str,
@@ -98,8 +108,6 @@ def collect_outcomes(results_dir: str, prefix: str,
 
 
 def base_outcomes(results_dir: str, design: dict) -> dict[int, dict[str, bool]]:
-    """Base budget sweep (amendment 5): base-B{0,128,512,2048} runs, plus the
-    clean Pile-B majority (design base_solved) as the B=16384 point."""
     out = collect_outcomes(results_dir, "base", [0, 128, 512, 2048])
     out[B_MAX] = {pid: p["base_solved"] for pid, p in design["problems"].items()
                   if p.get("in_sample", p["included"])}
@@ -107,7 +115,6 @@ def base_outcomes(results_dir: str, design: dict) -> dict[int, dict[str, bool]]:
 
 
 def retention_ci(problems, outcome_bmax, pids, n_boot=500, seed=1):
-    """Bootstrap-over-problems 68% CI for retention at B_MAX."""
     rng = random.Random(seed)
     both = [pid for pid in pids if pid in outcome_bmax]
     if not both:
@@ -122,7 +129,8 @@ def retention_ci(problems, outcome_bmax, pids, n_boot=500, seed=1):
         if vals else (None, None)
 
 
-def inclusion_strip(ax, design, edges, xlim):
+def inclusion_strip(ax, design, edges, xlim, tiny=False):
+    fs = 5.0 if tiny else 6.5
     rates, ns = [], []
     for b in range(len(edges) - 1):
         lo, hi = edges[b], edges[b + 1]
@@ -134,29 +142,40 @@ def inclusion_strip(ax, design, edges, xlim):
     for b, r in enumerate(rates):
         lo = max(edges[b], xlim[0])
         hi = min(edges[b + 1], xlim[1])
-        ax.bar(lo, r, width=hi - lo, align="edge", color="#c3c2b7",
-               edgecolor="white", linewidth=1.5, alpha=0.75)
+        ax.bar(lo, r, width=hi - lo, align="edge", color="#D9D2C0",
+               edgecolor=BG, linewidth=1.2, alpha=0.9)
         cx = math.sqrt(lo * hi)
-        ax.text(cx, min(r + 0.06, 1.02), f"{r:.0%}", ha="center", va="bottom",
-                fontsize=6.5, color="#52514e")
-        ax.text(cx, 0.09, f"n={ns[b]}", ha="center", va="bottom",
-                fontsize=6, color="#52514e")
+        ax.text(cx, 0.12, f"{r:.0%}\nn={ns[b]}", ha="center", va="bottom",
+                fontsize=fs, color="#6E6658", linespacing=1.1)
     ax.set_xscale("log")
     ax.set_xlim(*xlim)
-    ax.set_ylim(0, 1.25)
-    ax.set_yticks([0, 0.5, 1.0])
-    ax.set_yticklabels(["0", ".5", "1"], fontsize=7)
-    ax.set_ylabel("inclusion", fontsize=7.5)
-    ax.set_xlabel("bin difficulty: median base thinking tokens (log)", fontsize=8.5)
-    for s in ("top", "right"):
+    ax.set_ylim(0, 1.15)
+    ax.set_yticks([])
+    ax.set_ylabel("incl.", fontsize=fs + 0.5, color="#6E6658")
+    ax.set_xlabel("bin difficulty: median base thinking tokens (log)",
+                  fontsize=fs + 1.5)
+    for s in ("top", "right", "left"):
         ax.spines[s].set_visible(False)
+    ax.tick_params(labelsize=fs + 1, length=2)
 
 
-def style_axes(ax):
+def style_axes(ax, fs=8):
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
-    ax.grid(True, which="major", color=GRID, linewidth=0.6)
-    ax.tick_params(labelsize=8, colors=INK)
+    for s in ("bottom", "left"):
+        ax.spines[s].set_color("#B9B2A2")
+        ax.spines[s].set_linewidth(0.8)
+    ax.grid(True, axis="y", which="major", color=GRID, linewidth=0.7)
+    ax.grid(False, axis="x")
+    ax.tick_params(labelsize=fs, colors=INK, length=2.5)
+
+
+def styled_legend(ax, fs, loc):
+    leg = ax.legend(fontsize=fs, loc=loc, handlelength=2.2, borderaxespad=0.4,
+                    frameon=True, fancybox=False, framealpha=0.95,
+                    facecolor=BG, edgecolor="#CFC8B6")
+    leg.get_frame().set_linewidth(0.8)
+    return leg
 
 
 def draw_censor_arrows(ax, xs, color, jitter=1.0):
@@ -164,15 +183,142 @@ def draw_censor_arrows(ax, xs, color, jitter=1.0):
     for x in xs:
         ax.annotate("", xy=(x * jitter, 0.99), xytext=(x * jitter, 0.90),
                     xycoords=tr, textcoords=tr,
-                    arrowprops=dict(arrowstyle="-|>", color=color, lw=1.6),
+                    arrowprops=dict(arrowstyle="-|>", color=color, lw=1.4),
                     annotation_clip=False)
+
+
+def draw_fig1(ax, data, fs=8, compact=False):
+    series, rand, base_res, xlim, n_boot = (data["series"], data["rand"],
+                                            data["base_res"], data["xlim"],
+                                            data["n_boot"])
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    y_floor = 30
+    ax.set_xlim(*xlim)
+    ax.set_ylim(y_floor, B_MAX * 2.1)
+
+    xs_ref = np.geomspace(*xlim, 50)
+    ax.plot(xs_ref, xs_ref, ls=":", color=MUTED, lw=1.1, zorder=1)
+    ax.text(xlim[1] * 0.52, xlim[1] * 0.36, "y = x (base usage)",
+            fontsize=fs - 1.5, color=MUTED, rotation=30, ha="center", va="top",
+            rotation_mode="anchor")
+    ax.axhline(B_MAX, color="#CFC8B6", lw=0.8)
+    ax.text(xlim[1] * 0.92, B_MAX * 1.18, "budget cap", fontsize=fs - 2,
+            color=MUTED, ha="right", va="bottom")
+
+    def plot_bstar(res, st, jitter=1.0, band=True, lw=1.6, label=None):
+        bs = sorted(res)
+        x = np.array([res[b]["median_difficulty"] for b in bs])
+        y = np.array([res[b]["bstar"] if not res[b]["censored"] else np.nan
+                      for b in bs], dtype=float)
+        y = np.clip(y, y_floor, None)
+        lo = np.array([res[b]["lo"] if res[b]["lo"] is not None else np.nan
+                       for b in bs], dtype=float).clip(y_floor, B_MAX * 2.1)
+        hi = np.array([res[b]["hi"] if res[b]["hi"] is not None else np.nan
+                       for b in bs], dtype=float).clip(y_floor, B_MAX * 2.1)
+        ok = ~np.isnan(y)
+        if band and ok.any():
+            ax.fill_between(x[ok], lo[ok], hi[ok], color=st["color"],
+                            alpha=0.14, lw=0, zorder=2)
+        ax.plot(x[ok], y[ok], marker=st["marker"], ls=st["ls"], lw=lw,
+                ms=4.2 if compact else 5, color=st["color"], zorder=3,
+                label=label, markerfacecolor=st["mfc"], markeredgewidth=1.2)
+        draw_censor_arrows(ax, [res[b]["median_difficulty"] for b in bs
+                                if res[b]["censored"]], st["color"], jitter)
+
+    for i, (name, _) in enumerate(LEVEL_TAGS):
+        if name in series:
+            plot_bstar(series[name], STYLE[name], jitter=1.09 ** (i - 1),
+                       label=STYLE[name]["label"])
+    for j, (s, res) in enumerate(sorted(rand.items())):
+        plot_bstar(res, STYLE["random"], jitter=1.09 ** (j + 2), band=False,
+                   lw=1.1, label=STYLE["random"]["label"] if j == 0 else None)
+    if base_res:
+        plot_bstar(base_res, STYLE["base"], jitter=1.09 ** -2, band=True,
+                   lw=1.4, label=STYLE["base"]["label"])
+
+    ax.set_ylabel("B*: budget for 90% of base rate (log)", fontsize=fs)
+    ax.set_title("B* rises faster than base usage;\ncensored ($\\uparrow$) = "
+                 "no recovery within cap" if compact else
+                 "External budget needed to recover base performance rises "
+                 "with difficulty", fontsize=fs + 1, color=INK, loc="left",
+                 pad=8)
+    # monospace inset: medium B* as a multiple of base B* (prediction 1)
+    if "medium" in series and base_res:
+        lines = ["med. B*/base B*"]
+        for b, v in sorted(series["medium"].items()):
+            bb = base_res.get(b)
+            if v["censored"] or bb is None or bb["censored"]:
+                r = "cens." if v["censored"] else "-"
+            else:
+                r = f"{v['bstar'] / max(bb['bstar'], 1):.1f}x"
+            lines.append(f" bin{b}: {r}")
+        ax.text(0.985, 0.03, "\n".join(lines), transform=ax.transAxes,
+                fontsize=fs - 2.2, family="monospace", ha="right", va="bottom",
+                color="#544C3E",
+                bbox=dict(facecolor=BG, edgecolor="#CFC8B6", lw=0.8,
+                          boxstyle="square,pad=0.45"))
+    styled_legend(ax, fs - 1.5, "upper left")
+    style_axes(ax, fs)
+
+
+def draw_fig2(ax, data, problems, edges, fs=8, compact=False):
+    series, rand, oob_out, xlim, n_boot = (data["series"], data["rand"],
+                                           data["oob_out"], data["xlim"],
+                                           data["n_boot"])
+    ax.set_xscale("log")
+    ax.set_xlim(*xlim)
+    ax.set_ylim(0, 1.16)
+    ax.axhline(1.0, color="#CFC8B6", lw=0.9)
+    ax.axhline(0.9, color=MUTED, lw=0.9, ls=(0, (4, 3)))
+    ax.text(xlim[0] * 1.08, 0.905, "recovery threshold (0.9)",
+            fontsize=fs - 2, color=MUTED, va="bottom")
+
+    def plot_ret(res, oc, st, lw=1.6, label=None):
+        bs = [b for b in sorted(res) if res[b]["retention_at_bmax"] is not None]
+        if not bs:
+            return
+        x = [res[b]["median_difficulty"] for b in bs]
+        y = [res[b]["retention_at_bmax"] for b in bs]
+        los, his = [], []
+        for b in bs:
+            pids = [pid for pid, p in problems.items()
+                    if p.get("in_sample", p["included"])
+                    and analysis.bin_of(p["difficulty"], edges) == b]
+            lo, hi = retention_ci(problems, oc.get(B_MAX, {}), pids,
+                                  n_boot=n_boot)
+            los.append(lo if lo is not None else np.nan)
+            his.append(hi if hi is not None else np.nan)
+        ax.fill_between(x, los, his, color=st["color"], alpha=0.14, lw=0)
+        ax.plot(x, y, marker=st["marker"], ls=st["ls"], lw=lw,
+                ms=4.2 if compact else 5, color=st["color"], label=label,
+                markerfacecolor=st["mfc"], markeredgewidth=1.2)
+
+    for name, _ in LEVEL_TAGS:
+        if name in series:
+            plot_ret(series[name], data[f"oc_{name}"], STYLE[name],
+                     label=STYLE[name]["label"])
+    for j, (s, res) in enumerate(sorted(rand.items())):
+        plot_ret(res, data[f"oc_random-s{s}"], STYLE["random"], lw=1.1,
+                 label=STYLE["random"]["label"] if j == 0 else None)
+    if oob_out:
+        oob_res = analysis.cell_bstar(problems, {B_MAX: oob_out}, edges,
+                                      n_boot=0)
+        plot_ret(oob_res, {B_MAX: oob_out}, STYLE["oob"], lw=1.2,
+                 label=STYLE["oob"]["label"])
+
+    ax.set_ylabel("retention at B = 16384", fontsize=fs)
+    ax.set_title("Asymptotic retention falls with difficulty" if compact else
+                 "Asymptotic retention (B = 16384) falls with difficulty",
+                 fontsize=fs + 1, color=INK, loc="left", pad=8)
+    styled_legend(ax, fs - 1.5, "lower left")
+    style_axes(ax, fs)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results-dir", default="/workspace/jlens-cot/results")
-    ap.add_argument("--out-dir", default=None,
-                    help="default: <results-dir>/../figures")
+    ap.add_argument("--out-dir", default=None)
     ap.add_argument("--n-boot", type=int, default=500)
     ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
@@ -187,21 +333,28 @@ def main():
     edges = design["bin_edges"]
 
     # ------------------------------------------------------------ estimates
-    series = {}
+    series, data = {}, {}
+    MIN_BUDGETS = 3   # a series needs a real budget axis to be a curve
     for name, prefix in LEVEL_TAGS:
         oc = collect_outcomes(rd, prefix)
-        if oc:
+        if len(oc) >= MIN_BUDGETS:
             series[name] = analysis.cell_bstar(problems, oc, edges,
                                                n_boot=args.n_boot,
                                                seed=args.seed)
-            series[f"_outcomes_{name}"] = oc
+            data[f"oc_{name}"] = oc
+        elif oc:
+            print(f"  NOTE: {prefix} has only {len(oc)} budget point(s); "
+                  f"omitting from figures")
     rand = {}
     for s in (0, 1):
         oc = collect_outcomes(rd, f"random-s{s}")
-        if oc:
+        if len(oc) >= MIN_BUDGETS:
             rand[s] = analysis.cell_bstar(problems, oc, edges,
                                           n_boot=args.n_boot, seed=args.seed)
-            series[f"_outcomes_random-s{s}"] = oc
+            data[f"oc_random-s{s}"] = oc
+        elif oc:
+            print(f"  NOTE: random-s{s} has only {len(oc)} budget point(s); "
+                  f"omitting from figures")
     oc_base = base_outcomes(rd, design)
     base_res = analysis.cell_bstar(problems, oc_base, edges,
                                    n_boot=args.n_boot, seed=args.seed) \
@@ -212,152 +365,56 @@ def main():
     if not series and not base_res:
         sys.exit("No cells found under " + rd)
 
-    # x range from bin medians
-    any_res = next(iter([*series.values(), base_res]))
-    meds = {b: v["median_difficulty"] for res in [base_res, *
-            [series[n] for n, _ in LEVEL_TAGS if n in series]]
+    meds = {b: v["median_difficulty"]
+            for res in [base_res, *[series[n] for n, _ in LEVEL_TAGS
+                                    if n in series]]
             for b, v in (res or {}).items()}
     xlim = (min(meds.values()) / 2.2, max(meds.values()) * 2.6)
+    data.update(series=series, rand=rand, base_res=base_res, oob_out=oob_out,
+                xlim=xlim, n_boot=args.n_boot)
 
-    # ------------------------------------------------------------- figure 1
-    fig = plt.figure(figsize=(7.0, 5.6))
-    gs = fig.add_gridspec(2, 1, height_ratios=[4.1, 1.0], hspace=0.13)
-    ax = fig.add_subplot(gs[0])
+    # ------------------------------------------- individual (full-size) figs
+    fig = plt.figure(figsize=(7.0, 5.4))
+    gs = fig.add_gridspec(2, 1, height_ratios=[4.4, 0.8], hspace=0.12)
+    ax, axs = fig.add_subplot(gs[0]), None
     axs = fig.add_subplot(gs[1], sharex=ax)
-
-    ax.set_xscale("log")
-    ax.set_yscale("log")
-    y_floor = 30
-    ax.set_xlim(*xlim)
-    ax.set_ylim(y_floor, B_MAX * 1.9)
-
-    xs_ref = np.geomspace(*xlim, 50)
-    ax.plot(xs_ref, xs_ref, ls=":", color=MUTED, lw=1.2, zorder=1)
-    ax.text(xlim[1] * 0.55, xlim[1] * 0.42, "y = x (base usage)", fontsize=7.5,
-            color=MUTED, rotation=32, ha="center", va="top",
-            rotation_mode="anchor")
-    ax.axhline(B_MAX, color=GRID, lw=0.8)
-    ax.text(xlim[1] * 0.93, B_MAX * 1.16, "budget cap", fontsize=6.5,
-            color=MUTED, ha="right", va="bottom")
-
-    def plot_bstar(res, st, jitter=1.0, band=True, lw=1.7, alpha=1.0,
-                   label=None):
-        bs = sorted(res)
-        x = np.array([res[b]["median_difficulty"] for b in bs])
-        y = np.array([res[b]["bstar"] if not res[b]["censored"] else np.nan
-                      for b in bs], dtype=float)
-        y = np.clip(y, y_floor, None)
-        lo = np.array([res[b]["lo"] if res[b]["lo"] is not None else np.nan
-                       for b in bs], dtype=float).clip(y_floor, B_MAX * 1.9)
-        hi = np.array([res[b]["hi"] if res[b]["hi"] is not None else np.nan
-                       for b in bs], dtype=float).clip(y_floor, B_MAX * 1.9)
-        ok = ~np.isnan(y)
-        if band and ok.any():
-            ax.fill_between(x[ok], lo[ok], hi[ok], color=st["color"],
-                            alpha=0.13, lw=0, zorder=2)
-        ax.plot(x[ok], y[ok], marker=st["marker"], ls=st["ls"], lw=lw,
-                ms=5, color=st["color"], alpha=alpha, zorder=3,
-                label=label, markerfacecolor="none" if st["marker"] in "o^sD"
-                else st["color"], markeredgewidth=1.4)
-        cens_x = [res[b]["median_difficulty"] for b in bs if res[b]["censored"]]
-        draw_censor_arrows(ax, cens_x, st["color"], jitter)
-
-    for i, (name, _) in enumerate(LEVEL_TAGS):
-        if name in series:
-            plot_bstar(series[name], STYLE[name], jitter=1.09 ** (i - 1),
-                       label=STYLE[name]["label"])
-    for j, (s, res) in enumerate(sorted(rand.items())):
-        plot_bstar(res, STYLE["random"], jitter=1.09 ** (j + 2), band=False,
-                   lw=1.1, alpha=0.85,
-                   label=STYLE["random"]["label"] if j == 0 else None)
-    if base_res:
-        plot_bstar(base_res, STYLE["base"], jitter=1.09 ** -2, band=True,
-                   lw=1.3, label=STYLE["base"]["label"])
-
-    ax.set_ylabel("B*: thinking-token budget for 90% of base rate (log)",
-                  fontsize=8.5)
-    ax.set_title("External budget needed to recover base performance rises "
-                 "with difficulty under J-space ablation", fontsize=9.5,
-                 color=INK, loc="left", pad=10)
-    ax.text(0.995, 1.015, "$\\uparrow$ = censored: fit never reaches 90% "
-            "within the cap", transform=ax.transAxes, ha="right", fontsize=7,
-            color=MUTED)
-    leg = ax.legend(fontsize=7.5, frameon=False, loc="upper left",
-                    handlelength=2.6, borderaxespad=0.2)
-    for t in leg.get_texts():
-        t.set_color(INK)
-    style_axes(ax)
+    draw_fig1(ax, data, fs=8.5)
     plt.setp(ax.get_xticklabels(), visible=False)
-
     inclusion_strip(axs, design, edges, xlim)
     for ext in ("pdf", "png"):
         fig.savefig(os.path.join(out_dir, f"fig1_bstar.{ext}"), dpi=300,
-                    bbox_inches="tight", facecolor="white")
+                    bbox_inches="tight")
     plt.close(fig)
 
-    # ------------------------------------------------------------- figure 2
-    fig = plt.figure(figsize=(7.0, 4.9))
-    gs = fig.add_gridspec(2, 1, height_ratios=[3.4, 1.0], hspace=0.15)
+    fig = plt.figure(figsize=(7.0, 4.6))
+    gs = fig.add_gridspec(2, 1, height_ratios=[3.6, 0.8], hspace=0.14)
     ax = fig.add_subplot(gs[0])
     axs = fig.add_subplot(gs[1], sharex=ax)
-    ax.set_xscale("log")
-    ax.set_xlim(*xlim)
-    ax.set_ylim(0, 1.18)
-    ax.axhline(1.0, color=GRID, lw=0.9)
-    ax.axhline(0.9, color=MUTED, lw=0.9, ls=(0, (4, 3)))
-    ax.text(xlim[0] * 1.1, 0.905, "recovery threshold (0.9)", fontsize=7,
-            color=MUTED, va="bottom")
-
-    def plot_ret(res, oc, st, lw=1.7, alpha=1.0, label=None):
-        bs = [b for b in sorted(res) if res[b]["retention_at_bmax"] is not None]
-        if not bs:
-            return
-        x = [res[b]["median_difficulty"] for b in bs]
-        y = [res[b]["retention_at_bmax"] for b in bs]
-        los, his = [], []
-        for b in bs:
-            pids = [pid for pid, p in problems.items()
-                    if p.get("in_sample", p["included"])
-                    and analysis.bin_of(p["difficulty"], edges) == b]
-            lo, hi = retention_ci(problems, oc.get(B_MAX, {}), pids,
-                                  n_boot=args.n_boot)
-            los.append(lo if lo is not None else np.nan)
-            his.append(hi if hi is not None else np.nan)
-        ax.fill_between(x, los, his, color=st["color"], alpha=0.13, lw=0)
-        ax.plot(x, y, marker=st["marker"], ls=st["ls"], lw=lw, ms=5,
-                color=st["color"], alpha=alpha, label=label,
-                markerfacecolor="none" if st["marker"] in "o^sD*"
-                else st["color"], markeredgewidth=1.4)
-
-    for name, _ in LEVEL_TAGS:
-        if name in series:
-            plot_ret(series[name], series[f"_outcomes_{name}"], STYLE[name],
-                     label=STYLE[name]["label"])
-    for j, (s, res) in enumerate(sorted(rand.items())):
-        plot_ret(res, series[f"_outcomes_random-s{s}"], STYLE["random"],
-                 lw=1.1, alpha=0.85,
-                 label=STYLE["random"]["label"] if j == 0 else None)
-    if oob_out:
-        oob_res = analysis.cell_bstar(problems, {B_MAX: oob_out}, edges,
-                                      n_boot=0)
-        plot_ret(oob_res, {B_MAX: oob_out}, STYLE["oob"], lw=1.2,
-                 label=STYLE["oob"]["label"])
-
-    ax.set_ylabel("retention at B = 16384\n(ablated / base solve rate)",
-                  fontsize=8.5)
-    ax.set_title("Asymptotic retention falls with difficulty; frontier moves "
-                 "down with ablation strength", fontsize=9.5, color=INK,
-                 loc="left", pad=8)
-    leg = ax.legend(fontsize=7.5, frameon=False, loc="lower left",
-                    handlelength=2.6)
-    for t in leg.get_texts():
-        t.set_color(INK)
-    style_axes(ax)
+    draw_fig2(ax, data, problems, edges, fs=8.5)
     plt.setp(ax.get_xticklabels(), visible=False)
     inclusion_strip(axs, design, edges, xlim)
     for ext in ("pdf", "png"):
         fig.savefig(os.path.join(out_dir, f"fig2_retention.{ext}"), dpi=300,
-                    bbox_inches="tight", facecolor="white")
+                    bbox_inches="tight")
+    plt.close(fig)
+
+    # --------------------------------- combined compact (2-page report) fig
+    fig = plt.figure(figsize=(7.05, 3.0))
+    gs = fig.add_gridspec(2, 2, height_ratios=[5.2, 0.9], hspace=0.1,
+                          wspace=0.24)
+    ax1 = fig.add_subplot(gs[0, 0])
+    st1 = fig.add_subplot(gs[1, 0], sharex=ax1)
+    ax2 = fig.add_subplot(gs[0, 1])
+    st2 = fig.add_subplot(gs[1, 1], sharex=ax2)
+    draw_fig1(ax1, data, fs=6.4, compact=True)
+    draw_fig2(ax2, data, problems, edges, fs=6.4, compact=True)
+    for a in (ax1, ax2):
+        plt.setp(a.get_xticklabels(), visible=False)
+    inclusion_strip(st1, design, edges, xlim, tiny=True)
+    inclusion_strip(st2, design, edges, xlim, tiny=True)
+    for ext in ("pdf", "png"):
+        fig.savefig(os.path.join(out_dir, f"fig_combined.{ext}"), dpi=300,
+                    bbox_inches="tight")
     plt.close(fig)
 
     # ------------------------------------------------------------ summaries
@@ -371,17 +428,12 @@ def main():
     with open(os.path.join(out_dir, "bstar_summary.json"), "w") as f:
         json.dump(summary, f, indent=1, default=float)
 
-    print(f"\nWrote figures + bstar_summary.json to {out_dir}\n")
-    hdr = f"{'series':10s} " + " ".join(f"bin{b:>7d}" for b in
-                                        sorted(next(iter(
-                                            [v for k, v in summary.items()
-                                             if k != 'bin_edges']))))
-    print(hdr)
+    print(f"\nWrote fig1, fig2, fig_combined + bstar_summary.json to {out_dir}")
     for k, res in summary.items():
         if k == "bin_edges":
             continue
         cells = " ".join(
-            f"{'CENS':>10s}" if v["censored"] else f"{v['bstar']:>10.0f}"
+            f"{'CENS':>8s}" if v["censored"] else f"{v['bstar']:>8.0f}"
             for _, v in sorted(res.items(), key=lambda kv: int(kv[0])))
         print(f"{k:10s} {cells}")
 

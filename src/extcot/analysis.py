@@ -61,32 +61,44 @@ def bin_of(diff: float, edges: list[float]) -> int:
     return len(edges) - 2
 
 
-def fit_logistic(logB: np.ndarray, y: np.ndarray) -> tuple[float, float]:
-    """MLE for y ~ sigmoid(a + b*logB), b >= 0 (monotone in budget)."""
+def fit_logistic(logB: np.ndarray, y: np.ndarray) -> tuple[float, float, float]:
+    """MLE for y ~ c + (1-c) * sigmoid(a + b*logB), b >= 0.
+
+    The floor c captures direct-answering success at B=0 (solving without any
+    think block); without it the plain logistic must flatten its slope to
+    accommodate the nonzero B=0 rate, which caps the fitted asymptote below
+    the empirical B_MAX rate and produces false censoring (observed on the
+    base reference line: empirical 45/45 at B_MAX, fitted asymptote 0.85)."""
 
     def nll(theta):
-        a, b = theta
-        p = expit(a + b * logB).clip(1e-6, 1 - 1e-6)
+        a, b, c = theta
+        p = (c + (1 - c) * expit(a + b * logB)).clip(1e-6, 1 - 1e-6)
         return -(y * np.log(p) + (1 - y) * np.log(1 - p)).sum()
 
     best = None
     for a0 in (-2.0, 0.0, 2.0):
         for b0 in (0.1, 0.5, 2.0):
-            r = minimize(nll, [a0, b0], method="L-BFGS-B",
-                         bounds=[(-20, 20), (0, 10)])
-            if best is None or r.fun < best.fun:
-                best = r
-    return float(best.x[0]), float(best.x[1])
+            for c0 in (0.0, 0.2):
+                r = minimize(nll, [a0, b0, c0], method="L-BFGS-B",
+                             bounds=[(-20, 20), (0, 10), (0, 0.95)])
+                if best is None or r.fun < best.fun:
+                    best = r
+    return float(best.x[0]), float(best.x[1]), float(best.x[2])
 
 
-def bstar_from_fit(a: float, b: float, target: float) -> float | None:
-    """Smallest B in [0, B_MAX] with sigmoid(a + b*log(B+1)) >= target.
-    None = censored (never crosses)."""
-    if expit(a + b * math.log(B_MAX + 1)) < target:
+def bstar_from_fit(a: float, b: float, c: float, target: float) -> float | None:
+    """Smallest B in [0, B_MAX] with c + (1-c)*sigmoid(a + b*log(B+1)) >=
+    target. None = censored (never crosses)."""
+
+    def p_at(B):
+        return c + (1 - c) * expit(a + b * math.log(B + 1))
+
+    if p_at(B_MAX) < target:
         return None
-    if expit(a) >= target:
+    if p_at(0) >= target:
         return 0.0
-    x = (math.log(target / (1 - target)) - a) / b
+    q = (target - c) / (1 - c)
+    x = (math.log(q / (1 - q)) - a) / b
     return math.exp(x) - 1
 
 
@@ -122,8 +134,8 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
                   f"(n_obs={len(y)}, base_rate={base:.3f}); report it as "
                   f"unusable rather than omitting silently")
             continue
-        a_, b_ = fit_logistic(logB, y)
-        bstar = bstar_from_fit(a_, b_, target)
+        a_, b_, c_ = fit_logistic(logB, y)
+        bstar = bstar_from_fit(a_, b_, c_, target)
         # retention at B_MAX (empirical) — numerator and denominator over the
         # SAME pids, so an incomplete cell can't bias the ratio
         top = outcomes.get(B_MAX, {})
@@ -140,10 +152,10 @@ def cell_bstar(problems: dict[str, dict], outcomes: dict[int, dict[str, bool]],
                 continue
             lB, yy = collect(bs)
             try:
-                aa, bb = fit_logistic(lB, yy)
+                aa, bb, cc = fit_logistic(lB, yy)
             except Exception:
                 continue
-            v = bstar_from_fit(aa, bb, 0.9 * base_bs)
+            v = bstar_from_fit(aa, bb, cc, 0.9 * base_bs)
             boots.append(B_MAX * 4 if v is None else v)   # censored -> large
         lo = float(np.percentile(boots, 16)) if boots else None
         hi = float(np.percentile(boots, 84)) if boots else None

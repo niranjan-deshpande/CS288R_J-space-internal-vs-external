@@ -1883,3 +1883,226 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   python3 scripts/run_cell.py --tag jspace-med-B1024-bin1 --mode jspace --band 22:34 --k 10 --budget 1024 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B1024-bin1-s2.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B1024-bin1.jsonl
   then re-run this run_reuse command to refresh the backfill lists.
 [jspace-med-B1024-bin1] DONE 2 verbatim + 95 regen in 0.4m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B1024-bin1] source 93: 14 verbatim, 79 to truncate+regen at B=1024
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 139.80it/s]Loading weights:  10%|▉         | 38/398 [00:00<00:01, 194.60it/s]Loading weights:  16%|█▌        | 64/398 [00:00<00:01, 223.76it/s]Loading weights:  22%|██▏       | 87/398 [00:00<00:01, 224.65it/s]Loading weights:  28%|██▊       | 113/398 [00:00<00:01, 235.98it/s]Loading weights:  34%|███▍      | 137/398 [00:00<00:01, 223.27it/s]Loading weights:  42%|████▏     | 166/398 [00:00<00:00, 243.61it/s]Loading weights:  48%|████▊     | 191/398 [00:00<00:00, 237.62it/s]Loading weights:  54%|█████▍    | 215/398 [00:00<00:00, 235.07it/s]Loading weights:  62%|██████▏   | 245/398 [00:01<00:00, 247.09it/s]Loading weights:  68%|██████▊   | 270/398 [00:01<00:00, 239.19it/s]Loading weights:  75%|███████▍  | 297/398 [00:01<00:00, 247.97it/s]Loading weights:  81%|████████  | 323/398 [00:01<00:00, 246.36it/s]Loading weights:  88%|████████▊ | 350/398 [00:01<00:00, 252.35it/s]Loading weights:  94%|█████████▍| 376/398 [00:01<00:00, 254.19it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 241.59it/s]
+  [random-s0-B1024-bin1] 16/79 regen | 0.1m
+  [random-s0-B1024-bin1] 32/79 regen | 0.1m
+  [random-s0-B1024-bin1] 48/79 regen | 0.2m
+  [random-s0-B1024-bin1] 64/79 regen | 0.3m
+  [random-s0-B1024-bin1] 79/79 regen | 0.3m
+[random-s0-B1024-bin1] BACKFILL: 1 problems undecided at B=1024 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B1024-bin1 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 1024 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B1024-bin1-s3.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B1024-bin1.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B1024-bin1] DONE 14 verbatim + 79 regen in 0.3m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B4096-bin1] source 97: 37 verbatim, 60 to truncate+regen at B=4096
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 134.20it/s]Loading weights:  11%|█         | 42/398 [00:00<00:01, 209.06it/s]Loading weights:  17%|█▋        | 69/398 [00:00<00:01, 225.99it/s]Loading weights:  24%|██▍       | 97/398 [00:00<00:01, 244.94it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 250.23it/s]Loading weights:  38%|███▊      | 150/398 [00:00<00:01, 247.11it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 253.59it/s]Loading weights:  52%|█████▏    | 205/398 [00:00<00:00, 251.23it/s]Loading weights:  59%|█████▉    | 234/398 [00:00<00:00, 258.35it/s]Loading weights:  65%|██████▌   | 260/398 [00:01<00:00, 253.18it/s]Loading weights:  73%|███████▎  | 289/398 [00:01<00:00, 249.80it/s]Loading weights:  80%|███████▉  | 317/398 [00:01<00:00, 257.47it/s]Loading weights:  86%|████████▋ | 344/398 [00:01<00:00, 258.15it/s]Loading weights:  93%|█████████▎| 370/398 [00:01<00:00, 251.02it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 249.84it/s]
+  [jspace-med-B4096-bin1] 16/60 regen | 0.3m
+  [jspace-med-B4096-bin1] 32/60 regen | 0.5m
+  [jspace-med-B4096-bin1] 48/60 regen | 0.8m
+  [jspace-med-B4096-bin1] 60/60 regen | 1.0m
+[jspace-med-B4096-bin1] BACKFILL: 2 problems undecided at B=4096 lack sample 2; run:
+  python3 scripts/run_cell.py --tag jspace-med-B4096-bin1 --mode jspace --band 22:34 --k 10 --budget 4096 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B4096-bin1-s2.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B4096-bin1.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B4096-bin1] DONE 37 verbatim + 60 regen in 1.0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B4096-bin1] source 93: 93 verbatim, 0 to truncate+regen at B=4096
+[random-s0-B4096-bin1] staged-source: no backfill needed; cell majority outcomes complete.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B1024-bin2] source 97: 0 verbatim, 97 to truncate+regen at B=1024
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 4/398 [00:00<00:10, 37.27it/s]Loading weights:   9%|▉         | 36/398 [00:00<00:01, 188.68it/s]Loading weights:  15%|█▌        | 60/398 [00:00<00:01, 204.06it/s]Loading weights:  22%|██▏       | 86/398 [00:00<00:01, 222.93it/s]Loading weights:  28%|██▊       | 113/398 [00:00<00:01, 235.43it/s]Loading weights:  34%|███▍      | 137/398 [00:00<00:01, 231.17it/s]Loading weights:  42%|████▏     | 168/398 [00:00<00:00, 250.00it/s]Loading weights:  49%|████▊     | 194/398 [00:00<00:00, 245.77it/s]Loading weights:  56%|█████▌    | 223/398 [00:00<00:00, 250.45it/s]Loading weights:  63%|██████▎   | 249/398 [00:01<00:00, 248.04it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 253.84it/s]Loading weights:  76%|███████▋  | 304/398 [00:01<00:00, 249.40it/s]Loading weights:  84%|████████▎ | 333/398 [00:01<00:00, 255.14it/s]Loading weights:  90%|█████████ | 359/398 [00:01<00:00, 247.41it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 253.38it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 240.59it/s]
+  [jspace-med-B1024-bin2] 16/97 regen | 0.1m
+  [jspace-med-B1024-bin2] 32/97 regen | 0.2m
+  [jspace-med-B1024-bin2] 48/97 regen | 0.2m
+  [jspace-med-B1024-bin2] 64/97 regen | 0.3m
+  [jspace-med-B1024-bin2] 80/97 regen | 0.4m
+  [jspace-med-B1024-bin2] 96/97 regen | 0.4m
+  [jspace-med-B1024-bin2] 97/97 regen | 0.5m
+[jspace-med-B1024-bin2] BACKFILL: 8 problems undecided at B=1024 lack sample 2; run:
+  python3 scripts/run_cell.py --tag jspace-med-B1024-bin2 --mode jspace --band 22:34 --k 10 --budget 1024 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B1024-bin2-s2.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B1024-bin2.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B1024-bin2] DONE 0 verbatim + 97 regen in 0.5m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B1024-bin2] source 94: 2 verbatim, 92 to truncate+regen at B=1024
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 139.82it/s]Loading weights:  10%|▉         | 39/398 [00:00<00:01, 204.16it/s]Loading weights:  17%|█▋        | 69/398 [00:00<00:01, 240.80it/s]Loading weights:  23%|██▎       | 93/398 [00:00<00:01, 232.77it/s]Loading weights:  31%|███       | 122/398 [00:00<00:01, 252.53it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 239.97it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 253.94it/s]Loading weights:  52%|█████▏    | 205/398 [00:00<00:00, 250.51it/s]Loading weights:  59%|█████▉    | 234/398 [00:00<00:00, 257.19it/s]Loading weights:  65%|██████▌   | 260/398 [00:01<00:00, 252.23it/s]Loading weights:  72%|███████▏  | 288/398 [00:01<00:00, 252.75it/s]Loading weights:  79%|███████▉  | 314/398 [00:01<00:00, 249.34it/s]Loading weights:  86%|████████▋ | 344/398 [00:01<00:00, 256.96it/s]Loading weights:  93%|█████████▎| 370/398 [00:01<00:00, 249.89it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 248.67it/s]
+  [random-s0-B1024-bin2] 16/92 regen | 0.1m
+  [random-s0-B1024-bin2] 32/92 regen | 0.1m
+  [random-s0-B1024-bin2] 48/92 regen | 0.2m
+  [random-s0-B1024-bin2] 64/92 regen | 0.3m
+  [random-s0-B1024-bin2] 80/92 regen | 0.4m
+  [random-s0-B1024-bin2] 92/92 regen | 0.5m
+[random-s0-B1024-bin2] BACKFILL: 7 problems undecided at B=1024 lack sample 2; run:
+  python3 scripts/run_cell.py --tag random-s0-B1024-bin2 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 1024 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B1024-bin2-s2.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B1024-bin2.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B1024-bin2] DONE 2 verbatim + 92 regen in 0.5m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B4096-bin2] source 97: 29 verbatim, 68 to truncate+regen at B=4096
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 137.48it/s]Loading weights:  11%|█         | 42/398 [00:00<00:01, 216.72it/s]Loading weights:  18%|█▊        | 70/398 [00:00<00:01, 235.83it/s]Loading weights:  25%|██▍       | 98/398 [00:00<00:01, 252.66it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 252.11it/s]Loading weights:  38%|███▊      | 150/398 [00:00<00:01, 247.66it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 254.05it/s]Loading weights:  52%|█████▏    | 205/398 [00:00<00:00, 251.71it/s]Loading weights:  59%|█████▉    | 234/398 [00:00<00:00, 258.02it/s]Loading weights:  65%|██████▌   | 260/398 [00:01<00:00, 252.96it/s]Loading weights:  73%|███████▎  | 289/398 [00:01<00:00, 257.45it/s]Loading weights:  79%|███████▉  | 315/398 [00:01<00:00, 252.99it/s]Loading weights:  86%|████████▋ | 344/398 [00:01<00:00, 257.40it/s]Loading weights:  93%|█████████▎| 370/398 [00:01<00:00, 250.49it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 251.18it/s]
+  [jspace-med-B4096-bin2] 16/68 regen | 0.3m
+  [jspace-med-B4096-bin2] 32/68 regen | 0.6m
+  [jspace-med-B4096-bin2] 48/68 regen | 0.8m
+  [jspace-med-B4096-bin2] 64/68 regen | 1.1m
+  [jspace-med-B4096-bin2] 68/68 regen | 1.2m
+[jspace-med-B4096-bin2] BACKFILL: 1 problems undecided at B=4096 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B4096-bin2 --mode jspace --band 22:34 --k 10 --budget 4096 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B4096-bin2-s3.json --datasets gsm8k,math,aime --batch 16 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B4096-bin2.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B4096-bin2] DONE 29 verbatim + 68 regen in 1.2m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B4096-bin2] source 94: 83 verbatim, 11 to truncate+regen at B=4096
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 129.83it/s]Loading weights:  11%|█         | 44/398 [00:00<00:01, 222.08it/s]Loading weights:  18%|█▊        | 70/398 [00:00<00:01, 229.76it/s]Loading weights:  24%|██▎       | 94/398 [00:00<00:01, 231.39it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 248.03it/s]Loading weights:  37%|███▋      | 149/398 [00:00<00:01, 246.93it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 263.30it/s]Loading weights:  53%|█████▎    | 211/398 [00:00<00:00, 275.44it/s]Loading weights:  62%|██████▏   | 245/398 [00:00<00:00, 292.29it/s]Loading weights:  70%|███████   | 279/398 [00:01<00:00, 305.67it/s]Loading weights:  78%|███████▊  | 311/398 [00:01<00:00, 306.93it/s]Loading weights:  86%|████████▋ | 344/398 [00:01<00:00, 311.31it/s]Loading weights:  94%|█████████▍| 376/398 [00:01<00:00, 310.00it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 278.67it/s]
+  [random-s0-B4096-bin2] 11/11 regen | 0.2m
+[random-s0-B4096-bin2] staged-source: no backfill needed; cell majority outcomes complete.
+[random-s0-B4096-bin2] DONE 83 verbatim + 11 regen in 0.2m
+Mon Aug 31 14:00:47 UTC 2026
+=== (F2) heavy 16K, bins 0-2 subsample 25/bin ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-heavy-B16384] 75 problems x 4 samples; 0 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:13, 29.57it/s]Loading weights:   8%|▊         | 31/398 [00:00<00:02, 173.17it/s]Loading weights:  15%|█▍        | 58/398 [00:00<00:01, 211.70it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 216.76it/s]Loading weights:  28%|██▊       | 113/398 [00:00<00:01, 244.34it/s]Loading weights:  35%|███▍      | 138/398 [00:00<00:01, 236.65it/s]Loading weights:  41%|████      | 163/398 [00:00<00:00, 238.87it/s]Loading weights:  48%|████▊     | 190/398 [00:00<00:00, 246.68it/s]Loading weights:  54%|█████▍    | 215/398 [00:00<00:00, 245.30it/s]Loading weights:  61%|██████    | 243/398 [00:01<00:00, 255.25it/s]Loading weights:  68%|██████▊   | 269/398 [00:01<00:00, 241.88it/s]Loading weights:  75%|███████▌  | 300/398 [00:01<00:00, 256.19it/s]Loading weights:  82%|████████▏ | 326/398 [00:01<00:00, 254.23it/s]Loading weights:  88%|████████▊ | 352/398 [00:01<00:00, 255.81it/s]Loading weights:  95%|█████████▍| 378/398 [00:01<00:00, 252.43it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 243.10it/s]
+[jspace-heavy-B16384] staged wave A (samples [0, 1]): 150 to run, 0 skipped as determined so far
+  step 512: 123 alive, seq_len 648
+  [jspace-heavy-B16384] 7/300 done, 143 queued (bucket 0, n=123) | 5206 tok | 48 tok/s | 2m
+  step 512: 27 alive, seq_len 764
+  [jspace-heavy-B16384] 7/300 done, 143 queued (bucket 0, n=27) | 5206 tok | 29 tok/s | 3m
+  step 512: 67 alive, seq_len 1649
+  step 1024: 67 alive, seq_len 2161
+  step 1536: 66 alive, seq_len 2673
+  [jspace-heavy-B16384] 9/300 done, 141 queued (bucket 1, n=68) | 8697 tok | 22 tok/s | 7m
+  step 512: 67 alive, seq_len 1788
+  step 1024: 67 alive, seq_len 2300
+  step 1536: 64 alive, seq_len 2812
+  [jspace-heavy-B16384] 15/300 done, 135 queued (bucket 1, n=68) | 22322 tok | 35 tok/s | 11m
+  step 512: 7 alive, seq_len 1634
+  step 1024: 7 alive, seq_len 2146
+  step 1536: 7 alive, seq_len 2658
+  [jspace-heavy-B16384] 15/300 done, 135 queued (bucket 1, n=7) | 22322 tok | 30 tok/s | 12m
+  step 512: 36 alive, seq_len 3697
+  step 1024: 34 alive, seq_len 4209
+  step 1536: 34 alive, seq_len 4721
+  step 2048: 33 alive, seq_len 5233
+  step 2560: 33 alive, seq_len 5745
+  step 3072: 33 alive, seq_len 6257
+  step 3584: 33 alive, seq_len 6769
+  [jspace-heavy-B16384] 18/300 done, 132 queued (bucket 2, n=36) | 35034 tok | 30 tok/s | 20m
+  step 512: 36 alive, seq_len 3682
+  step 1024: 36 alive, seq_len 4194
+  step 1536: 36 alive, seq_len 4706
+  step 2048: 36 alive, seq_len 5218
+  step 2560: 36 alive, seq_len 5730
+  step 3072: 36 alive, seq_len 6242
+  step 3584: 36 alive, seq_len 6754
+  [jspace-heavy-B16384] 18/300 done, 132 queued (bucket 2, n=36) | 35034 tok | 22 tok/s | 27m
+  step 512: 36 alive, seq_len 3720
+  step 1024: 36 alive, seq_len 4232
+  step 1536: 36 alive, seq_len 4744
+  step 2048: 36 alive, seq_len 5256
+  step 2560: 36 alive, seq_len 5768
+  step 3072: 35 alive, seq_len 6280
+  step 3584: 35 alive, seq_len 6792
+  [jspace-heavy-B16384] 19/300 done, 131 queued (bucket 2, n=36) | 40957 tok | 20 tok/s | 35m
+  step 512: 26 alive, seq_len 3836
+  step 1024: 26 alive, seq_len 4348
+  step 1536: 25 alive, seq_len 4860
+  step 2048: 25 alive, seq_len 5372
+  step 2560: 25 alive, seq_len 5884
+  step 3072: 25 alive, seq_len 6396
+  step 3584: 25 alive, seq_len 6908
+  [jspace-heavy-B16384] 21/300 done, 129 queued (bucket 2, n=27) | 48456 tok | 20 tok/s | 41m
+  step 512: 18 alive, seq_len 7793
+  step 1024: 18 alive, seq_len 8305
+  step 1536: 18 alive, seq_len 8817
+  step 2048: 18 alive, seq_len 9329
+  step 2560: 18 alive, seq_len 9841
+  step 3072: 18 alive, seq_len 10353
+  step 3584: 18 alive, seq_len 10865
+  step 4096: 18 alive, seq_len 11377
+  step 4608: 18 alive, seq_len 11889
+  step 5120: 18 alive, seq_len 12401
+  step 5632: 18 alive, seq_len 12913
+  step 6144: 18 alive, seq_len 13425
+  step 6656: 17 alive, seq_len 13937
+  step 7168: 17 alive, seq_len 14449
+  step 7680: 17 alive, seq_len 14961
+  [jspace-heavy-B16384] 22/300 done, 128 queued (bucket 3, n=18) | 61914 tok | 18 tok/s | 56m
+  step 512: 18 alive, seq_len 7780
+  step 1024: 18 alive, seq_len 8292
+  step 1536: 18 alive, seq_len 8804
+  step 2048: 18 alive, seq_len 9316
+  step 2560: 18 alive, seq_len 9828
+  step 3072: 18 alive, seq_len 10340
+  step 3584: 18 alive, seq_len 10852
+  step 4096: 18 alive, seq_len 11364
+  step 4608: 18 alive, seq_len 11876
+  step 5120: 18 alive, seq_len 12388
+  step 5632: 18 alive, seq_len 12900
+  step 6144: 18 alive, seq_len 13412
+  step 6656: 18 alive, seq_len 13924
+  step 7168: 18 alive, seq_len 14436
+  step 7680: 18 alive, seq_len 14948
+  [jspace-heavy-B16384] 22/300 done, 128 queued (bucket 3, n=18) | 61914 tok | 14 tok/s | 71m
+  step 512: 18 alive, seq_len 7778
+  step 1024: 18 alive, seq_len 8290
+  step 1536: 18 alive, seq_len 8802
+  step 2048: 18 alive, seq_len 9314
+  step 2560: 18 alive, seq_len 9826
+  step 3072: 18 alive, seq_len 10338
+  step 3584: 18 alive, seq_len 10850
+  step 4096: 18 alive, seq_len 11362
+  step 4608: 18 alive, seq_len 11874
+  step 5120: 18 alive, seq_len 12386
+  step 5632: 18 alive, seq_len 12898
+  step 6144: 18 alive, seq_len 13410
+  step 6656: 18 alive, seq_len 13922
+  step 7168: 18 alive, seq_len 14434
+  step 7680: 18 alive, seq_len 14946
+  [jspace-heavy-B16384] 22/300 done, 128 queued (bucket 3, n=18) | 61914 tok | 12 tok/s | 86m
+  step 512: 18 alive, seq_len 7772
+  step 1024: 18 alive, seq_len 8284
+  step 1536: 18 alive, seq_len 8796
+  step 2048: 18 alive, seq_len 9308
+  step 2560: 18 alive, seq_len 9820
+  step 3072: 18 alive, seq_len 10332
+  step 3584: 18 alive, seq_len 10844
+  step 4096: 18 alive, seq_len 11356
+  step 4608: 18 alive, seq_len 11868
+  step 5120: 18 alive, seq_len 12380
+  step 5632: 18 alive, seq_len 12892
+  step 6144: 18 alive, seq_len 13404
+  step 6656: 18 alive, seq_len 13916
+  step 7168: 18 alive, seq_len 14428
+  step 7680: 18 alive, seq_len 14940
+  [jspace-heavy-B16384] 22/300 done, 128 queued (bucket 3, n=18) | 61914 tok | 10 tok/s | 101m
+  step 512: 18 alive, seq_len 7816
+  step 1024: 18 alive, seq_len 8328
+  step 1536: 18 alive, seq_len 8840
+  step 2048: 17 alive, seq_len 9352
+  step 2560: 17 alive, seq_len 9864
+  step 3072: 17 alive, seq_len 10376
+  step 3584: 17 alive, seq_len 10888
+  step 4096: 17 alive, seq_len 11400
+  step 4608: 17 alive, seq_len 11912
+  step 5120: 17 alive, seq_len 12424
+  step 5632: 17 alive, seq_len 12936
+  step 6144: 17 alive, seq_len 13448
+  step 6656: 16 alive, seq_len 13960
+  step 7168: 16 alive, seq_len 14472
+  step 7680: 16 alive, seq_len 14984
+  [jspace-heavy-B16384] 24/300 done, 126 queued (bucket 3, n=18) | 84524 tok | 12 tok/s | 117m
+  step 512: 18 alive, seq_len 7785
+  step 1024: 18 alive, seq_len 8297
+  step 1536: 18 alive, seq_len 8809
+  step 2048: 18 alive, seq_len 9321
+  step 2560: 18 alive, seq_len 9833
+  step 3072: 18 alive, seq_len 10345
+  step 3584: 18 alive, seq_len 10857
+  step 4096: 18 alive, seq_len 11369
+  step 4608: 18 alive, seq_len 11881
+  step 5120: 17 alive, seq_len 12393
+  step 5632: 17 alive, seq_len 12905
+  step 6144: 17 alive, seq_len 13417
+  step 6656: 17 alive, seq_len 13929
+  step 7168: 17 alive, seq_len 14441
+  step 7680: 17 alive, seq_len 14953
+  [jspace-heavy-B16384] 25/300 done, 125 queued (bucket 3, n=18) | 96707 tok | 12 tok/s | 132m
+  step 512: 18 alive, seq_len 7932
+  step 1024: 18 alive, seq_len 8444
