@@ -178,12 +178,15 @@ def styled_legend(ax, fs, loc):
     return leg
 
 
-def draw_censor_arrows(ax, xs, color, jitter=1.0):
+def draw_censor_arrows(ax, xs, color, jitter=1.0, compact=False):
     tr = blended_transform_factory(ax.transData, ax.transAxes)
+    y0 = 0.84 if compact else 0.90
     for x in xs:
-        ax.annotate("", xy=(x * jitter, 0.99), xytext=(x * jitter, 0.90),
+        ax.annotate("", xy=(x * jitter, 0.99), xytext=(x * jitter, y0),
                     xycoords=tr, textcoords=tr,
-                    arrowprops=dict(arrowstyle="-|>", color=color, lw=1.4),
+                    arrowprops=dict(arrowstyle="-|>", color=color,
+                                    lw=1.1 if compact else 1.4,
+                                    mutation_scale=8 if compact else 10),
                     annotation_clip=False)
 
 
@@ -200,8 +203,8 @@ def draw_fig1(ax, data, fs=8, compact=False):
     xs_ref = np.geomspace(*xlim, 50)
     ax.plot(xs_ref, xs_ref, ls=":", color=MUTED, lw=1.1, zorder=1)
     ax.text(xlim[1] * 0.52, xlim[1] * 0.36, "y = x (base usage)",
-            fontsize=fs - 1.5, color=MUTED, rotation=30, ha="center", va="top",
-            rotation_mode="anchor")
+            fontsize=fs - 1.5, color=MUTED, rotation=20 if compact else 30,
+            ha="center", va="top", rotation_mode="anchor")
     ax.axhline(B_MAX, color="#CFC8B6", lw=0.8)
     ax.text(xlim[1] * 0.92, B_MAX * 1.18, "budget cap", fontsize=fs - 2,
             color=MUTED, ha="right", va="bottom")
@@ -224,7 +227,8 @@ def draw_fig1(ax, data, fs=8, compact=False):
                 ms=4.2 if compact else 5, color=st["color"], zorder=3,
                 label=label, markerfacecolor=st["mfc"], markeredgewidth=1.2)
         draw_censor_arrows(ax, [res[b]["median_difficulty"] for b in bs
-                                if res[b]["censored"]], st["color"], jitter)
+                                if res[b]["censored"]], st["color"], jitter,
+                           compact=compact)
 
     for i, (name, _) in enumerate(LEVEL_TAGS):
         if name in series:
@@ -237,12 +241,12 @@ def draw_fig1(ax, data, fs=8, compact=False):
         plot_bstar(base_res, STYLE["base"], jitter=1.09 ** -2, band=True,
                    lw=1.4, label=STYLE["base"]["label"])
 
-    ax.set_ylabel("B*: budget for 90% of base rate (log)", fontsize=fs)
-    ax.set_title("B* rises faster than base usage;\ncensored ($\\uparrow$) = "
-                 "no recovery within cap" if compact else
+    ax.set_ylabel("B* for 90% of base (log)" if compact else
+                  "B*: budget for 90% of base rate (log)", fontsize=fs)
+    ax.set_title("B* rises faster than base usage" if compact else
                  "External budget needed to recover base performance rises "
                  "with difficulty", fontsize=fs + 1, color=INK, loc="left",
-                 pad=8)
+                 pad=3 if compact else 8)
     # monospace inset: medium B* as a multiple of base B* (prediction 1)
     if "medium" in series and base_res:
         lines = ["med. B*/base B*"]
@@ -271,8 +275,9 @@ def draw_fig2(ax, data, problems, edges, fs=8, compact=False):
     ax.set_ylim(0, 1.16)
     ax.axhline(1.0, color="#CFC8B6", lw=0.9)
     ax.axhline(0.9, color=MUTED, lw=0.9, ls=(0, (4, 3)))
-    ax.text(xlim[0] * 1.08, 0.905, "recovery threshold (0.9)",
-            fontsize=fs - 2, color=MUTED, va="bottom")
+    ax.text(xlim[0] * 1.08, 0.875 if compact else 0.905,
+            "recovery threshold (0.9)", fontsize=fs - 2, color=MUTED,
+            va="top" if compact else "bottom")
 
     def plot_ret(res, oc, st, lw=1.6, label=None):
         bs = [b for b in sorted(res) if res[b]["retention_at_bmax"] is not None]
@@ -310,7 +315,8 @@ def draw_fig2(ax, data, problems, edges, fs=8, compact=False):
     ax.set_ylabel("retention at B = 16384", fontsize=fs)
     ax.set_title("Asymptotic retention falls with difficulty" if compact else
                  "Asymptotic retention (B = 16384) falls with difficulty",
-                 fontsize=fs + 1, color=INK, loc="left", pad=8)
+                 fontsize=fs + 1, color=INK, loc="left",
+                 pad=3 if compact else 8)
     styled_legend(ax, fs - 1.5, "lower left")
     style_axes(ax, fs)
 
@@ -399,15 +405,17 @@ def main():
     plt.close(fig)
 
     # --------------------------------- combined compact (2-page report) fig
-    fig = plt.figure(figsize=(7.05, 3.0))
-    gs = fig.add_gridspec(2, 2, height_ratios=[5.2, 0.9], hspace=0.1,
-                          wspace=0.24)
+    # designed at ~report text width so \includegraphics[width=\textwidth]
+    # renders fonts at true size; wide aspect keeps the rendered height low
+    fig = plt.figure(figsize=(6.4, 1.8))
+    gs = fig.add_gridspec(2, 2, height_ratios=[5.0, 1.0], hspace=0.06,
+                          wspace=0.22)
     ax1 = fig.add_subplot(gs[0, 0])
     st1 = fig.add_subplot(gs[1, 0], sharex=ax1)
     ax2 = fig.add_subplot(gs[0, 1])
     st2 = fig.add_subplot(gs[1, 1], sharex=ax2)
-    draw_fig1(ax1, data, fs=6.4, compact=True)
-    draw_fig2(ax2, data, problems, edges, fs=6.4, compact=True)
+    draw_fig1(ax1, data, fs=6.2, compact=True)
+    draw_fig2(ax2, data, problems, edges, fs=6.2, compact=True)
     for a in (ax1, ax2):
         plt.setp(a.get_xticklabels(), visible=False)
     inclusion_strip(st1, design, edges, xlim, tiny=True)
