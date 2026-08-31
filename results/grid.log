@@ -404,3 +404,1242 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   step 4608: 14 alive, seq_len 11958
   step 5120: 13 alive, seq_len 12470
   step 5632: 13 alive, seq_len 12982
+  step 6144: 13 alive, seq_len 13494
+  step 6656: 12 alive, seq_len 14006
+  step 7168: 12 alive, seq_len 14518
+  step 7680: 12 alive, seq_len 15030
+  [jspace-med-B16384] 137/836 done, 281 queued (bucket 3, n=18) | 540527 tok | 45 tok/s | 198m
+  step 512: 18 alive, seq_len 7942
+  step 1024: 18 alive, seq_len 8454
+  step 1536: 17 alive, seq_len 8966
+  step 2048: 17 alive, seq_len 9478
+  step 2560: 17 alive, seq_len 9990
+  step 3072: 16 alive, seq_len 10502
+  step 3584: 16 alive, seq_len 11014
+  step 4096: 16 alive, seq_len 11526
+  step 4608: 15 alive, seq_len 12038
+  step 5120: 15 alive, seq_len 12550
+  step 5632: 15 alive, seq_len 13062
+  step 6144: 15 alive, seq_len 13574
+  step 6656: 15 alive, seq_len 14086
+  step 7168: 15 alive, seq_len 14598
+  step 7680: 14 alive, seq_len 15110
+  [jspace-med-B16384] 141/836 done, 277 queued (bucket 3, n=18) | 584533 tok | 46 tok/s | 210m
+  step 512: 18 alive, seq_len 7906
+  step 1024: 18 alive, seq_len 8418
+  step 1536: 18 alive, seq_len 8930
+  step 2048: 17 alive, seq_len 9442
+  step 2560: 17 alive, seq_len 9954
+  step 3072: 16 alive, seq_len 10466
+  step 3584: 16 alive, seq_len 10978
+  step 4096: 16 alive, seq_len 11490
+  step 4608: 16 alive, seq_len 12002
+  step 5120: 16 alive, seq_len 12514
+  step 5632: 16 alive, seq_len 13026
+  step 6144: 16 alive, seq_len 13538
+  step 6656: 16 alive, seq_len 14050
+  step 7168: 16 alive, seq_len 14562
+  step 7680: 16 alive, seq_len 15074
+  [jspace-med-B16384] 143/836 done, 275 queued (bucket 3, n=18) | 603419 tok | 45 tok/s | 221m
+  step 512: 17 alive, seq_len 7896
+  step 1024: 16 alive, seq_len 8408
+  step 1536: 16 alive, seq_len 8920
+  step 2048: 15 alive, seq_len 9432
+  step 2560: 15 alive, seq_len 9944
+  step 3072: 15 alive, seq_len 10456
+  step 3584: 15 alive, seq_len 10968
+  step 4096: 15 alive, seq_len 11480
+  step 4608: 15 alive, seq_len 11992
+  step 5120: 15 alive, seq_len 12504
+  step 5632: 15 alive, seq_len 13016
+  step 6144: 15 alive, seq_len 13528
+  step 6656: 13 alive, seq_len 14040
+  step 7168: 13 alive, seq_len 14552
+  step 7680: 13 alive, seq_len 15064
+  [jspace-med-B16384] 148/836 done, 270 queued (bucket 3, n=18) | 655044 tok | 47 tok/s | 232m
+  step 512: 18 alive, seq_len 7937
+  step 1024: 17 alive, seq_len 8449
+  step 1536: 16 alive, seq_len 8961
+  step 2048: 15 alive, seq_len 9473
+  step 2560: 15 alive, seq_len 9985
+  step 3072: 15 alive, seq_len 10497
+  step 3584: 14 alive, seq_len 11009
+  step 4096: 14 alive, seq_len 11521
+  step 4608: 14 alive, seq_len 12033
+  step 5120: 14 alive, seq_len 12545
+  step 5632: 14 alive, seq_len 13057
+  step 6144: 13 alive, seq_len 13569
+  step 6656: 13 alive, seq_len 14081
+  step 7168: 13 alive, seq_len 14593
+  step 7680: 12 alive, seq_len 15105
+  [jspace-med-B16384] 154/836 done, 264 queued (bucket 3, n=18) | 718711 tok | 49 tok/s | 243m
+  step 512: 18 alive, seq_len 7857
+  step 1024: 16 alive, seq_len 8369
+  step 1536: 14 alive, seq_len 8881
+  step 2048: 14 alive, seq_len 9393
+  step 2560: 14 alive, seq_len 9905
+  step 3072: 14 alive, seq_len 10417
+  step 3584: 13 alive, seq_len 10929
+  step 4096: 12 alive, seq_len 11441
+  step 4608: 12 alive, seq_len 11953
+  step 5120: 12 alive, seq_len 12465
+  step 5632: 12 alive, seq_len 12977
+  step 6144: 12 alive, seq_len 13489
+  step 6656: 12 alive, seq_len 14001
+  step 7168: 12 alive, seq_len 14513
+  step 7680: 12 alive, seq_len 15025
+  [jspace-med-B16384] 160/836 done, 258 queued (bucket 3, n=18) | 773336 tok | 51 tok/s | 253m
+  step 512: 16 alive, seq_len 7902
+  step 1024: 15 alive, seq_len 8414
+  step 1536: 15 alive, seq_len 8926
+  step 2048: 15 alive, seq_len 9438
+  step 2560: 15 alive, seq_len 9950
+  step 3072: 15 alive, seq_len 10462
+  step 3584: 14 alive, seq_len 10974
+  step 4096: 12 alive, seq_len 11486
+  step 4608: 12 alive, seq_len 11998
+  step 5120: 11 alive, seq_len 12510
+  step 5632: 11 alive, seq_len 13022
+  step 6144: 10 alive, seq_len 13534
+  step 6656: 10 alive, seq_len 14046
+  step 7168: 10 alive, seq_len 14558
+  step 7680: 10 alive, seq_len 15070
+  [jspace-med-B16384] 168/836 done, 250 queued (bucket 3, n=18) | 853570 tok | 54 tok/s | 264m
+  step 512: 9 alive, seq_len 15988
+  step 1024: 9 alive, seq_len 16500
+  [jspace-med-B16384] 177/836 done, 241 queued (bucket 4, n=9) | 1001051 tok | 63 tok/s | 266m
+  step 512: 9 alive, seq_len 15985
+  step 1024: 9 alive, seq_len 16497
+  [jspace-med-B16384] 186/836 done, 232 queued (bucket 4, n=9) | 1148547 tok | 71 tok/s | 268m
+  step 512: 9 alive, seq_len 15974
+  step 1024: 9 alive, seq_len 16486
+  [jspace-med-B16384] 195/836 done, 223 queued (bucket 4, n=9) | 1296034 tok | 80 tok/s | 270m
+  step 512: 9 alive, seq_len 16005
+  step 1024: 9 alive, seq_len 16517
+  [jspace-med-B16384] 204/836 done, 214 queued (bucket 4, n=9) | 1443515 tok | 88 tok/s | 272m
+  step 512: 9 alive, seq_len 15972
+  step 1024: 9 alive, seq_len 16484
+  [jspace-med-B16384] 213/836 done, 205 queued (bucket 4, n=9) | 1590999 tok | 97 tok/s | 275m
+  step 512: 9 alive, seq_len 15984
+  step 1024: 9 alive, seq_len 16496
+  [jspace-med-B16384] 222/836 done, 196 queued (bucket 4, n=9) | 1738490 tok | 105 tok/s | 277m
+  step 512: 9 alive, seq_len 15995
+  step 1024: 9 alive, seq_len 16507
+  [jspace-med-B16384] 231/836 done, 187 queued (bucket 4, n=9) | 1885973 tok | 113 tok/s | 279m
+  step 512: 9 alive, seq_len 15970
+  step 1024: 9 alive, seq_len 16482
+  [jspace-med-B16384] 240/836 done, 178 queued (bucket 4, n=9) | 2033460 tok | 121 tok/s | 281m
+  step 512: 9 alive, seq_len 16047
+  step 1024: 9 alive, seq_len 16559
+  [jspace-med-B16384] 249/836 done, 169 queued (bucket 4, n=9) | 2180948 tok | 128 tok/s | 283m
+  step 512: 9 alive, seq_len 15974
+  step 1024: 9 alive, seq_len 16486
+  [jspace-med-B16384] 258/836 done, 160 queued (bucket 4, n=9) | 2328464 tok | 136 tok/s | 286m
+  step 512: 9 alive, seq_len 15974
+  step 1024: 9 alive, seq_len 16486
+  [jspace-med-B16384] 267/836 done, 151 queued (bucket 4, n=9) | 2475946 tok | 143 tok/s | 288m
+  step 512: 9 alive, seq_len 16008
+  step 1024: 9 alive, seq_len 16520
+  [jspace-med-B16384] 276/836 done, 142 queued (bucket 4, n=9) | 2623449 tok | 151 tok/s | 290m
+  step 512: 9 alive, seq_len 16003
+  step 1024: 9 alive, seq_len 16515
+  [jspace-med-B16384] 285/836 done, 133 queued (bucket 4, n=9) | 2770931 tok | 158 tok/s | 292m
+  step 512: 9 alive, seq_len 16143
+  step 1024: 9 alive, seq_len 16655
+  [jspace-med-B16384] 294/836 done, 124 queued (bucket 4, n=9) | 2918433 tok | 165 tok/s | 294m
+  step 512: 9 alive, seq_len 16098
+  step 1024: 9 alive, seq_len 16610
+  [jspace-med-B16384] 303/836 done, 115 queued (bucket 4, n=9) | 3065953 tok | 172 tok/s | 297m
+  step 512: 9 alive, seq_len 15977
+  step 1024: 9 alive, seq_len 16489
+  [jspace-med-B16384] 312/836 done, 106 queued (bucket 4, n=9) | 3213438 tok | 179 tok/s | 299m
+  step 512: 9 alive, seq_len 16119
+  step 1024: 9 alive, seq_len 16631
+  [jspace-med-B16384] 321/836 done, 97 queued (bucket 4, n=9) | 3360918 tok | 186 tok/s | 301m
+  step 512: 9 alive, seq_len 15963
+  step 1024: 9 alive, seq_len 16475
+  [jspace-med-B16384] 330/836 done, 88 queued (bucket 4, n=9) | 3508426 tok | 193 tok/s | 303m
+  step 512: 9 alive, seq_len 16013
+  step 1024: 9 alive, seq_len 16525
+  [jspace-med-B16384] 339/836 done, 79 queued (bucket 4, n=9) | 3655942 tok | 200 tok/s | 305m
+  step 512: 9 alive, seq_len 16013
+  step 1024: 9 alive, seq_len 16525
+  [jspace-med-B16384] 348/836 done, 70 queued (bucket 4, n=9) | 3803423 tok | 206 tok/s | 307m
+  step 512: 9 alive, seq_len 16134
+  step 1024: 9 alive, seq_len 16646
+  [jspace-med-B16384] 357/836 done, 61 queued (bucket 4, n=9) | 3950908 tok | 213 tok/s | 310m
+  step 512: 9 alive, seq_len 15970
+  step 1024: 9 alive, seq_len 16482
+  [jspace-med-B16384] 366/836 done, 52 queued (bucket 4, n=9) | 4098405 tok | 219 tok/s | 312m
+  step 512: 9 alive, seq_len 16098
+  step 1024: 9 alive, seq_len 16610
+  [jspace-med-B16384] 375/836 done, 43 queued (bucket 4, n=9) | 4245897 tok | 225 tok/s | 314m
+  step 512: 9 alive, seq_len 16004
+  step 1024: 9 alive, seq_len 16516
+  [jspace-med-B16384] 384/836 done, 34 queued (bucket 4, n=9) | 4393393 tok | 232 tok/s | 316m
+  step 512: 9 alive, seq_len 16003
+  step 1024: 9 alive, seq_len 16515
+  [jspace-med-B16384] 393/836 done, 25 queued (bucket 4, n=9) | 4540927 tok | 238 tok/s | 318m
+  step 512: 9 alive, seq_len 16049
+  step 1024: 8 alive, seq_len 16561
+  [jspace-med-B16384] 402/836 done, 16 queued (bucket 4, n=9) | 4688266 tok | 244 tok/s | 321m
+  step 512: 9 alive, seq_len 16022
+  step 1024: 9 alive, seq_len 16534
+  [jspace-med-B16384] 411/836 done, 7 queued (bucket 4, n=9) | 4835778 tok | 250 tok/s | 323m
+  step 512: 6 alive, seq_len 16094
+  step 1024: 6 alive, seq_len 16606
+  [jspace-med-B16384] 418/836 done, 0 queued (bucket 4, n=7) | 4949723 tok | 254 tok/s | 325m
+[jspace-med-B16384] staged wave B (samples [2]): 40 to run, 169 skipped as determined so far
+  step 512: 40 alive, seq_len 783
+  [jspace-med-B16384] 418/836 done, 40 queued (bucket 0, n=40) | 4949723 tok | 253 tok/s | 326m
+  step 512: 39 alive, seq_len 1807
+  step 1024: 39 alive, seq_len 2319
+  step 1536: 36 alive, seq_len 2831
+  [jspace-med-B16384] 422/836 done, 36 queued (bucket 1, n=40) | 4957909 tok | 252 tok/s | 328m
+  step 512: 36 alive, seq_len 3855
+  step 1024: 36 alive, seq_len 4367
+  step 1536: 36 alive, seq_len 4879
+  step 2048: 35 alive, seq_len 5391
+  step 2560: 34 alive, seq_len 5903
+  step 3072: 33 alive, seq_len 6415
+  step 3584: 32 alive, seq_len 6927
+  [jspace-med-B16384] 426/836 done, 32 queued (bucket 2, n=36) | 4980999 tok | 249 tok/s | 333m
+  step 512: 18 alive, seq_len 7951
+  step 1024: 18 alive, seq_len 8463
+  step 1536: 18 alive, seq_len 8975
+  step 2048: 18 alive, seq_len 9487
+  step 2560: 18 alive, seq_len 9999
+  step 3072: 17 alive, seq_len 10511
+  step 3584: 17 alive, seq_len 11023
+  step 4096: 17 alive, seq_len 11535
+  step 4608: 17 alive, seq_len 12047
+  step 5120: 17 alive, seq_len 12559
+  step 5632: 17 alive, seq_len 13071
+  step 6144: 16 alive, seq_len 13583
+  step 6656: 16 alive, seq_len 14095
+  step 7168: 16 alive, seq_len 14607
+  step 7680: 16 alive, seq_len 15119
+  [jspace-med-B16384] 429/836 done, 29 queued (bucket 3, n=18) | 5019180 tok | 243 tok/s | 345m
+  step 512: 14 alive, seq_len 7937
+  step 1024: 14 alive, seq_len 8449
+  step 1536: 14 alive, seq_len 8961
+  step 2048: 14 alive, seq_len 9473
+  step 2560: 14 alive, seq_len 9985
+  step 3072: 14 alive, seq_len 10497
+  step 3584: 13 alive, seq_len 11009
+  step 4096: 13 alive, seq_len 11521
+  step 4608: 12 alive, seq_len 12033
+  step 5120: 12 alive, seq_len 12545
+  step 5632: 12 alive, seq_len 13057
+  step 6144: 12 alive, seq_len 13569
+  step 6656: 12 alive, seq_len 14081
+  step 7168: 12 alive, seq_len 14593
+  step 7680: 12 alive, seq_len 15105
+  [jspace-med-B16384] 431/836 done, 27 queued (bucket 3, n=14) | 5041218 tok | 236 tok/s | 356m
+  step 512: 9 alive, seq_len 16047
+  step 1024: 9 alive, seq_len 16559
+  [jspace-med-B16384] 440/836 done, 18 queued (bucket 4, n=9) | 5188744 tok | 242 tok/s | 358m
+  step 512: 9 alive, seq_len 16050
+  step 1024: 9 alive, seq_len 16562
+  [jspace-med-B16384] 449/836 done, 9 queued (bucket 4, n=9) | 5336235 tok | 247 tok/s | 360m
+  step 512: 9 alive, seq_len 16129
+  step 1024: 8 alive, seq_len 16641
+  [jspace-med-B16384] 458/836 done, 0 queued (bucket 4, n=9) | 5483478 tok | 252 tok/s | 362m
+[jspace-med-B16384] staged wave C (samples [3]): 11 to run, 367 skipped as determined so far
+  step 512: 11 alive, seq_len 769
+  [jspace-med-B16384] 458/836 done, 11 queued (bucket 0, n=11) | 5483478 tok | 252 tok/s | 363m
+  step 512: 11 alive, seq_len 1793
+  step 1024: 11 alive, seq_len 2305
+  step 1536: 11 alive, seq_len 2817
+  [jspace-med-B16384] 459/836 done, 10 queued (bucket 1, n=11) | 5486451 tok | 251 tok/s | 364m
+  step 512: 10 alive, seq_len 3841
+  step 1024: 10 alive, seq_len 4353
+  step 1536: 10 alive, seq_len 4865
+  step 2048: 10 alive, seq_len 5377
+  step 2560: 10 alive, seq_len 5889
+  step 3072: 10 alive, seq_len 6401
+  step 3584: 10 alive, seq_len 6913
+  [jspace-med-B16384] 460/836 done, 9 queued (bucket 2, n=10) | 5493561 tok | 249 tok/s | 368m
+  step 512: 9 alive, seq_len 7858
+  step 1024: 7 alive, seq_len 8370
+  step 1536: 7 alive, seq_len 8882
+  step 2048: 7 alive, seq_len 9394
+  step 2560: 7 alive, seq_len 9906
+  step 3072: 7 alive, seq_len 10418
+  step 3584: 7 alive, seq_len 10930
+  step 4096: 7 alive, seq_len 11442
+  step 4608: 7 alive, seq_len 11954
+  step 5120: 7 alive, seq_len 12466
+  step 5632: 7 alive, seq_len 12978
+  step 6144: 7 alive, seq_len 13490
+  step 6656: 7 alive, seq_len 14002
+  step 7168: 7 alive, seq_len 14514
+  step 7680: 7 alive, seq_len 15026
+  [jspace-med-B16384] 462/836 done, 7 queued (bucket 3, n=9) | 5509608 tok | 244 tok/s | 377m
+  step 512: 7 alive, seq_len 16050
+  step 1024: 7 alive, seq_len 16562
+  [jspace-med-B16384] 469/836 done, 0 queued (bucket 4, n=7) | 5624337 tok | 248 tok/s | 379m
+  removal_frac mean: 0.0472
+[jspace-med-B16384] DONE 469 records in 379m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] source 469: 45 verbatim, 424 to truncate+regen at B=2048
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<09:10,  1.39s/it]Loading weights:   1%|          | 3/398 [00:01<02:40,  2.47it/s]Loading weights:   1%|          | 4/398 [00:01<02:01,  3.23it/s]Loading weights:   3%|▎         | 12/398 [00:01<00:28, 13.68it/s]Loading weights:   4%|▍         | 16/398 [00:01<00:25, 15.24it/s]Loading weights:   6%|▌         | 24/398 [00:02<00:19, 19.62it/s]Loading weights:   7%|▋         | 27/398 [00:02<00:19, 19.12it/s]Loading weights:   8%|▊         | 33/398 [00:02<00:14, 25.63it/s]Loading weights:  10%|▉         | 38/398 [00:02<00:12, 27.98it/s]Loading weights:  11%|█         | 44/398 [00:02<00:10, 33.95it/s]Loading weights:  12%|█▏        | 49/398 [00:02<00:11, 31.33it/s]Loading weights:  14%|█▍        | 57/398 [00:03<00:08, 40.39it/s]Loading weights:  16%|█▌        | 62/398 [00:03<00:09, 34.07it/s]Loading weights:  17%|█▋        | 67/398 [00:03<00:11, 27.97it/s]Loading weights:  18%|█▊        | 71/398 [00:03<00:16, 19.62it/s]Loading weights:  20%|█▉        | 79/398 [00:04<00:11, 28.09it/s]Loading weights:  21%|██        | 84/398 [00:04<00:11, 27.92it/s]Loading weights:  22%|██▏       | 88/398 [00:04<00:12, 24.18it/s]Loading weights:  23%|██▎       | 92/398 [00:04<00:14, 20.49it/s]Loading weights:  24%|██▍       | 95/398 [00:04<00:15, 19.73it/s]Loading weights:  26%|██▌       | 103/398 [00:05<00:15, 18.72it/s]Loading weights:  28%|██▊       | 113/398 [00:05<00:11, 25.11it/s]Loading weights:  29%|██▉       | 116/398 [00:05<00:11, 23.63it/s]Loading weights:  31%|███       | 124/398 [00:05<00:09, 30.22it/s]Loading weights:  32%|███▏      | 128/398 [00:06<00:09, 27.28it/s]Loading weights:  34%|███▍      | 135/398 [00:06<00:08, 32.03it/s]Loading weights:  35%|███▍      | 139/398 [00:06<00:08, 29.64it/s]Loading weights:  37%|███▋      | 146/398 [00:06<00:07, 33.95it/s]Loading weights:  38%|███▊      | 150/398 [00:06<00:07, 31.07it/s]Loading weights:  39%|███▉      | 157/398 [00:06<00:06, 35.58it/s]Loading weights:  40%|████      | 161/398 [00:07<00:07, 31.95it/s]Loading weights:  42%|████▏     | 168/398 [00:07<00:08, 28.50it/s]Loading weights:  43%|████▎     | 172/398 [00:07<00:07, 30.01it/s]Loading weights:  45%|████▍     | 179/398 [00:07<00:07, 30.52it/s]Loading weights:  46%|████▌     | 183/398 [00:07<00:07, 30.07it/s]Loading weights:  47%|████▋     | 187/398 [00:08<00:08, 25.62it/s]Loading weights:  48%|████▊     | 190/398 [00:08<00:09, 22.15it/s]Loading weights:  48%|████▊     | 193/398 [00:08<00:08, 23.16it/s]Loading weights:  50%|████▉     | 198/398 [00:08<00:08, 24.75it/s]Loading weights:  51%|█████     | 201/398 [00:08<00:08, 23.72it/s]Loading weights:  51%|█████▏    | 204/398 [00:08<00:08, 24.10it/s]Loading weights:  53%|█████▎    | 209/398 [00:09<00:07, 24.62it/s]Loading weights:  53%|█████▎    | 212/398 [00:09<00:07, 23.67it/s]Loading weights:  54%|█████▍    | 215/398 [00:09<00:09, 18.96it/s]Loading weights:  56%|█████▌    | 223/398 [00:09<00:07, 22.64it/s]Loading weights:  57%|█████▋    | 226/398 [00:09<00:07, 21.65it/s]Loading weights:  59%|█████▊    | 233/398 [00:10<00:07, 23.08it/s]Loading weights:  59%|█████▉    | 236/398 [00:10<00:07, 23.01it/s]Loading weights:  61%|██████    | 241/398 [00:10<00:05, 26.66it/s]Loading weights:  62%|██████▏   | 245/398 [00:10<00:06, 22.51it/s]Loading weights:  62%|██████▏   | 248/398 [00:10<00:06, 22.76it/s]Loading weights:  64%|██████▎   | 253/398 [00:10<00:05, 24.58it/s]Loading weights:  64%|██████▍   | 256/398 [00:11<00:06, 22.46it/s]Loading weights:  65%|██████▌   | 259/398 [00:11<00:06, 22.58it/s]Loading weights:  66%|██████▌   | 262/398 [00:11<00:07, 17.43it/s]Loading weights:  67%|██████▋   | 267/398 [00:11<00:06, 20.82it/s]Loading weights:  68%|██████▊   | 270/398 [00:11<00:07, 17.95it/s]Loading weights:  69%|██████▊   | 273/398 [00:12<00:06, 18.83it/s]Loading weights:  69%|██████▉   | 276/398 [00:12<00:06, 18.03it/s]Loading weights:  70%|██████▉   | 278/398 [00:12<00:07, 15.61it/s]Loading weights:  70%|███████   | 280/398 [00:12<00:07, 15.87it/s]Loading weights:  71%|███████▏  | 284/398 [00:12<00:05, 20.16it/s]Loading weights:  72%|███████▏  | 287/398 [00:12<00:06, 17.01it/s]Loading weights:  73%|███████▎  | 289/398 [00:13<00:07, 14.85it/s]Loading weights:  73%|███████▎  | 291/398 [00:13<00:06, 15.43it/s]Loading weights:  74%|███████▍  | 296/398 [00:13<00:05, 17.11it/s]Loading weights:  75%|███████▌  | 300/398 [00:13<00:05, 16.96it/s]Loading weights:  76%|███████▌  | 302/398 [00:13<00:05, 17.21it/s]Loading weights:  77%|███████▋  | 307/398 [00:13<00:03, 22.78it/s]Loading weights:  78%|███████▊  | 311/398 [00:14<00:04, 18.89it/s]Loading weights:  79%|███████▉  | 314/398 [00:14<00:05, 16.72it/s]Loading weights:  80%|███████▉  | 318/398 [00:14<00:03, 20.19it/s]Loading weights:  81%|████████  | 322/398 [00:14<00:04, 18.70it/s]Loading weights:  82%|████████▏ | 325/398 [00:15<00:04, 16.79it/s]Loading weights:  83%|████████▎ | 329/398 [00:15<00:03, 19.67it/s]Loading weights:  84%|████████▎ | 333/398 [00:15<00:03, 17.86it/s]Loading weights:  84%|████████▍ | 336/398 [00:15<00:03, 16.76it/s]Loading weights:  87%|████████▋ | 345/398 [00:15<00:01, 26.86it/s]Loading weights:  88%|████████▊ | 351/398 [00:16<00:01, 25.77it/s]Loading weights:  89%|████████▉ | 355/398 [00:16<00:01, 25.99it/s]Loading weights:  90%|████████▉ | 358/398 [00:16<00:01, 20.70it/s]Loading weights:  91%|█████████ | 361/398 [00:16<00:01, 19.35it/s]Loading weights:  91%|█████████▏| 364/398 [00:16<00:02, 15.56it/s]Loading weights:  92%|█████████▏| 366/398 [00:17<00:02, 13.96it/s]Loading weights:  92%|█████████▏| 368/398 [00:17<00:02, 14.80it/s]Loading weights:  94%|█████████▍| 374/398 [00:17<00:01, 21.29it/s]Loading weights:  95%|█████████▍| 377/398 [00:17<00:01, 19.50it/s]Loading weights:  95%|█████████▌| 380/398 [00:17<00:00, 20.82it/s]Loading weights:  96%|█████████▌| 383/398 [00:17<00:00, 17.61it/s]Loading weights:  97%|█████████▋| 388/398 [00:18<00:00, 17.86it/s]Loading weights:  98%|█████████▊| 390/398 [00:18<00:00, 15.56it/s]Loading weights:  99%|█████████▉| 394/398 [00:18<00:00, 16.33it/s]Loading weights: 100%|██████████| 398/398 [00:18<00:00, 21.29it/s]
+  [jspace-med-B2048] 48/424 regen | 0.4m
+  [jspace-med-B2048] 95/424 regen | 0.8m
+  [jspace-med-B2048] 142/424 regen | 1.2m
+  [jspace-med-B2048] 190/424 regen | 1.6m
+  [jspace-med-B2048] 237/424 regen | 2.0m
+  [jspace-med-B2048] 285/424 regen | 2.4m
+  [jspace-med-B2048] 333/424 regen | 2.8m
+  [jspace-med-B2048] 381/424 regen | 3.2m
+  [jspace-med-B2048] 421/424 regen | 3.5m
+  [jspace-med-B2048] 424/424 regen | 3.5m
+[jspace-med-B2048] BACKFILL: 33 problems undecided at B=2048 lack sample 2; run:
+  python3 scripts/run_cell.py --tag jspace-med-B2048 --mode jspace --band 22:34 --k 10 --budget 2048 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B2048-s2.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B2048] BACKFILL: 3 problems undecided at B=2048 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B2048 --mode jspace --band 22:34 --k 10 --budget 2048 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B2048-s3.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B2048] DONE 45 verbatim + 424 regen in 3.5m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] 33 problems x 1 samples; 469 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<07:20,  1.11s/it]Loading weights:   1%|          | 4/398 [00:01<01:44,  3.76it/s]Loading weights:   3%|▎         | 12/398 [00:01<00:29, 13.18it/s]Loading weights:   4%|▍         | 16/398 [00:01<00:27, 14.05it/s]Loading weights:   6%|▋         | 25/398 [00:01<00:19, 19.50it/s]Loading weights:   7%|▋         | 28/398 [00:02<00:18, 19.69it/s]Loading weights:   9%|▉         | 36/398 [00:02<00:15, 23.71it/s]Loading weights:  10%|▉         | 39/398 [00:02<00:15, 23.47it/s]Loading weights:  12%|█▏        | 46/398 [00:02<00:11, 31.25it/s]Loading weights:  13%|█▎        | 50/398 [00:02<00:12, 28.46it/s]Loading weights:  14%|█▍        | 55/398 [00:02<00:11, 29.15it/s]Loading weights:  15%|█▍        | 59/398 [00:03<00:14, 23.16it/s]Loading weights:  17%|█▋        | 69/398 [00:03<00:10, 31.34it/s]Loading weights:  18%|█▊        | 73/398 [00:03<00:10, 30.09it/s]Loading weights:  20%|██        | 80/398 [00:03<00:08, 36.10it/s]Loading weights:  21%|██        | 84/398 [00:03<00:09, 33.69it/s]Loading weights:  22%|██▏       | 88/398 [00:04<00:10, 30.14it/s]Loading weights:  23%|██▎       | 92/398 [00:04<00:13, 22.20it/s]Loading weights:  25%|██▍       | 99/398 [00:04<00:10, 28.35it/s]Loading weights:  26%|██▌       | 104/398 [00:04<00:10, 27.12it/s]Loading weights:  28%|██▊       | 113/398 [00:04<00:09, 31.66it/s]Loading weights:  29%|██▉       | 117/398 [00:05<00:09, 29.67it/s]Loading weights:  31%|███       | 124/398 [00:05<00:10, 27.29it/s]Loading weights:  33%|███▎      | 130/398 [00:05<00:09, 28.52it/s]Loading weights:  33%|███▎      | 133/398 [00:05<00:09, 26.85it/s]Loading weights:  34%|███▍      | 136/398 [00:05<00:12, 20.50it/s]Loading weights:  36%|███▌      | 144/398 [00:06<00:08, 29.39it/s]Loading weights:  37%|███▋      | 148/398 [00:06<00:10, 24.54it/s]Loading weights:  39%|███▉      | 157/398 [00:06<00:07, 33.17it/s]Loading weights:  40%|████      | 161/398 [00:06<00:07, 31.18it/s]Loading weights:  42%|████▏     | 168/398 [00:06<00:07, 30.77it/s]Loading weights:  43%|████▎     | 172/398 [00:07<00:07, 29.54it/s]Loading weights:  45%|████▍     | 179/398 [00:07<00:07, 28.63it/s]Loading weights:  46%|████▌     | 183/398 [00:07<00:07, 27.09it/s]Loading weights:  48%|████▊     | 190/398 [00:07<00:06, 31.08it/s]Loading weights:  49%|████▊     | 194/398 [00:07<00:06, 29.37it/s]Loading weights:  51%|█████     | 201/398 [00:07<00:05, 33.46it/s]Loading weights:  52%|█████▏    | 205/398 [00:08<00:06, 30.43it/s]Loading weights:  53%|█████▎    | 212/398 [00:08<00:05, 33.15it/s]Loading weights:  54%|█████▍    | 216/398 [00:08<00:05, 31.10it/s]Loading weights:  56%|█████▌    | 223/398 [00:08<00:06, 27.45it/s]Loading weights:  57%|█████▋    | 226/398 [00:08<00:07, 24.25it/s]Loading weights:  58%|█████▊    | 231/398 [00:09<00:05, 28.69it/s]Loading weights:  59%|█████▉    | 236/398 [00:09<00:05, 30.14it/s]Loading weights:  60%|██████    | 240/398 [00:09<00:05, 27.62it/s]Loading weights:  62%|██████▏   | 245/398 [00:09<00:06, 24.30it/s]Loading weights:  62%|██████▏   | 248/398 [00:09<00:06, 22.40it/s]Loading weights:  64%|██████▍   | 256/398 [00:09<00:04, 29.37it/s]Loading weights:  65%|██████▌   | 260/398 [00:10<00:05, 27.44it/s]Loading weights:  67%|██████▋   | 267/398 [00:10<00:04, 26.47it/s]Loading weights:  68%|██████▊   | 270/398 [00:10<00:05, 23.80it/s]Loading weights:  70%|██████▉   | 278/398 [00:10<00:04, 29.05it/s]Loading weights:  71%|███████   | 281/398 [00:11<00:04, 25.41it/s]Loading weights:  72%|███████▏  | 287/398 [00:11<00:03, 31.30it/s]Loading weights:  73%|███████▎  | 291/398 [00:11<00:03, 28.26it/s]Loading weights:  76%|███████▌  | 301/398 [00:11<00:03, 24.78it/s]Loading weights:  78%|███████▊  | 311/398 [00:11<00:02, 29.99it/s]Loading weights:  79%|███████▉  | 315/398 [00:12<00:02, 27.91it/s]Loading weights:  80%|███████▉  | 318/398 [00:12<00:02, 27.89it/s]Loading weights:  81%|████████  | 322/398 [00:12<00:03, 25.15it/s]Loading weights:  82%|████████▏ | 328/398 [00:12<00:02, 29.72it/s]Loading weights:  83%|████████▎ | 332/398 [00:12<00:02, 28.58it/s]Loading weights:  84%|████████▍ | 336/398 [00:13<00:02, 20.75it/s]Loading weights:  86%|████████▌ | 343/398 [00:13<00:01, 28.30it/s]Loading weights:  87%|████████▋ | 347/398 [00:13<00:01, 26.85it/s]Loading weights:  88%|████████▊ | 351/398 [00:13<00:01, 25.30it/s]Loading weights:  89%|████████▉ | 355/398 [00:13<00:01, 22.78it/s]Loading weights:  90%|████████▉ | 358/398 [00:13<00:01, 21.90it/s]Loading weights:  92%|█████████▏| 366/398 [00:14<00:01, 26.65it/s]Loading weights:  93%|█████████▎| 369/398 [00:14<00:01, 24.45it/s]Loading weights:  94%|█████████▍| 375/398 [00:14<00:00, 30.80it/s]Loading weights:  95%|█████████▌| 379/398 [00:14<00:00, 29.33it/s]Loading weights:  97%|█████████▋| 388/398 [00:14<00:00, 29.29it/s]Loading weights:  98%|█████████▊| 392/398 [00:15<00:00, 30.53it/s]Loading weights: 100%|██████████| 398/398 [00:15<00:00, 26.36it/s]
+  step 512: 33 alive, seq_len 774
+  [jspace-med-B2048] 0/33 done, 33 queued (bucket 0, n=33) | 0 tok | 0 tok/s | 1m
+  step 512: 33 alive, seq_len 1798
+  step 1024: 33 alive, seq_len 2310
+  [jspace-med-B2048] 33/33 done, 0 queued (bucket 1, n=33) | 67755 tok | 663 tok/s | 2m
+  removal_frac mean: 0.0478
+[jspace-med-B2048] DONE 33 records in 2m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] 3 problems x 1 samples; 502 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 4/398 [00:00<00:10, 37.96it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 148.39it/s]Loading weights:  12%|█▏        | 49/398 [00:00<00:01, 180.32it/s]Loading weights:  18%|█▊        | 71/398 [00:00<00:01, 195.21it/s]Loading weights:  23%|██▎       | 93/398 [00:00<00:01, 204.05it/s]Loading weights:  29%|██▉       | 115/398 [00:00<00:01, 209.11it/s]Loading weights:  35%|███▍      | 138/398 [00:00<00:01, 215.46it/s]Loading weights:  40%|████      | 160/398 [00:00<00:01, 216.89it/s]Loading weights:  46%|████▌     | 182/398 [00:00<00:00, 217.08it/s]Loading weights:  52%|█████▏    | 207/398 [00:01<00:00, 223.88it/s]Loading weights:  58%|█████▊    | 231/398 [00:01<00:00, 225.61it/s]Loading weights:  64%|██████▍   | 254/398 [00:01<00:00, 225.36it/s]Loading weights:  70%|██████▉   | 277/398 [00:01<00:00, 225.72it/s]Loading weights:  75%|███████▌  | 300/398 [00:01<00:00, 216.43it/s]Loading weights:  81%|████████▏ | 324/398 [00:01<00:00, 220.07it/s]Loading weights:  88%|████████▊ | 350/398 [00:01<00:00, 231.56it/s]Loading weights:  94%|█████████▍| 375/398 [00:01<00:00, 236.54it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 216.46it/s]
+  step 512: 3 alive, seq_len 615
+  [jspace-med-B2048] 0/3 done, 3 queued (bucket 0, n=3) | 0 tok | 0 tok/s | 1m
+  step 512: 3 alive, seq_len 1639
+  step 1024: 3 alive, seq_len 2151
+  [jspace-med-B2048] 3/3 done, 0 queued (bucket 1, n=3) | 6162 tok | 77 tok/s | 1m
+  removal_frac mean: 0.0485
+[jspace-med-B2048] DONE 3 records in 1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] source 0: 0 verbatim, 0 to truncate+regen at B=2048
+[jspace-med-B2048] BACKFILL: 8 problems undecided at B=2048 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B2048 --mode jspace --band 22:34 --k 10 --budget 2048 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B2048-s3.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] 8 problems x 1 samples; 505 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<00:40,  9.77it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 154.17it/s]Loading weights:  14%|█▍        | 56/398 [00:00<00:01, 214.15it/s]Loading weights:  20%|██        | 80/398 [00:00<00:01, 219.39it/s]Loading weights:  26%|██▌       | 103/398 [00:00<00:01, 219.12it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 219.38it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 215.76it/s]Loading weights:  43%|████▎     | 170/398 [00:00<00:01, 215.77it/s]Loading weights:  48%|████▊     | 192/398 [00:00<00:00, 215.33it/s]Loading weights:  54%|█████▍    | 215/398 [00:01<00:00, 219.49it/s]Loading weights:  60%|█████▉    | 237/398 [00:01<00:00, 218.73it/s]Loading weights:  65%|██████▌   | 259/398 [00:01<00:00, 217.86it/s]Loading weights:  71%|███████   | 281/398 [00:01<00:00, 218.35it/s]Loading weights:  77%|███████▋  | 306/398 [00:01<00:00, 227.41it/s]Loading weights:  83%|████████▎ | 330/398 [00:01<00:00, 231.10it/s]Loading weights:  89%|████████▉ | 355/398 [00:01<00:00, 230.62it/s]Loading weights:  95%|█████████▌| 379/398 [00:01<00:00, 231.46it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 221.12it/s]
+  step 512: 8 alive, seq_len 738
+  [jspace-med-B2048] 0/8 done, 8 queued (bucket 0, n=8) | 0 tok | 0 tok/s | 1m
+  step 512: 8 alive, seq_len 1762
+  step 1024: 8 alive, seq_len 2274
+  [jspace-med-B2048] 8/8 done, 0 queued (bucket 1, n=8) | 16454 tok | 195 tok/s | 1m
+  removal_frac mean: 0.0480
+[jspace-med-B2048] DONE 8 records in 1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B2048] source 0: 0 verbatim, 0 to truncate+regen at B=2048
+[jspace-med-B2048] staged-source: no backfill needed; cell majority outcomes complete.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] source 417: 0 verbatim, 417 to truncate+regen at B=512
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<09:30,  1.44s/it]Loading weights:   1%|          | 4/398 [00:01<02:09,  3.05it/s]Loading weights:   3%|▎         | 12/398 [00:01<00:34, 11.16it/s]Loading weights:   4%|▍         | 17/398 [00:01<00:27, 13.87it/s]Loading weights:   6%|▋         | 25/398 [00:02<00:19, 19.39it/s]Loading weights:   7%|▋         | 29/398 [00:02<00:17, 20.75it/s]Loading weights:   9%|▉         | 35/398 [00:02<00:17, 20.47it/s]Loading weights:  10%|▉         | 38/398 [00:02<00:18, 19.11it/s]Loading weights:  12%|█▏        | 47/398 [00:03<00:13, 25.36it/s]Loading weights:  13%|█▎        | 50/398 [00:03<00:14, 24.15it/s]Loading weights:  15%|█▍        | 58/398 [00:03<00:12, 26.89it/s]Loading weights:  15%|█▌        | 61/398 [00:03<00:13, 24.42it/s]Loading weights:  17%|█▋        | 69/398 [00:03<00:11, 27.81it/s]Loading weights:  18%|█▊        | 72/398 [00:04<00:12, 26.30it/s]Loading weights:  20%|██        | 80/398 [00:04<00:10, 30.17it/s]Loading weights:  21%|██        | 83/398 [00:04<00:11, 28.58it/s]Loading weights:  23%|██▎       | 90/398 [00:04<00:10, 30.75it/s]Loading weights:  23%|██▎       | 93/398 [00:04<00:12, 25.17it/s]Loading weights:  26%|██▌       | 102/398 [00:05<00:10, 28.03it/s]Loading weights:  26%|██▋       | 105/398 [00:05<00:11, 25.89it/s]Loading weights:  28%|██▊       | 113/398 [00:05<00:09, 30.67it/s]Loading weights:  29%|██▉       | 117/398 [00:05<00:09, 29.00it/s]Loading weights:  31%|███       | 124/398 [00:05<00:07, 34.48it/s]Loading weights:  32%|███▏      | 128/398 [00:05<00:08, 32.13it/s]Loading weights:  34%|███▍      | 135/398 [00:05<00:07, 36.27it/s]Loading weights:  35%|███▍      | 139/398 [00:06<00:07, 34.18it/s]Loading weights:  37%|███▋      | 146/398 [00:06<00:06, 38.67it/s]Loading weights:  38%|███▊      | 150/398 [00:06<00:07, 34.07it/s]Loading weights:  39%|███▉      | 157/398 [00:06<00:06, 37.41it/s]Loading weights:  40%|████      | 161/398 [00:06<00:06, 33.99it/s]Loading weights:  42%|████▏     | 168/398 [00:06<00:06, 32.91it/s]Loading weights:  43%|████▎     | 172/398 [00:07<00:06, 32.39it/s]Loading weights:  44%|████▍     | 176/398 [00:07<00:08, 27.63it/s]Loading weights:  45%|████▍     | 179/398 [00:07<00:08, 25.36it/s]Loading weights:  46%|████▌     | 182/398 [00:07<00:09, 23.40it/s]Loading weights:  48%|████▊     | 190/398 [00:07<00:07, 29.45it/s]Loading weights:  48%|████▊     | 193/398 [00:07<00:07, 26.93it/s]Loading weights:  51%|█████     | 201/398 [00:08<00:05, 33.79it/s]Loading weights:  52%|█████▏    | 205/398 [00:08<00:06, 31.69it/s]Loading weights:  53%|█████▎    | 212/398 [00:08<00:05, 32.74it/s]Loading weights:  54%|█████▍    | 216/398 [00:08<00:05, 31.09it/s]Loading weights:  56%|█████▌    | 223/398 [00:08<00:06, 26.88it/s]Loading weights:  57%|█████▋    | 226/398 [00:09<00:10, 16.17it/s]Loading weights:  58%|█████▊    | 229/398 [00:09<00:10, 16.68it/s]Loading weights:  59%|█████▉    | 234/398 [00:09<00:09, 18.01it/s]Loading weights:  60%|█████▉    | 237/398 [00:10<00:08, 18.17it/s]Loading weights:  62%|██████▏   | 245/398 [00:10<00:06, 24.95it/s]Loading weights:  62%|██████▏   | 248/398 [00:10<00:06, 24.85it/s]Loading weights:  64%|██████▍   | 256/398 [00:10<00:04, 31.30it/s]Loading weights:  65%|██████▌   | 260/398 [00:10<00:04, 30.38it/s]Loading weights:  67%|██████▋   | 266/398 [00:10<00:04, 30.72it/s]Loading weights:  68%|██████▊   | 270/398 [00:11<00:04, 27.54it/s]Loading weights:  70%|██████▉   | 278/398 [00:11<00:03, 30.64it/s]Loading weights:  71%|███████   | 282/398 [00:11<00:04, 23.88it/s]Loading weights:  72%|███████▏  | 285/398 [00:11<00:05, 22.11it/s]Loading weights:  72%|███████▏  | 288/398 [00:11<00:05, 21.86it/s]Loading weights:  73%|███████▎  | 291/398 [00:12<00:06, 16.87it/s]Loading weights:  75%|███████▌  | 300/398 [00:12<00:03, 25.37it/s]Loading weights:  76%|███████▌  | 303/398 [00:12<00:03, 23.97it/s]Loading weights:  78%|███████▊  | 311/398 [00:12<00:03, 28.98it/s]Loading weights:  79%|███████▉  | 315/398 [00:12<00:02, 28.02it/s]Loading weights:  81%|████████  | 322/398 [00:13<00:02, 29.76it/s]Loading weights:  82%|████████▏ | 326/398 [00:13<00:02, 28.22it/s]Loading weights:  84%|████████▎ | 333/398 [00:13<00:02, 30.43it/s]Loading weights:  85%|████████▍ | 337/398 [00:13<00:02, 28.89it/s]Loading weights:  86%|████████▋ | 344/398 [00:13<00:01, 30.96it/s]Loading weights:  87%|████████▋ | 348/398 [00:14<00:01, 25.81it/s]Loading weights:  88%|████████▊ | 351/398 [00:14<00:01, 24.05it/s]Loading weights:  89%|████████▉ | 355/398 [00:14<00:01, 22.40it/s]Loading weights:  90%|████████▉ | 358/398 [00:14<00:01, 22.15it/s]Loading weights:  92%|█████████▏| 366/398 [00:14<00:01, 25.80it/s]Loading weights:  93%|█████████▎| 369/398 [00:15<00:01, 20.44it/s]Loading weights:  93%|█████████▎| 372/398 [00:15<00:01, 20.07it/s]Loading weights:  94%|█████████▍| 375/398 [00:15<00:01, 19.86it/s]Loading weights:  95%|█████████▍| 377/398 [00:15<00:01, 17.37it/s]Loading weights:  95%|█████████▌| 379/398 [00:15<00:01, 16.51it/s]Loading weights:  97%|█████████▋| 388/398 [00:15<00:00, 26.00it/s]Loading weights:  98%|█████████▊| 391/398 [00:16<00:00, 22.78it/s]Loading weights:  99%|█████████▉| 394/398 [00:16<00:00, 24.06it/s]Loading weights: 100%|██████████| 398/398 [00:16<00:00, 24.50it/s]
+  [jspace-med-B512] 96/417 regen | 0.2m
+  [jspace-med-B512] 192/417 regen | 0.5m
+  [jspace-med-B512] 288/417 regen | 0.8m
+  [jspace-med-B512] 384/417 regen | 1.0m
+  [jspace-med-B512] 417/417 regen | 1.1m
+[jspace-med-B512] BACKFILL: 59 problems undecided at B=512 lack sample 2; run:
+  python3 scripts/run_cell.py --tag jspace-med-B512 --mode jspace --band 22:34 --k 10 --budget 512 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B512-s2.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B512] BACKFILL: 1 problems undecided at B=512 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B512 --mode jspace --band 22:34 --k 10 --budget 512 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B512-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B512] DONE 0 verbatim + 417 regen in 1.1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] 59 problems x 1 samples; 417 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:13, 28.33it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 146.74it/s]Loading weights:  14%|█▎        | 54/398 [00:00<00:01, 201.43it/s]Loading weights:  19%|█▉        | 75/398 [00:00<00:01, 201.17it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 219.06it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 218.38it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 218.97it/s]Loading weights:  44%|████▍     | 176/398 [00:00<00:00, 236.97it/s]Loading weights:  51%|█████     | 201/398 [00:00<00:00, 236.69it/s]Loading weights:  57%|█████▋    | 225/398 [00:01<00:00, 232.29it/s]Loading weights:  64%|██████▍   | 255/398 [00:01<00:00, 247.18it/s]Loading weights:  70%|███████   | 280/398 [00:01<00:00, 244.66it/s]Loading weights:  78%|███████▊  | 311/398 [00:01<00:00, 257.44it/s]Loading weights:  85%|████████▍ | 337/398 [00:01<00:00, 251.00it/s]Loading weights:  92%|█████████▏| 366/398 [00:01<00:00, 255.15it/s]Loading weights:  98%|█████████▊| 392/398 [00:01<00:00, 250.74it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 233.28it/s]
+  step 512: 59 alive, seq_len 774
+  [jspace-med-B512] 59/59 done, 0 queued (bucket 0, n=59) | 30448 tok | 1127 tok/s | 0m
+  removal_frac mean: 0.0492
+[jspace-med-B512] DONE 59 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] 1 problems x 1 samples; 476 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 133.24it/s]Loading weights:  11%|█         | 42/398 [00:00<00:01, 217.11it/s]Loading weights:  17%|█▋        | 69/398 [00:00<00:01, 238.54it/s]Loading weights:  23%|██▎       | 93/398 [00:00<00:01, 233.64it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 255.08it/s]Loading weights:  38%|███▊      | 150/398 [00:00<00:00, 250.16it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 257.93it/s]Loading weights:  52%|█████▏    | 205/398 [00:00<00:00, 253.02it/s]Loading weights:  59%|█████▉    | 234/398 [00:00<00:00, 263.40it/s]Loading weights:  66%|██████▌   | 261/398 [00:01<00:00, 261.71it/s]Loading weights:  73%|███████▎  | 289/398 [00:01<00:00, 264.04it/s]Loading weights:  80%|███████▉  | 317/398 [00:01<00:00, 267.25it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 264.47it/s]Loading weights:  94%|█████████▎| 373/398 [00:01<00:00, 269.00it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 257.98it/s]
+  step 512: 1 alive, seq_len 576
+  [jspace-med-B512] 1/1 done, 0 queued (bucket 0, n=1) | 514 tok | 28 tok/s | 0m
+  removal_frac mean: 0.0497
+[jspace-med-B512] DONE 1 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] source 0: 0 verbatim, 0 to truncate+regen at B=512
+[jspace-med-B512] BACKFILL: 11 problems undecided at B=512 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B512 --mode jspace --band 22:34 --k 10 --budget 512 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B512-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] 11 problems x 1 samples; 477 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▍         | 15/398 [00:00<00:02, 136.52it/s]Loading weights:  11%|█         | 42/398 [00:00<00:01, 208.12it/s]Loading weights:  17%|█▋        | 69/398 [00:00<00:01, 233.39it/s]Loading weights:  23%|██▎       | 93/398 [00:00<00:01, 226.88it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 249.69it/s]Loading weights:  38%|███▊      | 150/398 [00:00<00:00, 249.15it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 259.92it/s]Loading weights:  52%|█████▏    | 206/398 [00:00<00:00, 260.64it/s]Loading weights:  59%|█████▉    | 235/398 [00:00<00:00, 262.74it/s]Loading weights:  67%|██████▋   | 267/398 [00:01<00:00, 269.43it/s]Loading weights:  74%|███████▍  | 294/398 [00:01<00:00, 267.66it/s]Loading weights:  81%|████████  | 323/398 [00:01<00:00, 268.04it/s]Loading weights:  89%|████████▉ | 355/398 [00:01<00:00, 275.71it/s]Loading weights:  96%|█████████▌| 383/398 [00:01<00:00, 274.65it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 259.99it/s]
+  step 512: 11 alive, seq_len 653
+  [jspace-med-B512] 11/11 done, 0 queued (bucket 0, n=11) | 5675 tok | 274 tok/s | 0m
+  removal_frac mean: 0.0485
+[jspace-med-B512] DONE 11 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B512] source 0: 0 verbatim, 0 to truncate+regen at B=512
+[jspace-med-B512] staged-source: no backfill needed; cell majority outcomes complete.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] source 417: 0 verbatim, 417 to truncate+regen at B=128
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:13, 29.26it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 151.41it/s]Loading weights:  13%|█▎        | 53/398 [00:00<00:01, 196.89it/s]Loading weights:  19%|█▉        | 77/398 [00:00<00:01, 210.06it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 217.46it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 216.83it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 217.15it/s]Loading weights:  44%|████▎     | 174/398 [00:00<00:00, 230.22it/s]Loading weights:  50%|█████     | 199/398 [00:00<00:00, 235.64it/s]Loading weights:  56%|█████▌    | 223/398 [00:01<00:00, 236.66it/s]Loading weights:  62%|██████▏   | 247/398 [00:01<00:00, 231.13it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 247.22it/s]Loading weights:  76%|███████▌  | 303/398 [00:01<00:00, 241.38it/s]Loading weights:  84%|████████▎ | 333/398 [00:01<00:00, 252.20it/s]Loading weights:  90%|█████████ | 359/398 [00:01<00:00, 247.19it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 254.80it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 231.36it/s]
+  [jspace-med-B128] 96/417 regen | 0.1m
+  [jspace-med-B128] 192/417 regen | 0.3m
+  [jspace-med-B128] 288/417 regen | 0.5m
+  [jspace-med-B128] 384/417 regen | 0.6m
+  [jspace-med-B128] 417/417 regen | 0.7m
+[jspace-med-B128] BACKFILL: 118 problems undecided at B=128 lack sample 2; run:
+  python3 scripts/run_cell.py --tag jspace-med-B128 --mode jspace --band 22:34 --k 10 --budget 128 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B128-s2.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B128.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B128] BACKFILL: 2 problems undecided at B=128 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B128 --mode jspace --band 22:34 --k 10 --budget 128 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B128-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B128.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[jspace-med-B128] DONE 0 verbatim + 417 regen in 0.7m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] 118 problems x 1 samples; 417 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   3%|▎         | 12/398 [00:00<00:03, 119.46it/s]Loading weights:  10%|▉         | 38/398 [00:00<00:01, 189.84it/s]Loading weights:  16%|█▋        | 65/398 [00:00<00:01, 225.05it/s]Loading weights:  23%|██▎       | 91/398 [00:00<00:01, 231.69it/s]Loading weights:  29%|██▉       | 115/398 [00:00<00:01, 227.39it/s]Loading weights:  37%|███▋      | 146/398 [00:00<00:01, 247.03it/s]Loading weights:  43%|████▎     | 171/398 [00:00<00:00, 241.83it/s]Loading weights:  51%|█████     | 201/398 [00:00<00:00, 257.83it/s]Loading weights:  57%|█████▋    | 227/398 [00:00<00:00, 252.69it/s]Loading weights:  64%|██████▍   | 256/398 [00:01<00:00, 262.70it/s]Loading weights:  71%|███████   | 283/398 [00:01<00:00, 263.33it/s]Loading weights:  78%|███████▊  | 312/398 [00:01<00:00, 266.66it/s]Loading weights:  86%|████████▋ | 344/398 [00:01<00:00, 267.91it/s]Loading weights:  94%|█████████▍| 375/398 [00:01<00:00, 279.04it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 254.52it/s]
+  [jspace-med-B128] 64/118 done, 54 queued (bucket 0, n=64) | 8437 tok | 776 tok/s | 0m
+  [jspace-med-B128] 118/118 done, 0 queued (bucket 0, n=54) | 15632 tok | 711 tok/s | 0m
+  removal_frac mean: 0.0511
+[jspace-med-B128] DONE 118 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] 2 problems x 1 samples; 535 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▍         | 15/398 [00:00<00:02, 138.74it/s]Loading weights:  12%|█▏        | 47/398 [00:00<00:01, 229.15it/s]Loading weights:  18%|█▊        | 71/398 [00:00<00:01, 229.95it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 257.47it/s]Loading weights:  32%|███▏      | 128/398 [00:00<00:01, 256.65it/s]Loading weights:  39%|███▉      | 157/398 [00:00<00:00, 266.21it/s]Loading weights:  46%|████▌     | 184/398 [00:00<00:00, 264.49it/s]Loading weights:  53%|█████▎    | 212/398 [00:00<00:00, 269.11it/s]Loading weights:  60%|██████    | 240/398 [00:00<00:00, 269.67it/s]Loading weights:  67%|██████▋   | 268/398 [00:01<00:00, 268.65it/s]Loading weights:  75%|███████▍  | 297/398 [00:01<00:00, 274.28it/s]Loading weights:  82%|████████▏ | 325/398 [00:01<00:00, 266.23it/s]Loading weights:  89%|████████▉ | 356/398 [00:01<00:00, 276.71it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 274.85it/s]
+  [jspace-med-B128] 2/2 done, 0 queued (bucket 0, n=2) | 263 tok | 47 tok/s | 0m
+  removal_frac mean: 0.0499
+[jspace-med-B128] DONE 2 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] source 0: 0 verbatim, 0 to truncate+regen at B=128
+[jspace-med-B128] BACKFILL: 11 problems undecided at B=128 lack sample 3; run:
+  python3 scripts/run_cell.py --tag jspace-med-B128 --mode jspace --band 22:34 --k 10 --budget 128 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-jspace-med-B128-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/jspace-med-B128.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] 11 problems x 1 samples; 537 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:14, 26.96it/s]Loading weights:   9%|▉         | 36/398 [00:00<00:01, 185.11it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 204.15it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 211.34it/s]Loading weights:  28%|██▊       | 113/398 [00:00<00:01, 237.79it/s]Loading weights:  34%|███▍      | 137/398 [00:00<00:01, 231.47it/s]Loading weights:  42%|████▏     | 168/398 [00:00<00:00, 249.24it/s]Loading weights:  48%|████▊     | 193/398 [00:00<00:00, 242.72it/s]Loading weights:  56%|█████▌    | 223/398 [00:00<00:00, 255.23it/s]Loading weights:  63%|██████▎   | 249/398 [00:01<00:00, 253.54it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 258.02it/s]Loading weights:  76%|███████▋  | 304/398 [00:01<00:00, 255.92it/s]Loading weights:  84%|████████▎ | 333/398 [00:01<00:00, 262.08it/s]Loading weights:  90%|█████████ | 360/398 [00:01<00:00, 259.59it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 262.98it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 243.93it/s]
+  [jspace-med-B128] 11/11 done, 0 queued (bucket 0, n=11) | 1440 tok | 236 tok/s | 0m
+  removal_frac mean: 0.0502
+[jspace-med-B128] DONE 11 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-med-B128] source 0: 0 verbatim, 0 to truncate+regen at B=128
+[jspace-med-B128] staged-source: no backfill needed; cell majority outcomes complete.
+Mon Aug 31 04:01:31 UTC 2026
+=== random control seed 0 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B16384] 209 problems x 4 samples; 0 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▍         | 16/398 [00:00<00:02, 152.34it/s]Loading weights:  12%|█▏        | 48/398 [00:00<00:01, 244.93it/s]Loading weights:  19%|█▉        | 76/398 [00:00<00:01, 259.56it/s]Loading weights:  26%|██▌       | 104/398 [00:00<00:01, 258.43it/s]Loading weights:  34%|███▍      | 136/398 [00:00<00:00, 271.66it/s]Loading weights:  42%|████▏     | 168/398 [00:00<00:00, 279.01it/s]Loading weights:  49%|████▉     | 196/398 [00:00<00:00, 273.31it/s]Loading weights:  56%|█████▋    | 224/398 [00:00<00:00, 271.70it/s]Loading weights:  64%|██████▍   | 256/398 [00:00<00:00, 280.24it/s]Loading weights:  72%|███████▏  | 285/398 [00:01<00:00, 279.47it/s]Loading weights:  79%|███████▊  | 313/398 [00:01<00:00, 274.24it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 285.22it/s]Loading weights:  94%|█████████▍| 376/398 [00:01<00:00, 285.46it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 276.05it/s]
+[random-s0-B16384] staged wave A (samples [0, 1]): 418 to run, 0 skipped as determined so far
+  step 512: 115 alive, seq_len 653
+  [random-s0-B16384] 52/836 done, 366 queued (bucket 0, n=123) | 41144 tok | 643 tok/s | 1m
+  step 512: 123 alive, seq_len 783
+  [random-s0-B16384] 68/836 done, 350 queued (bucket 0, n=123) | 54493 tok | 404 tok/s | 2m
+  step 512: 123 alive, seq_len 774
+  [random-s0-B16384] 68/836 done, 350 queued (bucket 0, n=123) | 54493 tok | 266 tok/s | 3m
+  step 512: 49 alive, seq_len 769
+  [random-s0-B16384] 68/836 done, 350 queued (bucket 0, n=49) | 54493 tok | 216 tok/s | 4m
+  step 512: 26 alive, seq_len 1677
+  step 960: evicted 17 at seq_len 2125
+  [random-s0-B16384] 119/836 done, 299 queued (bucket 1, n=68) | 122132 tok | 392 tok/s | 5m
+  step 512: 42 alive, seq_len 1711
+  step 1024: 29 alive, seq_len 2223
+  step 1536: 19 alive, seq_len 2735
+  step 1600: evicted 16 at seq_len 2799
+  [random-s0-B16384] 171/836 done, 247 queued (bucket 1, n=68) | 207534 tok | 507 tok/s | 7m
+  step 512: 62 alive, seq_len 1807
+  step 1024: 53 alive, seq_len 2319
+  step 1536: 45 alive, seq_len 2831
+  [random-s0-B16384] 201/836 done, 217 queued (bucket 1, n=68) | 269987 tok | 486 tok/s | 9m
+  step 512: 65 alive, seq_len 1798
+  step 1024: 61 alive, seq_len 2310
+  step 1536: 54 alive, seq_len 2822
+  [random-s0-B16384] 217/836 done, 201 queued (bucket 1, n=68) | 302514 tok | 423 tok/s | 12m
+  step 512: 68 alive, seq_len 1793
+  step 1024: 67 alive, seq_len 2305
+  step 1536: 65 alive, seq_len 2817
+  [random-s0-B16384] 222/836 done, 196 queued (bucket 1, n=68) | 314504 tok | 359 tok/s | 15m
+  step 512: 24 alive, seq_len 2619
+  step 1024: 21 alive, seq_len 3131
+  step 1536: 20 alive, seq_len 3643
+  [random-s0-B16384] 233/836 done, 185 queued (bucket 1, n=27) | 346305 tok | 352 tok/s | 16m
+  step 512: 26 alive, seq_len 3855
+  step 1024: 21 alive, seq_len 4367
+  step 1536: 17 alive, seq_len 4879
+  step 2048: 16 alive, seq_len 5391
+  step 2560: 14 alive, seq_len 5903
+  step 3072: 12 alive, seq_len 6415
+  step 3584: 12 alive, seq_len 6927
+  [random-s0-B16384] 258/836 done, 160 queued (bucket 2, n=36) | 443531 tok | 357 tok/s | 21m
+  step 512: 29 alive, seq_len 3836
+  step 1024: 24 alive, seq_len 4348
+  step 1536: 20 alive, seq_len 4860
+  step 2048: 18 alive, seq_len 5372
+  step 2560: 17 alive, seq_len 5884
+  step 3072: 17 alive, seq_len 6396
+  step 3584: 14 alive, seq_len 6908
+  [random-s0-B16384] 284/836 done, 134 queued (bucket 2, n=36) | 565107 tok | 374 tok/s | 25m
+  step 512: 35 alive, seq_len 3846
+  step 1024: 32 alive, seq_len 4358
+  step 1536: 29 alive, seq_len 4870
+  step 2048: 27 alive, seq_len 5382
+  step 2560: 25 alive, seq_len 5894
+  step 3072: 22 alive, seq_len 6406
+  step 3584: 17 alive, seq_len 6918
+  [random-s0-B16384] 305/836 done, 113 queued (bucket 2, n=36) | 677201 tok | 376 tok/s | 30m
+  step 512: 34 alive, seq_len 3841
+  step 1024: 30 alive, seq_len 4353
+  step 1536: 26 alive, seq_len 4865
+  step 2048: 26 alive, seq_len 5377
+  step 2560: 22 alive, seq_len 5889
+  step 3072: 20 alive, seq_len 6401
+  step 3584: 19 alive, seq_len 6913
+  [random-s0-B16384] 325/836 done, 93 queued (bucket 2, n=36) | 776507 tok | 373 tok/s | 35m
+  step 512: 35 alive, seq_len 4651
+  step 1024: 34 alive, seq_len 5163
+  step 1536: 32 alive, seq_len 5675
+  step 2048: 31 alive, seq_len 6187
+  step 2560: 28 alive, seq_len 6699
+  step 3072: 27 alive, seq_len 7211
+  step 3584: 24 alive, seq_len 7723
+  [random-s0-B16384] 337/836 done, 81 queued (bucket 2, n=36) | 840430 tok | 347 tok/s | 40m
+  step 512: 4 alive, seq_len 4628
+  step 1024: 4 alive, seq_len 5140
+  step 1536: 3 alive, seq_len 5652
+  step 2048: 3 alive, seq_len 6164
+  step 2560: 3 alive, seq_len 6676
+  step 3072: 1 alive, seq_len 7188
+  step 3584: 1 alive, seq_len 7700
+  [random-s0-B16384] 341/836 done, 77 queued (bucket 2, n=5) | 864171 tok | 329 tok/s | 44m
+  step 512: 14 alive, seq_len 7951
+  step 1024: 11 alive, seq_len 8463
+  step 1536: 8 alive, seq_len 8975
+  step 2048: 8 alive, seq_len 9487
+  step 2560: 5 alive, seq_len 9999
+  step 3072: 4 alive, seq_len 10511
+  step 3584: 4 alive, seq_len 11023
+  step 4096: 4 alive, seq_len 11535
+  step 4608: 4 alive, seq_len 12047
+  step 5120: 4 alive, seq_len 12559
+  step 5632: 4 alive, seq_len 13071
+  step 6144: 4 alive, seq_len 13583
+  step 6656: 4 alive, seq_len 14095
+  step 7168: 4 alive, seq_len 14607
+  step 7680: 4 alive, seq_len 15119
+  [random-s0-B16384] 355/836 done, 63 queued (bucket 3, n=18) | 980042 tok | 307 tok/s | 53m
+  step 512: 15 alive, seq_len 7906
+  step 1024: 15 alive, seq_len 8418
+  step 1536: 13 alive, seq_len 8930
+  step 2048: 11 alive, seq_len 9442
+  step 2560: 9 alive, seq_len 9954
+  step 3072: 9 alive, seq_len 10466
+  step 3584: 7 alive, seq_len 10978
+  step 4096: 7 alive, seq_len 11490
+  step 4608: 7 alive, seq_len 12002
+  step 5120: 7 alive, seq_len 12514
+  step 5632: 6 alive, seq_len 13026
+  step 6144: 6 alive, seq_len 13538
+  step 6656: 5 alive, seq_len 14050
+  step 7168: 5 alive, seq_len 14562
+  step 7680: 5 alive, seq_len 15074
+  [random-s0-B16384] 368/836 done, 50 queued (bucket 3, n=18) | 1103475 tok | 293 tok/s | 63m
+  step 512: 16 alive, seq_len 7937
+  step 1024: 15 alive, seq_len 8449
+  step 1536: 15 alive, seq_len 8961
+  step 2048: 14 alive, seq_len 9473
+  step 2560: 13 alive, seq_len 9985
+  step 3072: 12 alive, seq_len 10497
+  step 3584: 12 alive, seq_len 11009
+  step 4096: 11 alive, seq_len 11521
+  step 4608: 9 alive, seq_len 12033
+  step 5120: 8 alive, seq_len 12545
+  step 5632: 8 alive, seq_len 13057
+  step 6144: 5 alive, seq_len 13569
+  step 6656: 5 alive, seq_len 14081
+  step 7168: 4 alive, seq_len 14593
+  step 7680: 4 alive, seq_len 15105
+  [random-s0-B16384] 384/836 done, 34 queued (bucket 3, n=18) | 1283295 tok | 294 tok/s | 73m
+  step 512: 18 alive, seq_len 7902
+  step 1024: 16 alive, seq_len 8414
+  step 1536: 14 alive, seq_len 8926
+  step 2048: 14 alive, seq_len 9438
+  step 2560: 13 alive, seq_len 9950
+  step 3072: 13 alive, seq_len 10462
+  step 3584: 13 alive, seq_len 10974
+  step 4096: 11 alive, seq_len 11486
+  step 4608: 9 alive, seq_len 11998
+  step 5120: 9 alive, seq_len 12510
+  step 5632: 9 alive, seq_len 13022
+  step 6144: 9 alive, seq_len 13534
+  step 6656: 8 alive, seq_len 14046
+  step 7168: 7 alive, seq_len 14558
+  step 7680: 7 alive, seq_len 15070
+  [random-s0-B16384] 395/836 done, 23 queued (bucket 3, n=18) | 1398283 tok | 282 tok/s | 83m
+  step 512: 5 alive, seq_len 8715
+  step 1024: 5 alive, seq_len 9227
+  step 1536: 4 alive, seq_len 9739
+  step 2048: 3 alive, seq_len 10251
+  step 2560: 3 alive, seq_len 10763
+  step 3072: 3 alive, seq_len 11275
+  step 3584: 3 alive, seq_len 11787
+  step 4096: 3 alive, seq_len 12299
+  step 4608: 2 alive, seq_len 12811
+  step 5120: 2 alive, seq_len 13323
+  step 5632: 2 alive, seq_len 13835
+  step 6144: 1 alive, seq_len 14347
+  step 6656: 1 alive, seq_len 14859
+  [random-s0-B16384] 400/836 done, 18 queued (bucket 3, n=5) | 1454827 tok | 269 tok/s | 90m
+  step 512: 7 alive, seq_len 16143
+  step 1024: 4 alive, seq_len 16655
+  [random-s0-B16384] 409/836 done, 9 queued (bucket 4, n=9) | 1599171 tok | 287 tok/s | 93m
+  step 512: 9 alive, seq_len 16049
+  step 1024: 9 alive, seq_len 16561
+  [random-s0-B16384] 418/836 done, 0 queued (bucket 4, n=9) | 1746664 tok | 306 tok/s | 95m
+[random-s0-B16384] staged wave B (samples [2]): 28 to run, 181 skipped as determined so far
+  step 512: 28 alive, seq_len 783
+  [random-s0-B16384] 418/836 done, 28 queued (bucket 0, n=28) | 1746664 tok | 304 tok/s | 96m
+  step 512: 28 alive, seq_len 1807
+  step 1024: 28 alive, seq_len 2319
+  step 1536: 25 alive, seq_len 2831
+  [random-s0-B16384] 424/836 done, 22 queued (bucket 1, n=28) | 1761541 tok | 300 tok/s | 98m
+  step 512: 20 alive, seq_len 3855
+  step 1024: 19 alive, seq_len 4367
+  step 1536: 19 alive, seq_len 4879
+  step 2048: 19 alive, seq_len 5391
+  step 2560: 18 alive, seq_len 5903
+  step 3072: 15 alive, seq_len 6415
+  step 3584: 14 alive, seq_len 6927
+  [random-s0-B16384] 433/836 done, 13 queued (bucket 2, n=22) | 1809475 tok | 296 tok/s | 102m
+  step 512: 10 alive, seq_len 7937
+  step 1024: 10 alive, seq_len 8449
+  step 1536: 10 alive, seq_len 8961
+  step 2048: 9 alive, seq_len 9473
+  step 2560: 8 alive, seq_len 9985
+  step 3072: 7 alive, seq_len 10497
+  step 3584: 5 alive, seq_len 11009
+  step 4096: 5 alive, seq_len 11521
+  step 4608: 5 alive, seq_len 12033
+  step 5120: 4 alive, seq_len 12545
+  step 5632: 3 alive, seq_len 13057
+  step 6144: 3 alive, seq_len 13569
+  step 6656: 3 alive, seq_len 14081
+  step 7168: 3 alive, seq_len 14593
+  step 7680: 3 alive, seq_len 15105
+  [random-s0-B16384] 443/836 done, 3 queued (bucket 3, n=13) | 1904755 tok | 286 tok/s | 111m
+  step 512: 3 alive, seq_len 16049
+  step 1024: 2 alive, seq_len 16561
+  [random-s0-B16384] 446/836 done, 0 queued (bucket 4, n=3) | 1953843 tok | 289 tok/s | 113m
+[random-s0-B16384] staged wave C (samples [3]): 6 to run, 384 skipped as determined so far
+  step 512: 6 alive, seq_len 769
+  [random-s0-B16384] 446/836 done, 6 queued (bucket 0, n=6) | 1953843 tok | 287 tok/s | 113m
+  step 512: 6 alive, seq_len 1793
+  step 1024: 6 alive, seq_len 2305
+  step 1536: 6 alive, seq_len 2817
+  [random-s0-B16384] 446/836 done, 6 queued (bucket 1, n=6) | 1953843 tok | 284 tok/s | 115m
+  step 512: 5 alive, seq_len 3841
+  step 1024: 4 alive, seq_len 4353
+  step 1536: 4 alive, seq_len 4865
+  step 2048: 4 alive, seq_len 5377
+  step 2560: 4 alive, seq_len 5889
+  step 3072: 3 alive, seq_len 6401
+  step 3584: 3 alive, seq_len 6913
+  [random-s0-B16384] 451/836 done, 1 queued (bucket 2, n=6) | 1980727 tok | 280 tok/s | 118m
+  step 512: 1 alive, seq_len 7857
+  step 1024: 1 alive, seq_len 8369
+  step 1536: 1 alive, seq_len 8881
+  step 2048: 1 alive, seq_len 9393
+  step 2560: 1 alive, seq_len 9905
+  step 3072: 1 alive, seq_len 10417
+  step 3584: 1 alive, seq_len 10929
+  step 4096: 1 alive, seq_len 11441
+  [random-s0-B16384] 452/836 done, 0 queued (bucket 3, n=1) | 1991998 tok | 276 tok/s | 120m
+  removal_frac mean: 0.1366
+[random-s0-B16384] DONE 452 records in 120m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] source 452: 183 verbatim, 269 to truncate+regen at B=2048
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<08:02,  1.22s/it]Loading weights:   1%|          | 4/398 [00:01<01:52,  3.49it/s]Loading weights:   3%|▎         | 12/398 [00:01<00:31, 12.31it/s]Loading weights:   4%|▍         | 16/398 [00:01<00:27, 13.84it/s]Loading weights:   6%|▌         | 23/398 [00:01<00:17, 21.82it/s]Loading weights:   7%|▋         | 28/398 [00:02<00:19, 19.19it/s]Loading weights:   9%|▉         | 36/398 [00:02<00:16, 22.38it/s]Loading weights:  10%|█         | 40/398 [00:02<00:15, 23.15it/s]Loading weights:  12%|█▏        | 46/398 [00:02<00:14, 24.98it/s]Loading weights:  12%|█▏        | 49/398 [00:02<00:14, 23.64it/s]Loading weights:  15%|█▍        | 58/398 [00:03<00:13, 25.97it/s]Loading weights:  15%|█▌        | 61/398 [00:03<00:13, 25.17it/s]Loading weights:  17%|█▋        | 69/398 [00:03<00:11, 28.10it/s]Loading weights:  18%|█▊        | 72/398 [00:03<00:12, 26.70it/s]Loading weights:  20%|██        | 80/398 [00:04<00:11, 28.02it/s]Loading weights:  21%|██        | 83/398 [00:04<00:11, 26.41it/s]Loading weights:  23%|██▎       | 91/398 [00:04<00:10, 30.17it/s]Loading weights:  24%|██▎       | 94/398 [00:04<00:10, 28.27it/s]Loading weights:  26%|██▌       | 102/398 [00:04<00:10, 29.28it/s]Loading weights:  26%|██▋       | 105/398 [00:04<00:10, 27.40it/s]Loading weights:  28%|██▊       | 113/398 [00:05<00:09, 30.96it/s]Loading weights:  29%|██▉       | 116/398 [00:05<00:09, 28.68it/s]Loading weights:  30%|███       | 121/398 [00:05<00:09, 30.70it/s]Loading weights:  31%|███▏      | 125/398 [00:05<00:12, 22.74it/s]Loading weights:  33%|███▎      | 132/398 [00:05<00:10, 24.82it/s]Loading weights:  34%|███▍      | 135/398 [00:06<00:13, 19.39it/s]Loading weights:  35%|███▍      | 138/398 [00:06<00:13, 19.63it/s]Loading weights:  36%|███▌      | 144/398 [00:06<00:12, 19.85it/s]Loading weights:  37%|███▋      | 148/398 [00:06<00:11, 21.07it/s]Loading weights:  38%|███▊      | 153/398 [00:07<00:09, 24.97it/s]Loading weights:  39%|███▉      | 157/398 [00:07<00:09, 24.22it/s]Loading weights:  40%|████      | 160/398 [00:07<00:10, 23.31it/s]Loading weights:  41%|████      | 164/398 [00:07<00:10, 21.71it/s]Loading weights:  42%|████▏     | 168/398 [00:07<00:09, 23.53it/s]Loading weights:  43%|████▎     | 171/398 [00:08<00:13, 17.12it/s]Loading weights:  45%|████▍     | 179/398 [00:08<00:08, 26.71it/s]Loading weights:  46%|████▌     | 183/398 [00:08<00:10, 20.69it/s]Loading weights:  47%|████▋     | 186/398 [00:08<00:10, 20.60it/s]Loading weights:  47%|████▋     | 189/398 [00:08<00:11, 18.11it/s]Loading weights:  48%|████▊     | 192/398 [00:09<00:13, 15.08it/s]Loading weights:  50%|████▉     | 198/398 [00:09<00:10, 19.92it/s]Loading weights:  51%|█████     | 201/398 [00:09<00:09, 19.93it/s]Loading weights:  51%|█████▏    | 204/398 [00:09<00:09, 20.88it/s]Loading weights:  52%|█████▏    | 208/398 [00:09<00:08, 22.89it/s]Loading weights:  53%|█████▎    | 212/398 [00:09<00:08, 23.01it/s]Loading weights:  54%|█████▍    | 215/398 [00:10<00:09, 18.63it/s]Loading weights:  55%|█████▍    | 218/398 [00:10<00:09, 19.86it/s]Loading weights:  56%|█████▌    | 221/398 [00:10<00:08, 20.51it/s]Loading weights:  56%|█████▋    | 224/398 [00:10<00:09, 18.29it/s]Loading weights:  57%|█████▋    | 226/398 [00:10<00:09, 18.24it/s]Loading weights:  58%|█████▊    | 231/398 [00:10<00:07, 22.81it/s]Loading weights:  59%|█████▉    | 234/398 [00:11<00:07, 21.81it/s]Loading weights:  60%|█████▉    | 237/398 [00:11<00:07, 22.28it/s]Loading weights:  61%|██████    | 242/398 [00:11<00:05, 27.08it/s]Loading weights:  62%|██████▏   | 245/398 [00:11<00:06, 22.92it/s]Loading weights:  62%|██████▏   | 248/398 [00:11<00:06, 21.69it/s]Loading weights:  64%|██████▍   | 256/398 [00:11<00:05, 26.39it/s]Loading weights:  65%|██████▌   | 259/398 [00:11<00:05, 26.01it/s]Loading weights:  66%|██████▋   | 264/398 [00:12<00:05, 26.56it/s]Loading weights:  67%|██████▋   | 267/398 [00:12<00:05, 24.79it/s]Loading weights:  68%|██████▊   | 270/398 [00:12<00:05, 23.07it/s]Loading weights:  69%|██████▉   | 275/398 [00:12<00:05, 21.89it/s]Loading weights:  70%|██████▉   | 278/398 [00:12<00:06, 18.40it/s]Loading weights:  70%|███████   | 280/398 [00:13<00:07, 16.69it/s]Loading weights:  72%|███████▏  | 286/398 [00:13<00:04, 23.31it/s]Loading weights:  73%|███████▎  | 289/398 [00:13<00:05, 20.58it/s]Loading weights:  73%|███████▎  | 292/398 [00:13<00:05, 20.10it/s]Loading weights:  74%|███████▍  | 295/398 [00:14<00:07, 13.58it/s]Loading weights:  75%|███████▌  | 300/398 [00:14<00:06, 16.06it/s]Loading weights:  76%|███████▌  | 302/398 [00:14<00:06, 15.37it/s]Loading weights:  77%|███████▋  | 308/398 [00:14<00:04, 20.49it/s]Loading weights:  78%|███████▊  | 311/398 [00:14<00:04, 19.71it/s]Loading weights:  79%|███████▉  | 314/398 [00:14<00:04, 18.49it/s]Loading weights:  80%|████████  | 319/398 [00:15<00:03, 20.52it/s]Loading weights:  81%|████████  | 322/398 [00:15<00:03, 20.16it/s]Loading weights:  82%|████████▏ | 325/398 [00:15<00:03, 19.78it/s]Loading weights:  83%|████████▎ | 330/398 [00:15<00:03, 17.42it/s]Loading weights:  83%|████████▎ | 332/398 [00:15<00:04, 15.39it/s]Loading weights:  84%|████████▍ | 334/398 [00:16<00:04, 14.69it/s]Loading weights:  85%|████████▌ | 339/398 [00:16<00:04, 14.46it/s]Loading weights:  86%|████████▋ | 344/398 [00:16<00:03, 17.40it/s]Loading weights:  87%|████████▋ | 346/398 [00:16<00:03, 16.52it/s]Loading weights:  88%|████████▊ | 350/398 [00:16<00:02, 20.54it/s]Loading weights:  89%|████████▊ | 353/398 [00:17<00:02, 18.44it/s]Loading weights:  89%|████████▉ | 356/398 [00:17<00:02, 16.30it/s]Loading weights:  91%|█████████ | 363/398 [00:17<00:01, 22.83it/s]Loading weights:  92%|█████████▏| 366/398 [00:17<00:01, 18.72it/s]Loading weights:  93%|█████████▎| 369/398 [00:17<00:01, 18.71it/s]Loading weights:  94%|█████████▍| 374/398 [00:18<00:01, 23.88it/s]Loading weights:  95%|█████████▍| 377/398 [00:18<00:01, 20.70it/s]Loading weights:  95%|█████████▌| 380/398 [00:18<00:00, 21.30it/s]Loading weights:  96%|█████████▌| 383/398 [00:18<00:00, 21.94it/s]Loading weights:  97%|█████████▋| 386/398 [00:18<00:00, 22.27it/s]Loading weights:  98%|█████████▊| 389/398 [00:19<00:00, 11.11it/s]Loading weights:  98%|█████████▊| 391/398 [00:19<00:00, 12.21it/s]Loading weights:  99%|█████████▉| 396/398 [00:19<00:00, 17.59it/s]Loading weights: 100%|██████████| 398/398 [00:19<00:00, 20.38it/s]
+  [random-s0-B2048] 48/269 regen | 0.4m
+  [random-s0-B2048] 96/269 regen | 0.8m
+  [random-s0-B2048] 144/269 regen | 1.2m
+  [random-s0-B2048] 192/269 regen | 1.5m
+  [random-s0-B2048] 240/269 regen | 1.9m
+  [random-s0-B2048] 269/269 regen | 2.2m
+[random-s0-B2048] BACKFILL: 29 problems undecided at B=2048 lack sample 2; run:
+  python3 scripts/run_cell.py --tag random-s0-B2048 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 2048 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B2048-s2.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B2048] BACKFILL: 3 problems undecided at B=2048 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B2048 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 2048 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B2048-s3.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B2048] DONE 183 verbatim + 269 regen in 2.2m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] 29 problems x 1 samples; 452 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<07:12,  1.09s/it]Loading weights:   1%|          | 4/398 [00:01<01:41,  3.86it/s]Loading weights:   3%|▎         | 11/398 [00:01<00:31, 12.23it/s]Loading weights:   4%|▍         | 15/398 [00:01<00:30, 12.52it/s]Loading weights:   6%|▌         | 22/398 [00:01<00:19, 19.05it/s]Loading weights:   7%|▋         | 26/398 [00:02<00:21, 17.24it/s]Loading weights:   9%|▉         | 35/398 [00:02<00:13, 27.59it/s]Loading weights:  10%|█         | 40/398 [00:02<00:18, 19.87it/s]Loading weights:  12%|█▏        | 47/398 [00:03<00:19, 18.39it/s]Loading weights:  13%|█▎        | 50/398 [00:03<00:22, 15.52it/s]Loading weights:  15%|█▍        | 58/398 [00:03<00:17, 19.94it/s]Loading weights:  15%|█▌        | 61/398 [00:03<00:16, 20.26it/s]Loading weights:  17%|█▋        | 69/398 [00:04<00:13, 24.51it/s]Loading weights:  18%|█▊        | 72/398 [00:04<00:13, 23.67it/s]Loading weights:  20%|██        | 80/398 [00:04<00:11, 27.84it/s]Loading weights:  21%|██        | 83/398 [00:04<00:12, 25.85it/s]Loading weights:  23%|██▎       | 91/398 [00:04<00:10, 28.55it/s]Loading weights:  24%|██▎       | 94/398 [00:04<00:11, 26.36it/s]Loading weights:  26%|██▌       | 102/398 [00:05<00:10, 28.03it/s]Loading weights:  26%|██▋       | 105/398 [00:05<00:11, 25.31it/s]Loading weights:  28%|██▊       | 113/398 [00:05<00:09, 28.84it/s]Loading weights:  29%|██▉       | 116/398 [00:05<00:10, 26.18it/s]Loading weights:  31%|███       | 124/398 [00:05<00:08, 33.15it/s]Loading weights:  32%|███▏      | 128/398 [00:06<00:08, 30.71it/s]Loading weights:  33%|███▎      | 132/398 [00:06<00:09, 28.52it/s]Loading weights:  34%|███▍      | 135/398 [00:06<00:13, 19.97it/s]Loading weights:  35%|███▍      | 138/398 [00:06<00:13, 19.22it/s]Loading weights:  37%|███▋      | 146/398 [00:06<00:08, 28.34it/s]Loading weights:  38%|███▊      | 150/398 [00:07<00:09, 27.11it/s]Loading weights:  39%|███▉      | 157/398 [00:07<00:07, 32.65it/s]Loading weights:  40%|████      | 161/398 [00:07<00:07, 29.86it/s]Loading weights:  42%|████▏     | 168/398 [00:07<00:09, 23.04it/s]Loading weights:  44%|████▎     | 174/398 [00:07<00:08, 26.12it/s]Loading weights:  45%|████▍     | 179/398 [00:08<00:08, 25.97it/s]Loading weights:  46%|████▌     | 182/398 [00:08<00:08, 24.20it/s]Loading weights:  47%|████▋     | 187/398 [00:08<00:07, 28.63it/s]Loading weights:  48%|████▊     | 191/398 [00:08<00:10, 20.63it/s]Loading weights:  49%|████▉     | 196/398 [00:08<00:08, 23.50it/s]Loading weights:  50%|█████     | 199/398 [00:09<00:08, 24.57it/s]Loading weights:  51%|█████     | 202/398 [00:09<00:09, 19.87it/s]Loading weights:  53%|█████▎    | 209/398 [00:09<00:08, 22.70it/s]Loading weights:  53%|█████▎    | 212/398 [00:09<00:09, 20.38it/s]Loading weights:  54%|█████▍    | 215/398 [00:09<00:09, 19.40it/s]Loading weights:  55%|█████▌    | 220/398 [00:10<00:08, 21.00it/s]Loading weights:  56%|█████▌    | 223/398 [00:10<00:09, 19.20it/s]Loading weights:  57%|█████▋    | 225/398 [00:10<00:10, 16.96it/s]Loading weights:  58%|█████▊    | 230/398 [00:10<00:07, 22.06it/s]Loading weights:  59%|█████▉    | 234/398 [00:10<00:09, 17.18it/s]Loading weights:  60%|█████▉    | 237/398 [00:11<00:09, 17.53it/s]Loading weights:  60%|██████    | 240/398 [00:11<00:09, 16.49it/s]Loading weights:  62%|██████▏   | 245/398 [00:11<00:08, 17.32it/s]Loading weights:  62%|██████▏   | 247/398 [00:11<00:10, 15.02it/s]Loading weights:  63%|██████▎   | 252/398 [00:11<00:07, 19.12it/s]Loading weights:  64%|██████▍   | 256/398 [00:12<00:06, 21.66it/s]Loading weights:  65%|██████▌   | 259/398 [00:12<00:08, 17.18it/s]Loading weights:  66%|██████▌   | 262/398 [00:12<00:07, 18.26it/s]Loading weights:  67%|██████▋   | 267/398 [00:12<00:07, 18.28it/s]Loading weights:  68%|██████▊   | 269/398 [00:12<00:07, 16.17it/s]Loading weights:  69%|██████▊   | 273/398 [00:13<00:07, 17.12it/s]Loading weights:  69%|██████▉   | 275/398 [00:13<00:07, 17.27it/s]Loading weights:  70%|██████▉   | 278/398 [00:13<00:07, 15.71it/s]Loading weights:  70%|███████   | 280/398 [00:13<00:07, 15.07it/s]Loading weights:  73%|███████▎  | 289/398 [00:13<00:04, 24.44it/s]Loading weights:  73%|███████▎  | 292/398 [00:14<00:04, 23.76it/s]Loading weights:  75%|███████▌  | 299/398 [00:14<00:04, 21.49it/s]Loading weights:  76%|███████▌  | 302/398 [00:14<00:04, 20.59it/s]Loading weights:  78%|███████▊  | 311/398 [00:14<00:03, 22.51it/s]Loading weights:  79%|███████▉  | 314/398 [00:15<00:04, 20.33it/s]Loading weights:  81%|████████  | 322/398 [00:15<00:03, 24.57it/s]Loading weights:  82%|████████▏ | 325/398 [00:15<00:03, 22.78it/s]Loading weights:  83%|████████▎ | 332/398 [00:15<00:03, 20.97it/s]Loading weights:  84%|████████▍ | 335/398 [00:16<00:03, 19.63it/s]Loading weights:  86%|████████▋ | 344/398 [00:16<00:02, 25.23it/s]Loading weights:  87%|████████▋ | 347/398 [00:16<00:02, 24.17it/s]Loading weights:  89%|████████▉ | 355/398 [00:16<00:01, 27.18it/s]Loading weights:  90%|████████▉ | 358/398 [00:16<00:01, 24.86it/s]Loading weights:  92%|█████████▏| 366/398 [00:17<00:01, 25.26it/s]Loading weights:  93%|█████████▎| 369/398 [00:17<00:01, 23.54it/s]Loading weights:  95%|█████████▍| 377/398 [00:17<00:00, 25.80it/s]Loading weights:  95%|█████████▌| 380/398 [00:17<00:00, 23.72it/s]Loading weights:  97%|█████████▋| 388/398 [00:18<00:00, 19.46it/s]Loading weights:  98%|█████████▊| 391/398 [00:18<00:00, 15.29it/s]Loading weights:  99%|█████████▉| 396/398 [00:18<00:00, 18.55it/s]Loading weights: 100%|██████████| 398/398 [00:18<00:00, 21.12it/s]
+  step 512: 29 alive, seq_len 774
+  [random-s0-B2048] 0/29 done, 29 queued (bucket 0, n=29) | 0 tok | 0 tok/s | 1m
+  step 512: 29 alive, seq_len 1798
+  step 1024: 29 alive, seq_len 2310
+  [random-s0-B2048] 29/29 done, 0 queued (bucket 1, n=29) | 59490 tok | 597 tok/s | 2m
+  removal_frac mean: 0.1382
+[random-s0-B2048] DONE 29 records in 2m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] 3 problems x 1 samples; 481 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:13, 28.40it/s]Loading weights:   7%|▋         | 26/398 [00:00<00:02, 143.62it/s]Loading weights:  12%|█▏        | 49/398 [00:00<00:01, 177.88it/s]Loading weights:  19%|█▉        | 75/398 [00:00<00:01, 208.52it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 226.02it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 221.42it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 213.12it/s]Loading weights:  43%|████▎     | 170/398 [00:00<00:01, 214.65it/s]Loading weights:  50%|█████     | 199/398 [00:00<00:00, 236.53it/s]Loading weights:  56%|█████▌    | 223/398 [00:01<00:00, 236.19it/s]Loading weights:  62%|██████▏   | 247/398 [00:01<00:00, 226.64it/s]Loading weights:  69%|██████▊   | 273/398 [00:01<00:00, 230.36it/s]Loading weights:  75%|███████▍  | 297/398 [00:01<00:00, 227.80it/s]Loading weights:  80%|████████  | 320/398 [00:01<00:00, 222.59it/s]Loading weights:  86%|████████▌ | 343/398 [00:01<00:00, 220.74it/s]Loading weights:  92%|█████████▏| 366/398 [00:01<00:00, 219.75it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 219.55it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 215.44it/s]
+  step 512: 3 alive, seq_len 783
+  [random-s0-B2048] 0/3 done, 3 queued (bucket 0, n=3) | 0 tok | 0 tok/s | 1m
+  step 512: 3 alive, seq_len 1807
+  step 1024: 3 alive, seq_len 2319
+  [random-s0-B2048] 3/3 done, 0 queued (bucket 1, n=3) | 6156 tok | 76 tok/s | 1m
+  removal_frac mean: 0.1385
+[random-s0-B2048] DONE 3 records in 1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] source 0: 0 verbatim, 0 to truncate+regen at B=2048
+[random-s0-B2048] BACKFILL: 7 problems undecided at B=2048 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B2048 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 2048 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B2048-s3.json --datasets gsm8k,math,aime --batch 48 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B2048.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] 7 problems x 1 samples; 484 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 134.81it/s]Loading weights:  12%|█▏        | 48/398 [00:00<00:01, 244.59it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 281.13it/s]Loading weights:  32%|███▏      | 126/398 [00:00<00:00, 339.79it/s]Loading weights:  43%|████▎     | 170/398 [00:00<00:00, 369.53it/s]Loading weights:  53%|█████▎    | 212/398 [00:00<00:00, 385.41it/s]Loading weights:  63%|██████▎   | 251/398 [00:00<00:00, 384.56it/s]Loading weights:  73%|███████▎  | 290/398 [00:00<00:00, 344.64it/s]Loading weights:  82%|████████▏ | 326/398 [00:00<00:00, 333.35it/s]Loading weights:  91%|█████████ | 363/398 [00:01<00:00, 342.14it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 338.87it/s]
+  step 512: 7 alive, seq_len 653
+  [random-s0-B2048] 0/7 done, 7 queued (bucket 0, n=7) | 0 tok | 0 tok/s | 1m
+  step 512: 7 alive, seq_len 1677
+  step 1024: 7 alive, seq_len 2189
+  [random-s0-B2048] 7/7 done, 0 queued (bucket 1, n=7) | 14375 tok | 174 tok/s | 1m
+  removal_frac mean: 0.1388
+[random-s0-B2048] DONE 7 records in 1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B2048] source 0: 0 verbatim, 0 to truncate+regen at B=2048
+[random-s0-B2048] staged-source: no backfill needed; cell majority outcomes complete.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] source 404: 8 verbatim, 396 to truncate+regen at B=512
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<09:21,  1.41s/it]Loading weights:   1%|          | 4/398 [00:01<02:00,  3.26it/s]Loading weights:   2%|▏         | 9/398 [00:01<00:52,  7.47it/s]Loading weights:   3%|▎         | 11/398 [00:01<00:46,  8.36it/s]Loading weights:   4%|▎         | 14/398 [00:02<00:36, 10.58it/s]Loading weights:   4%|▍         | 16/398 [00:02<00:50,  7.56it/s]Loading weights:   5%|▌         | 20/398 [00:02<00:34, 10.89it/s]Loading weights:   6%|▋         | 25/398 [00:03<00:29, 12.67it/s]Loading weights:   7%|▋         | 27/398 [00:03<00:28, 12.93it/s]Loading weights:   9%|▉         | 36/398 [00:03<00:18, 19.78it/s]Loading weights:  10%|▉         | 39/398 [00:03<00:17, 20.66it/s]Loading weights:  12%|█▏        | 47/398 [00:03<00:14, 24.39it/s]Loading weights:  13%|█▎        | 50/398 [00:03<00:15, 23.01it/s]Loading weights:  15%|█▍        | 58/398 [00:04<00:13, 25.19it/s]Loading weights:  15%|█▌        | 61/398 [00:04<00:13, 24.22it/s]Loading weights:  17%|█▋        | 69/398 [00:04<00:12, 25.82it/s]Loading weights:  18%|█▊        | 72/398 [00:04<00:13, 23.86it/s]Loading weights:  20%|██        | 80/398 [00:05<00:11, 26.61it/s]Loading weights:  21%|██        | 83/398 [00:05<00:12, 24.87it/s]Loading weights:  23%|██▎       | 91/398 [00:05<00:10, 28.86it/s]Loading weights:  24%|██▎       | 94/398 [00:05<00:11, 26.54it/s]Loading weights:  26%|██▌       | 102/398 [00:05<00:09, 30.19it/s]Loading weights:  26%|██▋       | 105/398 [00:05<00:09, 30.12it/s]Loading weights:  28%|██▊       | 113/398 [00:06<00:11, 25.73it/s]Loading weights:  29%|██▉       | 116/398 [00:06<00:11, 24.10it/s]Loading weights:  30%|███       | 121/398 [00:06<00:13, 20.32it/s]Loading weights:  31%|███       | 124/398 [00:06<00:13, 19.96it/s]Loading weights:  32%|███▏      | 127/398 [00:07<00:13, 20.40it/s]Loading weights:  33%|███▎      | 130/398 [00:07<00:12, 21.75it/s]Loading weights:  33%|███▎      | 133/398 [00:07<00:13, 19.10it/s]Loading weights:  34%|███▍      | 136/398 [00:07<00:17, 14.77it/s]Loading weights:  35%|███▌      | 141/398 [00:07<00:14, 17.64it/s]Loading weights:  36%|███▌      | 143/398 [00:08<00:14, 17.02it/s]Loading weights:  37%|███▋      | 146/398 [00:08<00:16, 15.07it/s]Loading weights:  37%|███▋      | 148/398 [00:08<00:17, 14.14it/s]Loading weights:  38%|███▊      | 152/398 [00:08<00:14, 17.14it/s]Loading weights:  39%|███▊      | 154/398 [00:08<00:15, 16.26it/s]Loading weights:  39%|███▉      | 157/398 [00:09<00:15, 15.87it/s]Loading weights:  40%|███▉      | 159/398 [00:09<00:16, 14.54it/s]Loading weights:  41%|████▏     | 165/398 [00:09<00:10, 22.10it/s]Loading weights:  42%|████▏     | 168/398 [00:09<00:11, 20.73it/s]Loading weights:  43%|████▎     | 171/398 [00:09<00:14, 15.34it/s]Loading weights:  44%|████▎     | 174/398 [00:09<00:12, 17.44it/s]Loading weights:  45%|████▍     | 179/398 [00:10<00:11, 18.40it/s]Loading weights:  46%|████▌     | 182/398 [00:10<00:13, 15.54it/s]Loading weights:  46%|████▋     | 185/398 [00:10<00:12, 17.47it/s]Loading weights:  47%|████▋     | 188/398 [00:10<00:10, 19.25it/s]Loading weights:  48%|████▊     | 191/398 [00:10<00:13, 15.34it/s]Loading weights:  48%|████▊     | 193/398 [00:11<00:14, 14.41it/s]Loading weights:  49%|████▉     | 196/398 [00:11<00:12, 16.33it/s]Loading weights:  50%|████▉     | 198/398 [00:11<00:12, 16.42it/s]Loading weights:  51%|█████     | 201/398 [00:11<00:11, 16.53it/s]Loading weights:  51%|█████     | 203/398 [00:11<00:12, 15.37it/s]Loading weights:  53%|█████▎    | 212/398 [00:12<00:10, 17.02it/s]Loading weights:  55%|█████▍    | 218/398 [00:12<00:08, 21.37it/s]Loading weights:  56%|█████▌    | 221/398 [00:12<00:08, 21.49it/s]Loading weights:  56%|█████▋    | 224/398 [00:12<00:11, 15.11it/s]Loading weights:  57%|█████▋    | 228/398 [00:13<00:09, 18.62it/s]Loading weights:  58%|█████▊    | 231/398 [00:13<00:08, 19.67it/s]Loading weights:  59%|█████▉    | 234/398 [00:13<00:08, 19.59it/s]Loading weights:  60%|█████▉    | 237/398 [00:13<00:07, 20.32it/s]Loading weights:  60%|██████    | 240/398 [00:13<00:07, 22.02it/s]Loading weights:  61%|██████    | 243/398 [00:13<00:07, 19.92it/s]Loading weights:  62%|██████▏   | 246/398 [00:13<00:08, 17.10it/s]Loading weights:  63%|██████▎   | 251/398 [00:14<00:07, 20.13it/s]Loading weights:  64%|██████▍   | 254/398 [00:14<00:06, 20.81it/s]Loading weights:  65%|██████▍   | 257/398 [00:14<00:07, 18.76it/s]Loading weights:  66%|██████▌   | 262/398 [00:14<00:06, 21.80it/s]Loading weights:  67%|██████▋   | 267/398 [00:14<00:05, 23.68it/s]Loading weights:  68%|██████▊   | 270/398 [00:14<00:05, 23.44it/s]Loading weights:  69%|██████▊   | 273/398 [00:15<00:05, 21.25it/s]Loading weights:  69%|██████▉   | 276/398 [00:15<00:06, 18.47it/s]Loading weights:  70%|██████▉   | 278/398 [00:15<00:07, 15.83it/s]Loading weights:  70%|███████   | 280/398 [00:15<00:07, 15.34it/s]Loading weights:  71%|███████▏  | 284/398 [00:15<00:07, 15.59it/s]Loading weights:  73%|███████▎  | 289/398 [00:16<00:05, 18.67it/s]Loading weights:  73%|███████▎  | 291/398 [00:16<00:07, 14.60it/s]Loading weights:  74%|███████▍  | 294/398 [00:16<00:06, 16.09it/s]Loading weights:  75%|███████▍  | 297/398 [00:16<00:05, 17.11it/s]Loading weights:  75%|███████▌  | 300/398 [00:16<00:06, 16.19it/s]Loading weights:  76%|███████▌  | 302/398 [00:17<00:08, 11.15it/s]Loading weights:  77%|███████▋  | 306/398 [00:17<00:06, 14.54it/s]Loading weights:  77%|███████▋  | 308/398 [00:17<00:06, 14.83it/s]Loading weights:  78%|███████▊  | 311/398 [00:17<00:05, 15.36it/s]Loading weights:  79%|███████▊  | 313/398 [00:18<00:06, 12.41it/s]Loading weights:  80%|███████▉  | 317/398 [00:18<00:04, 16.67it/s]Loading weights:  80%|████████  | 320/398 [00:18<00:04, 19.14it/s]Loading weights:  81%|████████  | 323/398 [00:18<00:04, 15.60it/s]Loading weights:  82%|████████▏ | 325/398 [00:18<00:04, 15.37it/s]Loading weights:  82%|████████▏ | 328/398 [00:18<00:04, 17.02it/s]Loading weights:  83%|████████▎ | 330/398 [00:18<00:04, 16.87it/s]Loading weights:  84%|████████▎ | 333/398 [00:19<00:04, 15.18it/s]Loading weights:  84%|████████▍ | 335/398 [00:19<00:04, 14.78it/s]Loading weights:  85%|████████▌ | 339/398 [00:19<00:03, 18.37it/s]Loading weights:  86%|████████▌ | 341/398 [00:19<00:03, 16.66it/s]Loading weights:  86%|████████▋ | 344/398 [00:20<00:04, 11.61it/s]Loading weights:  87%|████████▋ | 346/398 [00:20<00:04, 11.23it/s]Loading weights:  88%|████████▊ | 350/398 [00:20<00:03, 14.96it/s]Loading weights:  88%|████████▊ | 352/398 [00:20<00:03, 14.12it/s]Loading weights:  89%|████████▉ | 354/398 [00:20<00:03, 12.67it/s]Loading weights:  89%|████████▉ | 356/398 [00:20<00:03, 12.44it/s]Loading weights:  91%|█████████ | 361/398 [00:21<00:02, 17.01it/s]Loading weights:  91%|█████████ | 363/398 [00:21<00:02, 14.87it/s]Loading weights:  92%|█████████▏| 366/398 [00:21<00:02, 13.65it/s]Loading weights:  92%|█████████▏| 368/398 [00:21<00:02, 13.65it/s]Loading weights:  93%|█████████▎| 372/398 [00:21<00:01, 15.52it/s]Loading weights:  94%|█████████▍| 374/398 [00:22<00:01, 15.38it/s]Loading weights:  95%|█████████▍| 377/398 [00:22<00:01, 15.59it/s]Loading weights:  95%|█████████▌| 379/398 [00:22<00:01, 13.42it/s]Loading weights:  96%|█████████▌| 383/398 [00:22<00:00, 16.02it/s]Loading weights:  97%|█████████▋| 388/398 [00:22<00:00, 15.35it/s]Loading weights:  98%|█████████▊| 390/398 [00:23<00:00, 12.76it/s]Loading weights:  99%|█████████▉| 394/398 [00:23<00:00, 16.50it/s]Loading weights: 100%|██████████| 398/398 [00:23<00:00, 17.05it/s]
+  [random-s0-B512] 96/396 regen | 0.2m
+  [random-s0-B512] 192/396 regen | 0.4m
+  [random-s0-B512] 288/396 regen | 0.7m
+  [random-s0-B512] 384/396 regen | 0.9m
+  [random-s0-B512] 396/396 regen | 1.0m
+[random-s0-B512] BACKFILL: 73 problems undecided at B=512 lack sample 2; run:
+  python3 scripts/run_cell.py --tag random-s0-B512 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 512 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B512-s2.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B512] BACKFILL: 2 problems undecided at B=512 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B512 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 512 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B512-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B512] DONE 8 verbatim + 396 regen in 1.0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] 73 problems x 1 samples; 404 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 138.93it/s]Loading weights:  12%|█▏        | 49/398 [00:00<00:01, 261.15it/s]Loading weights:  20%|██        | 81/398 [00:00<00:01, 282.22it/s]Loading weights:  28%|██▊       | 110/398 [00:00<00:01, 285.12it/s]Loading weights:  37%|███▋      | 146/398 [00:00<00:00, 303.01it/s]Loading weights:  44%|████▍     | 177/398 [00:00<00:00, 297.78it/s]Loading weights:  52%|█████▏    | 207/398 [00:00<00:00, 279.24it/s]Loading weights:  59%|█████▉    | 236/398 [00:00<00:00, 282.27it/s]Loading weights:  69%|██████▊   | 273/398 [00:00<00:00, 301.91it/s]Loading weights:  78%|███████▊  | 312/398 [00:01<00:00, 324.13it/s]Loading weights:  89%|████████▉ | 356/398 [00:01<00:00, 351.18it/s]Loading weights:  98%|█████████▊| 392/398 [00:01<00:00, 347.73it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 311.92it/s]
+  step 512: 64 alive, seq_len 774
+  [random-s0-B512] 64/73 done, 9 queued (bucket 0, n=64) | 33008 tok | 1165 tok/s | 0m
+  step 512: 9 alive, seq_len 643
+  [random-s0-B512] 73/73 done, 0 queued (bucket 0, n=9) | 37653 tok | 751 tok/s | 1m
+  removal_frac mean: 0.1373
+[random-s0-B512] DONE 73 records in 1m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] 2 problems x 1 samples; 477 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 2/398 [00:00<00:24, 16.44it/s]Loading weights:   8%|▊         | 32/398 [00:00<00:02, 168.08it/s]Loading weights:  15%|█▍        | 58/398 [00:00<00:01, 200.63it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 209.65it/s]Loading weights:  26%|██▌       | 104/398 [00:00<00:01, 212.68it/s]Loading weights:  33%|███▎      | 132/398 [00:00<00:01, 233.12it/s]Loading weights:  40%|███▉      | 158/398 [00:00<00:01, 234.44it/s]Loading weights:  47%|████▋     | 187/398 [00:00<00:00, 249.89it/s]Loading weights:  54%|█████▎    | 213/398 [00:00<00:00, 245.01it/s]Loading weights:  62%|██████▏   | 245/398 [00:01<00:00, 260.38it/s]Loading weights:  69%|██████▊   | 273/398 [00:01<00:00, 264.87it/s]Loading weights:  75%|███████▌  | 300/398 [00:01<00:00, 265.64it/s]Loading weights:  82%|████████▏ | 327/398 [00:01<00:00, 266.34it/s]Loading weights:  89%|████████▉ | 356/398 [00:01<00:00, 267.73it/s]Loading weights:  96%|█████████▌| 383/398 [00:01<00:00, 267.02it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 244.71it/s]
+  step 512: 2 alive, seq_len 764
+  [random-s0-B512] 2/2 done, 0 queued (bucket 0, n=2) | 1033 tok | 47 tok/s | 0m
+  removal_frac mean: 0.1374
+[random-s0-B512] DONE 2 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] source 0: 0 verbatim, 0 to truncate+regen at B=512
+[random-s0-B512] BACKFILL: 12 problems undecided at B=512 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B512 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 512 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B512-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B512.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] 12 problems x 1 samples; 479 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 132.10it/s]Loading weights:  10%|▉         | 38/398 [00:00<00:01, 193.32it/s]Loading weights:  18%|█▊        | 71/398 [00:00<00:01, 251.89it/s]Loading weights:  25%|██▌       | 101/398 [00:00<00:01, 270.52it/s]Loading weights:  33%|███▎      | 130/398 [00:00<00:00, 275.77it/s]Loading weights:  40%|███▉      | 159/398 [00:00<00:00, 272.37it/s]Loading weights:  48%|████▊     | 192/398 [00:00<00:00, 289.11it/s]Loading weights:  59%|█████▉    | 234/398 [00:00<00:00, 324.50it/s]Loading weights:  68%|██████▊   | 269/398 [00:00<00:00, 324.72it/s]Loading weights:  76%|███████▌  | 302/398 [00:01<00:00, 322.10it/s]Loading weights:  84%|████████▍ | 335/398 [00:01<00:00, 317.85it/s]Loading weights:  92%|█████████▏| 367/398 [00:01<00:00, 308.10it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 306.18it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 292.04it/s]
+  step 512: 12 alive, seq_len 653
+  [random-s0-B512] 12/12 done, 0 queued (bucket 0, n=12) | 6189 tok | 289 tok/s | 0m
+  removal_frac mean: 0.1338
+[random-s0-B512] DONE 12 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B512] source 0: 0 verbatim, 0 to truncate+regen at B=512
+[random-s0-B512] staged-source: no backfill needed; cell majority outcomes complete.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B128] source 404: 0 verbatim, 404 to truncate+regen at B=128
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 138.93it/s]Loading weights:  12%|█▏        | 48/398 [00:00<00:01, 248.67it/s]Loading weights:  20%|█▉        | 78/398 [00:00<00:01, 271.14it/s]Loading weights:  28%|██▊       | 113/398 [00:00<00:00, 296.48it/s]Loading weights:  39%|███▉      | 157/398 [00:00<00:00, 344.47it/s]Loading weights:  50%|████▉     | 198/398 [00:00<00:00, 363.55it/s]Loading weights:  59%|█████▉    | 235/398 [00:00<00:00, 339.45it/s]Loading weights:  68%|██████▊   | 270/398 [00:00<00:00, 315.10it/s]Loading weights:  76%|███████▌  | 302/398 [00:00<00:00, 302.11it/s]Loading weights:  84%|████████▍ | 334/398 [00:01<00:00, 301.88it/s]Loading weights:  92%|█████████▏| 366/398 [00:01<00:00, 300.85it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 307.20it/s]
+  [random-s0-B128] 96/404 regen | 0.1m
+  [random-s0-B128] 192/404 regen | 0.2m
+  [random-s0-B128] 288/404 regen | 0.3m
+  [random-s0-B128] 384/404 regen | 0.5m
+  [random-s0-B128] 404/404 regen | 0.5m
+[random-s0-B128] BACKFILL: 123 problems undecided at B=128 lack sample 2; run:
+  python3 scripts/run_cell.py --tag random-s0-B128 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 128 --samples 1 --sample-offset 2 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B128-s2.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B128.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+[random-s0-B128] DONE 0 verbatim + 404 regen in 0.5m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B128] 123 problems x 1 samples; 404 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<00:49,  7.97it/s]Loading weights:   7%|▋         | 26/398 [00:00<00:02, 136.38it/s]Loading weights:  12%|█▏        | 49/398 [00:00<00:02, 170.79it/s]Loading weights:  20%|██        | 81/398 [00:00<00:01, 220.63it/s]Loading weights:  27%|██▋       | 108/398 [00:00<00:01, 230.98it/s]Loading weights:  36%|███▌      | 143/398 [00:00<00:00, 267.03it/s]Loading weights:  43%|████▎     | 171/398 [00:00<00:00, 266.12it/s]Loading weights:  51%|█████     | 203/398 [00:00<00:00, 276.35it/s]Loading weights:  60%|██████    | 240/398 [00:00<00:00, 302.64it/s]Loading weights:  68%|██████▊   | 271/398 [00:01<00:00, 283.74it/s]Loading weights:  76%|███████▌  | 302/398 [00:01<00:00, 282.40it/s]Loading weights:  86%|████████▌ | 343/398 [00:01<00:00, 314.74it/s]Loading weights:  95%|█████████▍| 378/398 [00:01<00:00, 322.78it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 272.78it/s]
+  [random-s0-B128] 64/123 done, 59 queued (bucket 0, n=64) | 8425 tok | 897 tok/s | 0m
+  [random-s0-B128] 123/123 done, 0 queued (bucket 0, n=59) | 16182 tok | 841 tok/s | 0m
+  removal_frac mean: 0.1388
+[random-s0-B128] DONE 123 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B128] source 0: 0 verbatim, 0 to truncate+regen at B=128
+[random-s0-B128] BACKFILL: 12 problems undecided at B=128 lack sample 3; run:
+  python3 scripts/run_cell.py --tag random-s0-B128 --mode random --band 22:34 --k 10 --rand-seed 0 --budget 128 --samples 1 --sample-offset 3 --problems /workspace/jlens-cot/results/runs/backfill-random-s0-B128-s3.json --datasets gsm8k,math --batch 96 --kv-budget 55.0 --out /workspace/jlens-cot/results/runs/random-s0-B128.jsonl
+  then re-run this run_reuse command to refresh the backfill lists.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B128] 12 problems x 1 samples; 527 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 3/398 [00:00<00:14, 27.84it/s]Loading weights:   8%|▊         | 31/398 [00:00<00:02, 164.03it/s]Loading weights:  15%|█▌        | 60/398 [00:00<00:01, 212.33it/s]Loading weights:  23%|██▎       | 93/398 [00:00<00:01, 246.74it/s]Loading weights:  32%|███▏      | 126/398 [00:00<00:01, 268.94it/s]Loading weights:  40%|███▉      | 159/398 [00:00<00:00, 277.78it/s]Loading weights:  48%|████▊     | 190/398 [00:00<00:00, 284.06it/s]Loading weights:  56%|█████▌    | 223/398 [00:00<00:00, 295.36it/s]Loading weights:  64%|██████▎   | 253/398 [00:00<00:00, 294.27it/s]Loading weights:  71%|███████▏  | 284/398 [00:01<00:00, 298.55it/s]Loading weights:  79%|███████▉  | 314/398 [00:01<00:00, 294.74it/s]Loading weights:  87%|████████▋ | 346/398 [00:01<00:00, 298.98it/s]Loading weights:  94%|█████████▍| 376/398 [00:01<00:00, 296.72it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 274.86it/s]
+  [random-s0-B128] 12/12 done, 0 queued (bucket 0, n=12) | 1580 tok | 235 tok/s | 0m
+  removal_frac mean: 0.1366
+[random-s0-B128] DONE 12 records in 0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[random-s0-B128] source 0: 0 verbatim, 0 to truncate+regen at B=128
+[random-s0-B128] staged-source: no backfill needed; cell majority outcomes complete.
+Mon Aug 31 06:17:36 UTC 2026
+=== heavy level ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[jspace-heavy-B16384] 209 problems x 4 samples; 0 already done
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<00:44,  8.95it/s]Loading weights:   8%|▊         | 30/398 [00:00<00:02, 166.34it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 220.60it/s]Loading weights:  21%|██▏       | 85/398 [00:00<00:01, 235.50it/s]Loading weights:  27%|██▋       | 109/398 [00:00<00:01, 230.18it/s]Loading weights:  34%|███▎      | 134/398 [00:00<00:01, 232.23it/s]Loading weights:  41%|████      | 163/398 [00:00<00:00, 250.31it/s]Loading weights:  48%|████▊     | 191/398 [00:00<00:00, 254.18it/s]Loading weights:  55%|█████▌    | 219/398 [00:00<00:00, 260.74it/s]Loading weights:  62%|██████▏   | 246/398 [00:01<00:00, 263.13it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 276.44it/s]Loading weights:  78%|███████▊  | 311/398 [00:01<00:00, 286.67it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 294.81it/s]Loading weights:  95%|█████████▍| 377/398 [00:01<00:00, 295.43it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 259.14it/s]
+[jspace-heavy-B16384] staged wave A (samples [0, 1]): 418 to run, 0 skipped as determined so far
+  step 512: 123 alive, seq_len 653
+  [jspace-heavy-B16384] 6/836 done, 412 queued (bucket 0, n=123) | 4715 tok | 43 tok/s | 2m
+  step 512: 123 alive, seq_len 783
+  [jspace-heavy-B16384] 6/836 done, 412 queued (bucket 0, n=123) | 4715 tok | 21 tok/s | 4m
+  step 512: 123 alive, seq_len 774
+  [jspace-heavy-B16384] 6/836 done, 412 queued (bucket 0, n=123) | 4715 tok | 14 tok/s | 6m
+  step 512: 49 alive, seq_len 769
+  [jspace-heavy-B16384] 6/836 done, 412 queued (bucket 0, n=49) | 4715 tok | 11 tok/s | 7m
+  step 512: 63 alive, seq_len 1677
+  step 1024: 63 alive, seq_len 2189
+  step 1536: 63 alive, seq_len 2701
+  [jspace-heavy-B16384] 12/836 done, 406 queued (bucket 1, n=68) | 13272 tok | 20 tok/s | 11m
+  step 512: 64 alive, seq_len 1659
+  step 1024: 64 alive, seq_len 2171
+  step 1536: 64 alive, seq_len 2683
+  [jspace-heavy-B16384] 16/836 done, 402 queued (bucket 1, n=68) | 18044 tok | 21 tok/s | 15m
+  step 512: 68 alive, seq_len 1807
+  step 1024: 67 alive, seq_len 2319
+  step 1536: 67 alive, seq_len 2831
+  [jspace-heavy-B16384] 17/836 done, 401 queued (bucket 1, n=68) | 19678 tok | 18 tok/s | 19m
+  step 512: 67 alive, seq_len 1788
+  step 1024: 65 alive, seq_len 2300
+  step 1536: 64 alive, seq_len 2812
+  [jspace-heavy-B16384] 24/836 done, 394 queued (bucket 1, n=68) | 35574 tok | 26 tok/s | 22m
+  step 512: 67 alive, seq_len 1798
+  step 1024: 67 alive, seq_len 2310
+  step 1536: 66 alive, seq_len 2822
+  [jspace-heavy-B16384] 26/836 done, 392 queued (bucket 1, n=68) | 39356 tok | 25 tok/s | 26m
+  step 512: 68 alive, seq_len 1793
+  step 1024: 68 alive, seq_len 2305
+  step 1536: 68 alive, seq_len 2817
+  [jspace-heavy-B16384] 26/836 done, 392 queued (bucket 1, n=68) | 39356 tok | 22 tok/s | 30m
+  step 512: 4 alive, seq_len 1705
+  step 1024: 4 alive, seq_len 2217
+  step 1536: 4 alive, seq_len 2729
+  [jspace-heavy-B16384] 26/836 done, 392 queued (bucket 1, n=4) | 39356 tok | 21 tok/s | 32m
+  step 512: 36 alive, seq_len 3725
+  step 1024: 36 alive, seq_len 4237
+  step 1536: 35 alive, seq_len 4749
+  step 2048: 35 alive, seq_len 5261
+  step 2560: 35 alive, seq_len 5773
+  step 3072: 35 alive, seq_len 6285
+  step 3584: 35 alive, seq_len 6797
+  [jspace-heavy-B16384] 27/836 done, 391 queued (bucket 2, n=36) | 43451 tok | 18 tok/s | 40m
+  step 512: 35 alive, seq_len 3717
+  step 1024: 35 alive, seq_len 4229
+  step 1536: 35 alive, seq_len 4741
+  step 2048: 35 alive, seq_len 5253
+  step 2560: 35 alive, seq_len 5765
+  step 3072: 35 alive, seq_len 6277
+  step 3584: 35 alive, seq_len 6789
+  [jspace-heavy-B16384] 28/836 done, 390 queued (bucket 2, n=36) | 47006 tok | 17 tok/s | 47m
+  step 512: 36 alive, seq_len 3707
+  step 1024: 36 alive, seq_len 4219
+  step 1536: 36 alive, seq_len 4731
+  step 2048: 36 alive, seq_len 5243
+  step 2560: 36 alive, seq_len 5755
+  step 3072: 35 alive, seq_len 6267
+  step 3584: 35 alive, seq_len 6779
+  [jspace-heavy-B16384] 29/836 done, 389 queued (bucket 2, n=36) | 52824 tok | 16 tok/s | 55m
+  step 512: 36 alive, seq_len 3759
+  step 1024: 35 alive, seq_len 4271
+  step 1536: 35 alive, seq_len 4783
+  step 2048: 35 alive, seq_len 5295
+  step 2560: 35 alive, seq_len 5807
+  step 3072: 35 alive, seq_len 6319
+  step 3584: 35 alive, seq_len 6831
+  [jspace-heavy-B16384] 30/836 done, 388 queued (bucket 2, n=36) | 56523 tok | 15 tok/s | 62m
+  step 512: 36 alive, seq_len 3720
+  step 1024: 35 alive, seq_len 4232
+  step 1536: 35 alive, seq_len 4744
+  step 2048: 35 alive, seq_len 5256
+  step 2560: 35 alive, seq_len 5768
+  step 3072: 35 alive, seq_len 6280
+  step 3584: 35 alive, seq_len 6792
+  [jspace-heavy-B16384] 31/836 done, 387 queued (bucket 2, n=36) | 60524 tok | 14 tok/s | 70m
+  step 512: 36 alive, seq_len 3855
+  step 1024: 36 alive, seq_len 4367
+  step 1536: 36 alive, seq_len 4879
+  step 2048: 36 alive, seq_len 5391
+  step 2560: 36 alive, seq_len 5903
+  step 3072: 36 alive, seq_len 6415
+  step 3584: 36 alive, seq_len 6927
+  [jspace-heavy-B16384] 31/836 done, 387 queued (bucket 2, n=36) | 60524 tok | 13 tok/s | 77m
+  step 512: 36 alive, seq_len 3836
+  step 1024: 36 alive, seq_len 4348
+  step 1536: 36 alive, seq_len 4860
+  step 2048: 36 alive, seq_len 5372
+  step 2560: 36 alive, seq_len 5884
+  step 3072: 36 alive, seq_len 6396
+  step 3584: 36 alive, seq_len 6908
+  [jspace-heavy-B16384] 31/836 done, 387 queued (bucket 2, n=36) | 60524 tok | 12 tok/s | 85m
+  step 512: 36 alive, seq_len 3846
+  step 1024: 36 alive, seq_len 4358
+  step 1536: 36 alive, seq_len 4870
+  step 2048: 36 alive, seq_len 5382
+  step 2560: 35 alive, seq_len 5894
+  step 3072: 35 alive, seq_len 6406
+  step 3584: 35 alive, seq_len 6918
+  [jspace-heavy-B16384] 32/836 done, 386 queued (bucket 2, n=36) | 65805 tok | 12 tok/s | 93m
+  step 512: 36 alive, seq_len 3810
+  step 1024: 35 alive, seq_len 4322
+  step 1536: 35 alive, seq_len 4834
+  step 2048: 35 alive, seq_len 5346
+  step 2560: 35 alive, seq_len 5858
+  step 3072: 35 alive, seq_len 6370
+  step 3584: 34 alive, seq_len 6882
+  [jspace-heavy-B16384] 34/836 done, 384 queued (bucket 2, n=36) | 75835 tok | 13 tok/s | 100m
+  step 512: 36 alive, seq_len 3841
+  step 1024: 35 alive, seq_len 4353
+  step 1536: 34 alive, seq_len 4865
+  step 2048: 34 alive, seq_len 5377
+  step 2560: 34 alive, seq_len 5889
+  step 3072: 34 alive, seq_len 6401
+  step 3584: 34 alive, seq_len 6913
+  [jspace-heavy-B16384] 36/836 done, 382 queued (bucket 2, n=36) | 83983 tok | 13 tok/s | 108m
+  step 512: 32 alive, seq_len 3806
+  step 1024: 32 alive, seq_len 4318
+  step 1536: 32 alive, seq_len 4830
+  step 2048: 32 alive, seq_len 5342
+  step 2560: 32 alive, seq_len 5854
+  step 3072: 31 alive, seq_len 6366
+  step 3584: 31 alive, seq_len 6878
+  [jspace-heavy-B16384] 37/836 done, 381 queued (bucket 2, n=32) | 89974 tok | 13 tok/s | 115m
+  step 512: 18 alive, seq_len 7821
+  step 1024: 18 alive, seq_len 8333
+  step 1536: 18 alive, seq_len 8845
+  step 2048: 18 alive, seq_len 9357
+  step 2560: 17 alive, seq_len 9869
+  step 3072: 17 alive, seq_len 10381
+  step 3584: 17 alive, seq_len 10893
+  step 4096: 17 alive, seq_len 11405
+  step 4608: 17 alive, seq_len 11917
+  step 5120: 17 alive, seq_len 12429
+  step 5632: 17 alive, seq_len 12941
+  step 6144: 17 alive, seq_len 13453
+  step 6656: 17 alive, seq_len 13965
+  step 7168: 17 alive, seq_len 14477
+  step 7680: 17 alive, seq_len 14989
+  [jspace-heavy-B16384] 38/836 done, 380 queued (bucket 3, n=18) | 99323 tok | 13 tok/s | 131m
+  step 512: 18 alive, seq_len 7793
+  step 1024: 18 alive, seq_len 8305
+  step 1536: 18 alive, seq_len 8817
+  step 2048: 17 alive, seq_len 9329
+  step 2560: 17 alive, seq_len 9841
+  step 3072: 17 alive, seq_len 10353
+  step 3584: 17 alive, seq_len 10865
+  step 4096: 17 alive, seq_len 11377
+  step 4608: 17 alive, seq_len 11889
+  step 5120: 17 alive, seq_len 12401
+  step 5632: 17 alive, seq_len 12913
+  step 6144: 17 alive, seq_len 13425
+  step 6656: 17 alive, seq_len 13937
+  step 7168: 17 alive, seq_len 14449
+  step 7680: 17 alive, seq_len 14961
+  [jspace-heavy-B16384] 40/836 done, 378 queued (bucket 3, n=18) | 123674 tok | 14 tok/s | 146m
+  step 512: 18 alive, seq_len 7782
+  step 1024: 17 alive, seq_len 8294
+  step 1536: 17 alive, seq_len 8806
+  step 2048: 17 alive, seq_len 9318
+  step 2560: 17 alive, seq_len 9830
+  step 3072: 17 alive, seq_len 10342
+  step 3584: 17 alive, seq_len 10854
+  step 4096: 17 alive, seq_len 11366
+  step 4608: 17 alive, seq_len 11878
+  step 5120: 17 alive, seq_len 12390
+  step 5632: 17 alive, seq_len 12902
+  step 6144: 17 alive, seq_len 13414
+  step 6656: 17 alive, seq_len 13926
+  step 7168: 17 alive, seq_len 14438
+  step 7680: 17 alive, seq_len 14950
+  [jspace-heavy-B16384] 41/836 done, 377 queued (bucket 3, n=18) | 131721 tok | 14 tok/s | 162m
+  step 512: 18 alive, seq_len 7780
+  step 1024: 18 alive, seq_len 8292
+  step 1536: 17 alive, seq_len 8804
+  step 2048: 17 alive, seq_len 9316
+  step 2560: 17 alive, seq_len 9828
+  step 3072: 17 alive, seq_len 10340
+  step 3584: 17 alive, seq_len 10852
+  step 4096: 17 alive, seq_len 11364
+  step 4608: 16 alive, seq_len 11876
+  step 5120: 16 alive, seq_len 12388
+  step 5632: 16 alive, seq_len 12900
+  step 6144: 16 alive, seq_len 13412
+  step 6656: 16 alive, seq_len 13924
+  step 7168: 16 alive, seq_len 14436
+  step 7680: 16 alive, seq_len 14948
+  [jspace-heavy-B16384] 43/836 done, 375 queued (bucket 3, n=18) | 151315 tok | 14 tok/s | 177m
+  step 512: 18 alive, seq_len 7792
+  step 1024: 18 alive, seq_len 8304
+  step 1536: 18 alive, seq_len 8816
+  step 2048: 18 alive, seq_len 9328
+  step 2560: 18 alive, seq_len 9840
+  step 3072: 18 alive, seq_len 10352
+  step 3584: 18 alive, seq_len 10864
+  step 4096: 18 alive, seq_len 11376
+  step 4608: 18 alive, seq_len 11888
+  step 5120: 17 alive, seq_len 12400
+  step 5632: 17 alive, seq_len 12912
+  step 6144: 17 alive, seq_len 13424
+  step 6656: 17 alive, seq_len 13936
+  step 7168: 17 alive, seq_len 14448
+  step 7680: 17 alive, seq_len 14960
+  [jspace-heavy-B16384] 44/836 done, 374 queued (bucket 3, n=18) | 163400 tok | 14 tok/s | 192m
+  step 512: 18 alive, seq_len 7803
+  step 1024: 18 alive, seq_len 8315
+  step 1536: 18 alive, seq_len 8827
+  step 2048: 18 alive, seq_len 9339
+  step 2560: 18 alive, seq_len 9851
+  step 3072: 18 alive, seq_len 10363
+  step 3584: 18 alive, seq_len 10875
+  step 4096: 18 alive, seq_len 11387
+  step 4608: 18 alive, seq_len 11899
+  step 5120: 18 alive, seq_len 12411
+  step 5632: 18 alive, seq_len 12923
+  step 6144: 18 alive, seq_len 13435
+  step 6656: 18 alive, seq_len 13947
+  step 7168: 18 alive, seq_len 14459
+  step 7680: 18 alive, seq_len 14971
+  [jspace-heavy-B16384] 44/836 done, 374 queued (bucket 3, n=18) | 163400 tok | 13 tok/s | 208m
+  step 512: 18 alive, seq_len 7785
+  step 1024: 18 alive, seq_len 8297
+  step 1536: 18 alive, seq_len 8809
+  step 2048: 18 alive, seq_len 9321
+  step 2560: 18 alive, seq_len 9833
+  step 3072: 18 alive, seq_len 10345
+  step 3584: 18 alive, seq_len 10857
+  step 4096: 18 alive, seq_len 11369
+  step 4608: 18 alive, seq_len 11881
+  step 5120: 18 alive, seq_len 12393
+  step 5632: 18 alive, seq_len 12905
+  step 6144: 18 alive, seq_len 13417
+  step 6656: 18 alive, seq_len 13929
+  step 7168: 18 alive, seq_len 14441
+  step 7680: 18 alive, seq_len 14953
+  [jspace-heavy-B16384] 44/836 done, 374 queued (bucket 3, n=18) | 163400 tok | 12 tok/s | 223m
+  step 512: 17 alive, seq_len 7855
+  step 1024: 17 alive, seq_len 8367
+  step 1536: 17 alive, seq_len 8879
+  step 2048: 17 alive, seq_len 9391
+  step 2560: 17 alive, seq_len 9903
+  step 3072: 17 alive, seq_len 10415
+  step 3584: 17 alive, seq_len 10927
+  step 4096: 17 alive, seq_len 11439
+  step 4608: 17 alive, seq_len 11951
+  step 5120: 17 alive, seq_len 12463
+  step 5632: 17 alive, seq_len 12975
+  step 6144: 17 alive, seq_len 13487
+  step 6656: 17 alive, seq_len 13999
+  step 7168: 17 alive, seq_len 14511
+  step 7680: 17 alive, seq_len 15023
+  [jspace-heavy-B16384] 45/836 done, 373 queued (bucket 3, n=18) | 170685 tok | 12 tok/s | 239m
+  step 512: 18 alive, seq_len 7816
+  step 1024: 18 alive, seq_len 8328
+  step 1536: 18 alive, seq_len 8840
+  step 2048: 18 alive, seq_len 9352
+  step 2560: 18 alive, seq_len 9864
+  step 3072: 18 alive, seq_len 10376
+  step 3584: 18 alive, seq_len 10888
+  step 4096: 18 alive, seq_len 11400
+  step 4608: 18 alive, seq_len 11912
+  step 5120: 18 alive, seq_len 12424
+  step 5632: 18 alive, seq_len 12936
+  step 6144: 18 alive, seq_len 13448
+  step 6656: 18 alive, seq_len 13960
+  step 7168: 18 alive, seq_len 14472
+  step 7680: 18 alive, seq_len 14984
+  [jspace-heavy-B16384] 45/836 done, 373 queued (bucket 3, n=18) | 170685 tok | 11 tok/s | 254m
+  step 512: 18 alive, seq_len 7811
+  step 1024: 18 alive, seq_len 8323
+  step 1536: 18 alive, seq_len 8835
+  step 2048: 18 alive, seq_len 9347
+  step 2560: 18 alive, seq_len 9859
+  step 3072: 18 alive, seq_len 10371
+  step 3584: 18 alive, seq_len 10883
+  step 4096: 18 alive, seq_len 11395
+  step 4608: 18 alive, seq_len 11907
+  step 5120: 18 alive, seq_len 12419
+  step 5632: 18 alive, seq_len 12931
+  step 6144: 18 alive, seq_len 13443
+  step 6656: 18 alive, seq_len 13955
+  step 7168: 18 alive, seq_len 14467
+  step 7680: 18 alive, seq_len 14979
+  [jspace-heavy-B16384] 45/836 done, 373 queued (bucket 3, n=18) | 170685 tok | 11 tok/s | 269m
+  step 512: 18 alive, seq_len 7951
+  step 1024: 18 alive, seq_len 8463
+  step 1536: 18 alive, seq_len 8975
+  step 2048: 18 alive, seq_len 9487
+  step 2560: 18 alive, seq_len 9999
+  step 3072: 18 alive, seq_len 10511
+  step 3584: 18 alive, seq_len 11023
+  step 4096: 18 alive, seq_len 11535
+  step 4608: 18 alive, seq_len 12047
+  step 5120: 18 alive, seq_len 12559
+  step 5632: 18 alive, seq_len 13071
+  step 6144: 18 alive, seq_len 13583
+  step 6656: 18 alive, seq_len 14095
+  step 7168: 18 alive, seq_len 14607
+  step 7680: 18 alive, seq_len 15119
+  [jspace-heavy-B16384] 45/836 done, 373 queued (bucket 3, n=18) | 170685 tok | 10 tok/s | 285m
+  step 512: 18 alive, seq_len 7858
+  step 1024: 18 alive, seq_len 8370
+  step 1536: 18 alive, seq_len 8882
+  step 2048: 18 alive, seq_len 9394
+  step 2560: 18 alive, seq_len 9906
+  step 3072: 18 alive, seq_len 10418
+  step 3584: 18 alive, seq_len 10930
+  step 4096: 18 alive, seq_len 11442
+  step 4608: 18 alive, seq_len 11954
+  step 5120: 18 alive, seq_len 12466
+  step 5632: 18 alive, seq_len 12978
+  step 6144: 18 alive, seq_len 13490
+  step 6656: 17 alive, seq_len 14002
+  step 7168: 17 alive, seq_len 14514
+  step 7680: 17 alive, seq_len 15026
+  [jspace-heavy-B16384] 46/836 done, 372 queued (bucket 3, n=18) | 184161 tok | 10 tok/s | 300m
+  step 512: 18 alive, seq_len 7932
+  step 1024: 18 alive, seq_len 8444
+  step 1536: 18 alive, seq_len 8956
+  step 2048: 18 alive, seq_len 9468
+  step 2560: 18 alive, seq_len 9980
+  step 3072: 18 alive, seq_len 10492
+  step 3584: 18 alive, seq_len 11004
+  step 4096: 18 alive, seq_len 11516
+  step 4608: 18 alive, seq_len 12028
+  step 5120: 18 alive, seq_len 12540
+  step 5632: 18 alive, seq_len 13052
+  step 6144: 17 alive, seq_len 13564
+  step 6656: 17 alive, seq_len 14076
+  step 7168: 17 alive, seq_len 14588
+  step 7680: 17 alive, seq_len 15100
+  [jspace-heavy-B16384] 47/836 done, 371 queued (bucket 3, n=18) | 197123 tok | 10 tok/s | 316m
+  step 512: 18 alive, seq_len 7802
+  step 1024: 18 alive, seq_len 8314
+  step 1536: 18 alive, seq_len 8826
+  step 2048: 18 alive, seq_len 9338
+  step 2560: 18 alive, seq_len 9850
+  step 3072: 18 alive, seq_len 10362
+  step 3584: 18 alive, seq_len 10874
+  step 4096: 18 alive, seq_len 11386
+  step 4608: 18 alive, seq_len 11898
+  step 5120: 18 alive, seq_len 12410
+  step 5632: 17 alive, seq_len 12922
+  step 6144: 17 alive, seq_len 13434
+  step 6656: 17 alive, seq_len 13946
+  step 7168: 17 alive, seq_len 14458
+  step 7680: 17 alive, seq_len 14970
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 11 tok/s | 331m
+  step 512: 18 alive, seq_len 7862
+  step 1024: 18 alive, seq_len 8374
+  step 1536: 18 alive, seq_len 8886
+  step 2048: 18 alive, seq_len 9398
+  step 2560: 18 alive, seq_len 9910
+  step 3072: 18 alive, seq_len 10422
+  step 3584: 18 alive, seq_len 10934
+  step 4096: 18 alive, seq_len 11446
+  step 4608: 18 alive, seq_len 11958
+  step 5120: 18 alive, seq_len 12470
+  step 5632: 18 alive, seq_len 12982
+  step 6144: 18 alive, seq_len 13494
+  step 6656: 18 alive, seq_len 14006
+  step 7168: 18 alive, seq_len 14518
+  step 7680: 18 alive, seq_len 15030
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 10 tok/s | 346m
+  step 512: 18 alive, seq_len 7942
+  step 1024: 18 alive, seq_len 8454
+  step 1536: 18 alive, seq_len 8966
+  step 2048: 18 alive, seq_len 9478
+  step 2560: 18 alive, seq_len 9990
+  step 3072: 18 alive, seq_len 10502
+  step 3584: 18 alive, seq_len 11014
+  step 4096: 18 alive, seq_len 11526
+  step 4608: 18 alive, seq_len 12038
+  step 5120: 18 alive, seq_len 12550
+  step 5632: 18 alive, seq_len 13062
+  step 6144: 18 alive, seq_len 13574
+  step 6656: 18 alive, seq_len 14086
+  step 7168: 18 alive, seq_len 14598
+  step 7680: 18 alive, seq_len 15110
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 10 tok/s | 362m
+  step 512: 18 alive, seq_len 7906
+  step 1024: 18 alive, seq_len 8418
+  step 1536: 18 alive, seq_len 8930
+  step 2048: 18 alive, seq_len 9442
+  step 2560: 18 alive, seq_len 9954
+  step 3072: 18 alive, seq_len 10466
+  step 3584: 18 alive, seq_len 10978
+  step 4096: 18 alive, seq_len 11490
+  step 4608: 18 alive, seq_len 12002
+  step 5120: 18 alive, seq_len 12514
+  step 5632: 18 alive, seq_len 13026
+  step 6144: 18 alive, seq_len 13538
+  step 6656: 18 alive, seq_len 14050
+  step 7168: 18 alive, seq_len 14562
+  step 7680: 18 alive, seq_len 15074
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 9 tok/s | 377m
+  step 512: 18 alive, seq_len 7812
+  step 1024: 18 alive, seq_len 8324
+  step 1536: 18 alive, seq_len 8836
+  step 2048: 18 alive, seq_len 9348
+  step 2560: 18 alive, seq_len 9860
+  step 3072: 18 alive, seq_len 10372
+  step 3584: 18 alive, seq_len 10884
+  step 4096: 18 alive, seq_len 11396
+  step 4608: 18 alive, seq_len 11908
+  step 5120: 18 alive, seq_len 12420
+  step 5632: 18 alive, seq_len 12932
+  step 6144: 18 alive, seq_len 13444
+  step 6656: 18 alive, seq_len 13956
+  step 7168: 18 alive, seq_len 14468
+  step 7680: 18 alive, seq_len 14980
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 9 tok/s | 392m
+  step 512: 18 alive, seq_len 7937
+  step 1024: 18 alive, seq_len 8449
+  step 1536: 18 alive, seq_len 8961
+  step 2048: 18 alive, seq_len 9473
+  step 2560: 18 alive, seq_len 9985
+  step 3072: 18 alive, seq_len 10497
+  step 3584: 18 alive, seq_len 11009
+  step 4096: 18 alive, seq_len 11521
+  step 4608: 18 alive, seq_len 12033
+  step 5120: 18 alive, seq_len 12545
+  step 5632: 18 alive, seq_len 13057
+  step 6144: 18 alive, seq_len 13569
+  step 6656: 18 alive, seq_len 14081
+  step 7168: 18 alive, seq_len 14593
+  step 7680: 18 alive, seq_len 15105
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 9 tok/s | 408m
+  step 512: 18 alive, seq_len 7857
+  step 1024: 18 alive, seq_len 8369
+  step 1536: 18 alive, seq_len 8881
+  step 2048: 18 alive, seq_len 9393
+  step 2560: 18 alive, seq_len 9905
+  step 3072: 18 alive, seq_len 10417
+  step 3584: 18 alive, seq_len 10929
+  step 4096: 18 alive, seq_len 11441
+  step 4608: 18 alive, seq_len 11953
+  step 5120: 18 alive, seq_len 12465
+  step 5632: 18 alive, seq_len 12977
+  step 6144: 18 alive, seq_len 13489
+  step 6656: 18 alive, seq_len 14001
+  step 7168: 18 alive, seq_len 14513
+  step 7680: 18 alive, seq_len 15025
+  [jspace-heavy-B16384] 48/836 done, 370 queued (bucket 3, n=18) | 209905 tok | 8 tok/s | 423m
+  step 512: 18 alive, seq_len 7902
+  step 1024: 18 alive, seq_len 8414
+  step 1536: 18 alive, seq_len 8926
+  step 2048: 18 alive, seq_len 9438
+  step 2560: 18 alive, seq_len 9950
