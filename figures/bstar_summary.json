@@ -1,0 +1,181 @@
+{
+ "bin_edges": [
+  0,
+  1000,
+  2000,
+  4000,
+  8000,
+  1000000000.0
+ ],
+ "medium": {
+  "0": {
+   "bstar": 358.55007930848205,
+   "censored": false,
+   "lo": 288.1714259163907,
+   "hi": 431.65614012780037,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 833.5
+  },
+  "1": {
+   "bstar": 1025.6098777196828,
+   "censored": false,
+   "lo": 673.2006695040719,
+   "hi": 1526.0042186335431,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 0.9777777777777777,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 1389.5
+  },
+  "2": {
+   "bstar": 1388.9574157784964,
+   "censored": false,
+   "lo": 948.0642029882908,
+   "hi": 1848.2188830930404,
+   "base_rate": 0.9555555555555556,
+   "n": 45,
+   "retention_at_bmax": 1.0232558139534882,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 2512.0
+  },
+  "3": {
+   "bstar": 15769.438096008056,
+   "censored": false,
+   "lo": 9276.477469024592,
+   "hi": 65536.0,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 0.8888888888888888,
+   "boot_frac_censored": 0.448,
+   "median_difficulty": 6029.0
+  },
+  "4": {
+   "bstar": null,
+   "censored": true,
+   "lo": 15963.578211106145,
+   "hi": 65536.0,
+   "base_rate": 0.9655172413793104,
+   "n": 29,
+   "retention_at_bmax": 0.8214285714285714,
+   "boot_frac_censored": 0.834,
+   "median_difficulty": 9393.0
+  }
+ },
+ "random-s0": {
+  "0": {
+   "bstar": 373.447847446434,
+   "censored": false,
+   "lo": 295.9117611424054,
+   "hi": 447.73442205020785,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 833.5
+  },
+  "1": {
+   "bstar": 1188.6769586175683,
+   "censored": false,
+   "lo": 635.9213616818087,
+   "hi": 1928.0796502169508,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 0.9555555555555556,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 1389.5
+  },
+  "2": {
+   "bstar": 2065.3334284745047,
+   "censored": false,
+   "lo": 1392.4252801161144,
+   "hi": 2661.6615223295235,
+   "base_rate": 0.9555555555555556,
+   "n": 45,
+   "retention_at_bmax": 0.9767441860465116,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 2512.0
+  },
+  "3": {
+   "bstar": 12555.832003937467,
+   "censored": false,
+   "lo": 7650.2929025297435,
+   "hi": 65536.0,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 0.8888888888888888,
+   "boot_frac_censored": 0.264,
+   "median_difficulty": 6029.0
+  },
+  "4": {
+   "bstar": null,
+   "censored": true,
+   "lo": 11511.655817450466,
+   "hi": 65536.0,
+   "base_rate": 0.9655172413793104,
+   "n": 29,
+   "retention_at_bmax": 0.8928571428571428,
+   "boot_frac_censored": 0.556,
+   "median_difficulty": 9393.0
+  }
+ },
+ "base": {
+  "0": {
+   "bstar": 280.4733543075712,
+   "censored": false,
+   "lo": 212.62175983653745,
+   "hi": 341.161323629504,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 833.5
+  },
+  "1": {
+   "bstar": 566.1933163185361,
+   "censored": false,
+   "lo": 487.49217015537744,
+   "hi": 662.3766985042168,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 1389.5
+  },
+  "2": {
+   "bstar": 1574.8186643141582,
+   "censored": false,
+   "lo": 1243.6066845533037,
+   "hi": 1737.5639684727223,
+   "base_rate": 0.9555555555555556,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 2512.0
+  },
+  "3": {
+   "bstar": 3684.6206967204594,
+   "censored": false,
+   "lo": 3303.756798185265,
+   "hi": 4256.7148820686925,
+   "base_rate": 1.0,
+   "n": 45,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 6029.0
+  },
+  "4": {
+   "bstar": 10257.524080731873,
+   "censored": false,
+   "lo": 8840.841904727286,
+   "hi": 11596.325661464136,
+   "base_rate": 0.9655172413793104,
+   "n": 29,
+   "retention_at_bmax": 1.0,
+   "boot_frac_censored": 0.0,
+   "median_difficulty": 9393.0
+  }
+ }
+}

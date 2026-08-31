@@ -31,7 +31,7 @@ Hardware: 1× A100 80GB (RunPod), preceded by RTX 4090 pilot phase. All runs 202
 | base sweep | 0 / 128 / 512 / 2048 | 209 solvable | fresh, staged |
 | jspace-med (k=10, 22:34) | 0 / 128 / 512 / 2048 / 16384 | 209 | 16K fresh+staged; sub-16K derived by prefix reuse + backfill |
 | random-s0 (norm-matched, medium band/k) | 0 / 128 / 512 / 2048 / 16384 | 209 | same as medium |
-| jspace-heavy (k=100, 22:34) | 0 / 128 / 512 / 2048 / 16384 | **25/bin, bins 0–2 only** (16K & derived); B=0 on all 209; B=2048 also fresh on bins 3–4 | deadline triage, see §5 |
+| jspace-heavy (k=100, 22:34) | 0 / 2048 | all 209, fresh staged | 16K cells killed & archived, see §5 |
 | jspace-light (k=10, 26:30) | 0 | 209 | B>0 cells not run (see §5) |
 | random-s1 | 0 | 209 | B>0 cells not run (see §5) |
 | out-of-band (4:16, k=10) | — | — | not run (see §5) |
@@ -47,29 +47,54 @@ undecided problems get samples 2/3; per-sample statistics use samples {0,1} only
 
 ## 3. Headline results
 
-- **B\* vs difficulty (medium)**: 891 / 4,467 / 3,677 / censored / censored across
-  bins vs clean usage 834 / 1,390 / 2,512 / 6,029 / 9,393 → externalization costs
-  more tokens than the base model's own usage (ratio 1.07→3.2), and **recovery
-  fails entirely above ~4K difficulty** (retention @16K: 0.89 / 0.82; every
-  bootstrap replicate censored). Predictions 1 & 2: supported.
-- **Random control (norm-matched, seed 0)**: B\* = 1,016 / 3,585 / 5,067 /
-  censored / censored; retention @16K 0.89 / 0.89 in the top bins —
-  **statistically indistinguishable from medium jspace**. Prediction 3 fails at
-  paper-protocol strength: the math token-cost is perturbation-magnitude-driven,
-  not J-space-direction-specific. Caveat that rescues specificity: the control's
-  norm-matching removes ~3× more norm than jspace does on its own trajectory
-  (removal fraction ~0.14–0.17 vs ~0.05), so per unit norm removed, J-space
-  directions are ~3× more damaging.
+All B\* values below use the **floor logistic** p = c + (1−c)·σ(a + b·log(B+1));
+the plain 2-parameter logistic falsely censored bins because the nonzero B=0
+direct-answer rate flattens its slope (observed: base bins 3–4 empirically 45/45
+at 16K yet "censored"). Fixture: 41 PASS / 0 FAIL.
+
+- **B\* vs difficulty (medium)**: 359 / 1,026 / 1,389 / 15,769 / censored vs
+  **base reference B\*** (same truncation protocol) 280 / 566 / 1,575 / 3,685 /
+  10,258 → med/base ratio 1.3× / 1.8× / 0.9× / **4.3×** / censored: the
+  externalization premium *grows* with difficulty and recovery fails outright in
+  the top bin (retention @16K by bin: 1.00 / 0.98 / 1.02 / 0.89 / 0.82; bootstrap
+  censoring 45% in bin 3, 83% in bin 4). Predictions 1 & 2: supported.
+- **Random control (norm-matched, seed 0)**: B\* = 373 / 1,189 / 2,065 / 12,556 /
+  censored; retention @16K 1.00 / 0.96 / 0.98 / 0.89 / 0.89 — **statistically
+  indistinguishable from medium jspace**. Prediction 3 fails at paper-protocol
+  strength: the math token-cost is perturbation-magnitude-driven, not
+  J-space-direction-specific. Two caveats that rescue partial specificity:
+  (a) norm-matching makes the control remove ~3× more of the residual norm than
+  jspace removes on its own trajectory (removal fraction ~0.14–0.17 vs ~0.05),
+  so per unit norm removed J-space is ~3× more damaging; (b) verbosity — see
+  the confound row below: medium rambles to the cap (59% truncated at 16K,
+  median think = cap) while the random control's usage matches base (3%),
+  i.e. the *behavioral signature* of J-space damage is direction-specific even
+  where B\* is not.
+- **Heavy (k=100)**: B=0 and B=2048 rows on all 209. In the pooled logistic
+  (tables §1) heavy has the steepest budget slope (b1 = 2.84 vs 0.45 medium)
+  with a strongly negative difficulty interaction (−0.31): tokens help fast on
+  easy problems, not at all on hard ones. The per-bin 2-point fits (4 / 204 /
+  2,270 / censored / censored) are weakly identified — cite the pooled model.
+  Bins 3–4 are censored a fortiori (medium ⊂ heavy damage, medium already
+  censored/near-cap there), evidenced at B=2048.
 - **Selectivity battery (medium)**: MMLU 69.0%→67.6%, SST-2 86.3%→84.0% —
   extraction/selection intact. Pilots: closed-book recall 20/20→10–12/20 while
   in-context extraction stays 18–20/20 at every k (dissociation widens with k).
 - **B=0 row**: base 27.6% vs all ablated levels 16–19% (random ≈ jspace here too).
-- **Faithfulness (truncate trace @50%)**: clean 48/50 → 44/50. Medium: see
-  `results/runs/faith-jspace-med-B16384-f0.5.jsonl` (prediction 4: ablated should
-  drop more).
-- **Heavy (k=100)**: bins 0–2 at full budget grid — see figures; bins 3–4 marked
-  censored a fortiori (medium already censored there; k=100 ⊃ k=10 damage),
-  evidenced by heavy-B2048 on bins 3–4.
+- **Faithfulness (truncate trace @50%)**: base 0.96 → 0.88 (−0.08, 4 problems
+  flip); medium 0.84 → 0.86 (+0.02, 0 flips). **Prediction 4 (ablated traces
+  more load-bearing) is NOT supported** — the ablated model's visible CoT is, if
+  anything, *less* causally necessary, consistent with its rambling-to-cap
+  verbosity (much of the trace is filler).
+- **Verbosity confound (amendment 7b)**: at B=16384 on the solvable set, medium
+  hits the cap on 59.3% of samples (median think = 16,384) vs base 2.9% and
+  random-s0 3.1%. Top-bin medium B\* is therefore partly verbosity-bounded
+  (tokens *spent*, not tokens *needed*) — but the base reference line shares the
+  protocol, so the ratio claim survives; and the random control shows matched-
+  norm damage *without* rambling.
+- **Difficulty-axis sensitivity (amendment 7a)**: rebinning by median-over-all-
+  attempts moves 2/396 problems (0.5%) — binning is robust. Difficulty proxy
+  correlates with MATH level annotations (Spearman ρ = 0.55, p = 2e-19).
 
 ## 4. Performance engineering (all changes bit-exact or distribution-exact, validated)
 
@@ -87,9 +112,14 @@ undecided problems get samples 2/3; per-sample statistics use samples {0,1} only
 
 ## 5. Deviations from SPEC (all deadline-driven, user-approved 2026-08-31)
 
-1. **Heavy 16K restricted to bins 0–2 at 25/bin** (spec bin floor): the k=100 cell
-   was on pace for ~14h (nothing solves → everything generates to the 16K cap).
-   Bins 3–4 are censored a fortiori and evidenced at B=2048.
+1. **Heavy 16K cells not run.** The k=100 cell was on pace for ~14h even
+   restricted to 25/bin (nothing solves → everything generates to the 16K cap);
+   two partial attempts were killed and archived under
+   `results/runs/_archived-heavy-B16384-*.jsonl` and are **excluded from all
+   analysis** (early-finisher bias). Heavy's contribution is the B=0 and B=2048
+   rows on all 209 problems (complete, unbiased) + the calibration pilots; heavy
+   is omitted from the B\* figure (needs ≥3 budget points) and appears in the
+   pooled-logistic table.
 2. **Light level, random seed 1, out-of-band control: B>0 cells not run** (B=0
    row exists for light/random-s1). The random control therefore has 1 seed, not 2.
 3. Faithfulness at 2 grid points per amendment 3 (not a deviation, noted for completeness).
